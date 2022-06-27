@@ -163,7 +163,7 @@
 ###  http://www.semanticweb.org/owl/owlapi/turtle#ανάσα
 :ανάσα rdf:type owl:NamedIndividual ,
                 :ell_DerivedWord ;
-       <http://mmoon.org/core/derivationalRelation> ell_schema:X_v-X_n ;
+       <http://mmoon.org/core/derivationalRelation> ell_schema:X-αινω_v-X-α_n ;
        <http://mmoon.org/core/isDerivedFrom> :ανασαίνω .
 
 
