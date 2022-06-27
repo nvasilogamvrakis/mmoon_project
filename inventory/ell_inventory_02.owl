@@ -1,9 +1,10 @@
-@prefix ell_schema: <http://mmoon.org/ell/schema/omg/> .
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ell_schema: <http://mmoon.org/ell/schema/omg/> .
 @base <http://mmoon.org/ell/inventory/omg/> .
 
 <http://mmoon.org/ell/inventory/omg/> rdf:type owl:Ontology ;
@@ -27,6 +28,20 @@
 <http://mmoon.org/core/isAllomorphTo> rdf:type owl:ObjectProperty .
 
 
+###  http://mmoon.org/ell/inventory/omg/ell_noDerivationalDirection
+:ell_noDerivationalDirection rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf <http://mmoon.org/core/isDerivedFrom> ;
+                             rdf:type owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_consistsOfWord
+:ell_consistsOfWord rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_noDerivationalDirection
+:ell_noDerivationalDirection rdf:type owl:ObjectProperty .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -35,60 +50,64 @@
 <http://mmoon.org/core/Prefix> rdfs:subClassOf :ell_Affix .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Affix
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Affix
 :ell_Affix rdf:type owl:Class ;
            rdfs:subClassOf <http://mmoon.org/core/Affix> ,
                            :ell_Morph .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_DerivedWord
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Conversion
+:ell_Conversion rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_DerivedWord
 :ell_DerivedWord rdf:type owl:Class ;
                  rdfs:subClassOf <http://mmoon.org/core/DerivedWord> ,
                                  :ell_Lexeme .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Lexeme
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Lexeme
 :ell_Lexeme rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Lexeme> ,
                             :ell_LexicalEntry .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_LexicalEntry
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_LexicalEntry
 :ell_LexicalEntry rdf:type owl:Class ;
                   rdfs:subClassOf <http://mmoon.org/core/LexicalEntry> ,
                                   :ell_Word .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Morph
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Morph
 :ell_Morph rdf:type owl:Class ;
            rdfs:subClassOf <http://mmoon.org/core/Morph> .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Prefix
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Prefix
 :ell_Prefix rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Prefix> ,
                             :ell_Affix .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_SimpleLexeme
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_SimpleLexeme
 :ell_SimpleLexeme rdf:type owl:Class ;
                   rdfs:subClassOf <http://mmoon.org/core/SimpleLexeme> ,
                                   :ell_Lexeme .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Stem
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Stem
 :ell_Stem rdf:type owl:Class ;
           rdfs:subClassOf <http://mmoon.org/core/Morph> ,
                           :ell_Morph .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Suffix
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Suffix
 :ell_Suffix rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Suffix> ,
                             :ell_Affix .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Word
+###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Word
 :ell_Word rdf:type owl:Class ;
           rdfs:subClassOf <http://mmoon.org/core/Word> .
 
@@ -96,16 +115,6 @@
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://mmoon.org/ell/inventory/omg/ξε-
-:ξε- rdf:type owl:NamedIndividual ,
-              :ell_Prefix .
-
-
-###  http://mmoon.org/ell/inventory/omg/παρα-
-:παρα- rdf:type owl:NamedIndividual ,
-                :ell_Prefix .
-
 
 ###  http://mmoon.org/ell/inventory/omg/-ευ-
 <http://mmoon.org/ell/inventory/omg/-ευ-> rdf:type owl:NamedIndividual ,
@@ -143,97 +152,163 @@
                                                  :ell_Suffix .
 
 
-###  http://mmoon.org/ell/schema/omg/S_v-S_n
-:S_v-S_n rdf:type :ell_Conversion .
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-άω_v-S-ώ_v
+:S-άω_v-S-ώ_v rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/schema/omg/αγαπάω
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-έας_n-S-ιάς_n
+:S-έας_n-S-ιάς_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-ία_n-S-ιά_n
+:S-ία_n-S-ιά_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-ευ-_v-S-τη-_n
+:S-ευ-_v-S-τη-_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-μα_n-S-ση_n
+:S-μα_n-S-ση_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-ση_n-S-μα_n
+:S-ση_n-S-μα_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S-τη-_n-S-ικ-_adj
+:S-τη-_n-S-ικ-_adj rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S_n-S-ευ-_v
+:S_n-S-ευ-_v rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S_n-S_v
+:S_n-S_v rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#S_v-S_n
+:S_v-S_n rdf:type owl:NamedIndividual ,
+                  :ell_Conversion .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#W_adj-W_n
+:W_adj-W_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#W_adv-WW_adv
+:W_adv-WW_adv rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#W_v-W_n
+:W_v-W_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#W_v-ξε-W_v
+:W_v-ξε-W_v rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#W_v-παρα-W_v
+:W_v-παρα-W_v rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπάω
 :αγαπάω rdf:type owl:NamedIndividual ,
                  :ell_DerivedWord .
 
 
-###  http://mmoon.org/ell/schema/omg/αγαπώ
+###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπώ
 :αγαπώ rdf:type owl:NamedIndividual ,
                 :ell_DerivedWord ;
        <http://mmoon.org/core/derivationalRelation> :S-άω_v-S-ώ_v ;
        <http://mmoon.org/core/isDerivedFrom> :αγαπάω .
 
 
-###  http://mmoon.org/ell/schema/omg/ανάσα
+###  http://www.semanticweb.org/owl/owlapi/turtle#ανάσα
 :ανάσα rdf:type owl:NamedIndividual ,
                 :ell_DerivedWord ;
        <http://mmoon.org/core/derivationalRelation> :W_v-W_n ;
        <http://mmoon.org/core/isDerivedFrom> :ανασαίνω .
 
 
-###  http://mmoon.org/ell/schema/omg/ανασαίνω
+###  http://www.semanticweb.org/owl/owlapi/turtle#ανασαίνω
 :ανασαίνω rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/schema/omg/βασιλέας
+###  http://www.semanticweb.org/owl/owlapi/turtle#βασιλέας
 :βασιλέας rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/schema/omg/βασιλιάς
+###  http://www.semanticweb.org/owl/owlapi/turtle#βασιλιάς
 :βασιλιάς rdf:type owl:NamedIndividual ,
                    :ell_DerivedWord ;
           <http://mmoon.org/core/derivationalRelation> :S-έας_n-S-ιάς_n ;
           <http://mmoon.org/core/isDerivedFrom> :βασιλέας .
 
 
-###  http://mmoon.org/ell/schema/omg/ερωτώ
+###  http://www.semanticweb.org/owl/owlapi/turtle#ε-W_v-W_v
+:ε-W_v-W_v rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#ερωτώ
 :ερωτώ rdf:type owl:NamedIndividual ,
                 :ell_SimpleLexeme .
 
 
-###  http://mmoon.org/ell/schema/omg/θέμα
+###  http://www.semanticweb.org/owl/owlapi/turtle#θέμα
 :θέμα rdf:type owl:NamedIndividual ,
                :ell_DerivedWord ;
       <http://mmoon.org/core/derivationalRelation> :S-ση_n-S-μα_n .
 
 
-###  http://mmoon.org/ell/schema/omg/θέση
+###  http://www.semanticweb.org/owl/owlapi/turtle#θέση
 :θέση rdf:type owl:NamedIndividual ,
                :ell_DerivedWord ;
       <http://mmoon.org/core/derivationalRelation> :S-μα_n-S-ση_n ;
       :ell_noDerivationalDirection :θέμα .
 
 
-###  http://mmoon.org/ell/schema/omg/λέω
+###  http://www.semanticweb.org/owl/owlapi/turtle#λέω
 :λέω rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/schema/omg/λίγο
+###  http://www.semanticweb.org/owl/owlapi/turtle#λίγο
 :λίγο rdf:type owl:NamedIndividual ,
                :ell_SimpleLexeme .
 
 
-###  http://mmoon.org/ell/schema/omg/λίγο-λίγο
+###  http://www.semanticweb.org/owl/owlapi/turtle#λίγο-λίγο
 :λίγο-λίγο rdf:type owl:NamedIndividual ,
                     :ell_DerivedWord ;
            <http://mmoon.org/core/derivationalRelation> :W_adv-WW_adv ;
            <http://mmoon.org/core/isDerivedFrom> :λίγο .
 
 
-###  http://mmoon.org/ell/schema/omg/νομικός1
+###  http://www.semanticweb.org/owl/owlapi/turtle#νομικός1
 :νομικός1 rdf:type owl:NamedIndividual ,
                    :ell_DerivedWord ;
           <http://mmoon.org/core/isDerivedFrom> :νόμος .
 
 
-###  http://mmoon.org/ell/schema/omg/νομικός2
+###  http://www.semanticweb.org/owl/owlapi/turtle#νομικός2
 :νομικός2 rdf:type owl:NamedIndividual ,
                    :ell_DerivedWord ;
           <http://mmoon.org/core/derivationalRelation> :W_adj-W_n ;
           <http://mmoon.org/core/isDerivedFrom> :νομικός1 .
 
 
-###  http://mmoon.org/ell/schema/omg/νόμος
+###  http://www.semanticweb.org/owl/owlapi/turtle#νόμος
 :νόμος rdf:type owl:NamedIndividual ,
                 :ell_SimpleLexeme .
 
 
-###  http://mmoon.org/ell/schema/omg/ξελέω
+###  http://www.semanticweb.org/owl/owlapi/turtle#ξε-
+:ξε- rdf:type owl:NamedIndividual ,
+              :ell_Prefix .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#ξελέω
 :ξελέω rdf:type owl:NamedIndividual ,
                 :ell_DerivedWord ;
        <http://mmoon.org/core/consistsOfAffix> :ξε- ;
@@ -242,20 +317,25 @@
        :ell_consistsOfWord :λέω .
 
 
-###  http://mmoon.org/ell/schema/omg/οδηγός
+###  http://www.semanticweb.org/owl/owlapi/turtle#οδηγός
 :οδηγός rdf:type owl:NamedIndividual ,
                  :ell_DerivedWord ;
-        <http://mmoon.org/core/derivationalRelation> :S_v-S_n .
+        <http://mmoon.org/core/derivationalRelation> :S_v-S_n ;
+        :ell_noDerivationalDirection :οδηγώ .
 
 
-###  http://mmoon.org/ell/schema/omg/οδηγώ
+###  http://www.semanticweb.org/owl/owlapi/turtle#οδηγώ
 :οδηγώ rdf:type owl:NamedIndividual ,
                 :ell_DerivedWord ;
-       <http://mmoon.org/core/derivationalRelation> :S_n-S_v ;
-       :ell_noDerivationalDirection :οδηγός .
+       <http://mmoon.org/core/derivationalRelation> :S_n-S_v .
 
 
-###  http://mmoon.org/ell/schema/omg/παραλέω
+###  http://www.semanticweb.org/owl/owlapi/turtle#παρα-
+:παρα- rdf:type owl:NamedIndividual ,
+                :ell_Prefix .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#παραλέω
 :παραλέω rdf:type owl:NamedIndividual ,
                   :ell_DerivedWord ;
          <http://mmoon.org/core/consistsOfAffix> :παρα- ;
@@ -264,50 +344,54 @@
          :ell_consistsOfWord :λέω .
 
 
-###  http://mmoon.org/ell/schema/omg/πονηρία
+###  http://www.semanticweb.org/owl/owlapi/turtle#πονηρία
 :πονηρία rdf:type owl:NamedIndividual ,
                   :ell_DerivedWord .
 
 
-###  http://mmoon.org/ell/schema/omg/πονηριά
+###  http://www.semanticweb.org/owl/owlapi/turtle#πονηριά
 :πονηριά rdf:type owl:NamedIndividual ,
                   :ell_DerivedWord ;
          <http://mmoon.org/core/derivationalRelation> :S-ία_n-S-ιά_n ;
          <http://mmoon.org/core/isDerivedFrom> :πονηρία .
 
 
-###  http://mmoon.org/ell/schema/omg/προπάππος
+###  http://www.semanticweb.org/owl/owlapi/turtle#προ-W_n-προπρο-W_n
+:προ-W_n-προπρο-W_n rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/owl/owlapi/turtle#προπάππος
 :προπάππος rdf:type owl:NamedIndividual ,
                     :ell_DerivedWord .
 
 
-###  http://mmoon.org/ell/schema/omg/προπροπάππος
+###  http://www.semanticweb.org/owl/owlapi/turtle#προπροπάππος
 :προπροπάππος rdf:type owl:NamedIndividual ,
                        :ell_DerivedWord ;
               <http://mmoon.org/core/derivationalRelation> :προ-W_n-προπρο-W_n ;
               <http://mmoon.org/core/isDerivedFrom> :προπάππος .
 
 
-###  http://mmoon.org/ell/schema/omg/ρωτώ
+###  http://www.semanticweb.org/owl/owlapi/turtle#ρωτώ
 :ρωτώ rdf:type owl:NamedIndividual ,
                :ell_DerivedWord ;
       <http://mmoon.org/core/derivationalRelation> :ε-W_v-W_v ;
       <http://mmoon.org/core/isDerivedFrom> :ερωτώ .
 
 
-###  http://mmoon.org/ell/schema/omg/χορ-
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορ-
 :χορ- rdf:type owl:NamedIndividual ,
                :ell_Stem .
 
 
-###  http://mmoon.org/ell/schema/omg/χορευ-
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορευ-
 :χορευ- rdf:type owl:NamedIndividual ,
                  :ell_Stem ;
         <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ευ-> ;
         <http://mmoon.org/core/consistsOfStem> :χορ- .
 
 
-###  http://mmoon.org/ell/schema/omg/χορευτ-
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτ-
 :χορευτ- rdf:type owl:NamedIndividual ,
                   :ell_Stem ;
          <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-τ-> ;
@@ -315,7 +399,7 @@
          <http://mmoon.org/core/isAllomorphTo> :χορευτη- .
 
 
-###  http://mmoon.org/ell/schema/omg/χορευτής
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτής
 :χορευτής rdf:type owl:NamedIndividual ,
                    :ell_DerivedWord ;
           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ς> ;
@@ -324,21 +408,21 @@
           <http://mmoon.org/core/isDerivedFrom> :χορεύω .
 
 
-###  http://mmoon.org/ell/schema/omg/χορευτη-
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτη-
 :χορευτη- rdf:type owl:NamedIndividual ,
                    :ell_Stem ;
           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-τη-> ;
           <http://mmoon.org/core/consistsOfStem> :χορευ- .
 
 
-###  http://mmoon.org/ell/schema/omg/χορευτικ-
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτικ-
 :χορευτικ- rdf:type owl:NamedIndividual ,
                     :ell_Stem ;
            <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ικ-> ;
            <http://mmoon.org/core/consistsOfStem> :χορευτ- .
 
 
-###  http://mmoon.org/ell/schema/omg/χορευτικός
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτικός
 :χορευτικός rdf:type owl:NamedIndividual ,
                      :ell_DerivedWord ;
             <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
@@ -347,7 +431,7 @@
             <http://mmoon.org/core/isDerivedFrom> :χορευτής .
 
 
-###  http://mmoon.org/ell/schema/omg/χορεύω
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορεύω
 :χορεύω rdf:type owl:NamedIndividual ,
                  :ell_DerivedWord ;
         <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ω> ;
@@ -356,7 +440,7 @@
         <http://mmoon.org/core/isDerivedFrom> :χορός .
 
 
-###  http://mmoon.org/ell/schema/omg/χορός
+###  http://www.semanticweb.org/owl/owlapi/turtle#χορός
 :χορός rdf:type owl:NamedIndividual ,
                 :ell_SimpleLexeme ;
        <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
