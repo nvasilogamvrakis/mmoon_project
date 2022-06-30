@@ -32,12 +32,6 @@
 :ell_consistsOfWord rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/owl/owlapi/turtle#ell_noDerivationalDirection
-:ell_noDerivationalDirection rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf <http://mmoon.org/core/isDerivedFrom> ;
-                             rdf:type owl:SymmetricProperty .
-
-
 #################################################################
 #    Classes
 #################################################################
@@ -190,14 +184,14 @@
 ###  http://www.semanticweb.org/owl/owlapi/turtle#θέμα
 :θέμα rdf:type owl:NamedIndividual ,
                :ell_DerivedWord ;
-      <http://mmoon.org/core/derivationalRelation> ell_schema:X-ση_n-X-μα_n .
+      <http://mmoon.org/core/derivationalRelation> ell_schema:X-ση_n-X-μα_n ;
+      ell_schema:bidirectionalDerivation :θέση .
 
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#θέση
 :θέση rdf:type owl:NamedIndividual ,
                :ell_DerivedWord ;
-      <http://mmoon.org/core/derivationalRelation> ell_schema:X-μα_n-X-ση_n ;
-      :ell_noDerivationalDirection :θέμα .
+      <http://mmoon.org/core/derivationalRelation> ell_schema:X-μα_n-X-ση_n .
 
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#λέω
@@ -252,7 +246,7 @@
 :οδηγός rdf:type owl:NamedIndividual ,
                  :ell_DerivedWord ;
         <http://mmoon.org/core/derivationalRelation> ell_schema:X-ω_v-X-ος_n ;
-        :ell_noDerivationalDirection :οδηγώ .
+        ell_schema:bidirectionalDerivation :οδηγώ .
 
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#οδηγώ
