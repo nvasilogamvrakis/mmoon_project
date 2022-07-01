@@ -126,13 +126,13 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_Back-formation
 :ell_Back-formation rdf:type owl:Class ;
-                    rdfs:subClassOf :ell_Diachronic .
+                    rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                    :ell_Derivation .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Conversion
 :ell_Conversion rdf:type owl:Class ;
                 rdfs:subClassOf <http://mmoon.org/core/Conversion> ,
-                                <http://mmoon.org/core/Derivation> ,
                                 :ell_Derivation .
 
 
@@ -154,12 +154,6 @@
                                  :ell_Lexeme .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Diachronic
-:ell_Diachronic rdf:type owl:Class ;
-                rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
-                                :ell_Derivation .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_Lexeme
 :ell_Lexeme rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Lexeme> ,
@@ -175,12 +169,6 @@
 ###  http://mmoon.org/ell/schema/omg/ell_Morph
 :ell_Morph rdf:type owl:Class ;
            rdfs:subClassOf <http://mmoon.org/core/Morph> .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_MorphoPhonological
-:ell_MorphoPhonological rdf:type owl:Class ;
-                        rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
-                                        :ell_Derivation .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_MorphologicalRelationship
@@ -201,7 +189,8 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_Reanalysis
 :ell_Reanalysis rdf:type owl:Class ;
-                rdfs:subClassOf :ell_Diachronic .
+                rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                :ell_Derivation .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Reduplication
@@ -224,7 +213,8 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_Subtraction
 :ell_Subtraction rdf:type owl:Class ;
-                 rdfs:subClassOf :ell_MorphoPhonological .
+                 rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                 :ell_Derivation .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Suffix
@@ -240,7 +230,8 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_Synizesis
 :ell_Synizesis rdf:type owl:Class ;
-               rdfs:subClassOf :ell_MorphoPhonological .
+               rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                               :ell_Derivation .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Word
