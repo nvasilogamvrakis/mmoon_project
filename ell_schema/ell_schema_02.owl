@@ -249,11 +249,6 @@
 #    Individuals
 #################################################################
 
-###  http://mmoon.org/ell/schema/omg/X-άω_v-X-ώ_v
-:X-άω_v-X-ώ_v rdf:type owl:NamedIndividual ,
-                       :ell_Reanalysis .
-
-
 ###  http://mmoon.org/ell/schema/omg/X-ία_n-X-ιά_n
 :X-ία_n-X-ιά_n rdf:type owl:NamedIndividual ,
                         :ell_Synizesis .
@@ -297,6 +292,11 @@
 ###  http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n
 :X-ω_v-X-ος_n rdf:type owl:NamedIndividual ,
                        :ell_Conversion .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ώ_v-X-άω_v
+:X-ώ_v-X-άω_v rdf:type owl:NamedIndividual ,
+                       :ell_Reanalysis .
 
 
 ###  http://mmoon.org/ell/schema/omg/X_adv-XX_adv
