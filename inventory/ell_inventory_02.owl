@@ -13,6 +13,14 @@
                                                    <http://mmoon.org/ell/schema/omg/0.2> .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  http://mmoon.org/ell/schema/omg/bidirectionalDerivation
+ell_schema:bidirectionalDerivation rdf:type owl:AnnotationProperty .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -144,14 +152,14 @@
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπάω
 :αγαπάω rdf:type owl:NamedIndividual ,
-                 :ell_DerivedWord .
+                 :ell_DerivedWord ;
+        <http://mmoon.org/core/derivationalRelation> ell_schema:X-ώ_v-X-άω_v ;
+        <http://mmoon.org/core/isDerivedFrom> :αγαπώ .
 
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπώ
 :αγαπώ rdf:type owl:NamedIndividual ,
-                :ell_DerivedWord ;
-       <http://mmoon.org/core/derivationalRelation> ell_schema:X-άω_v-X-ώ_v ;
-       <http://mmoon.org/core/isDerivedFrom> :αγαπάω .
+                :ell_DerivedWord .
 
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#ανάσα
@@ -185,6 +193,7 @@
 :θέμα rdf:type owl:NamedIndividual ,
                :ell_DerivedWord ;
       <http://mmoon.org/core/derivationalRelation> ell_schema:X-ση_n-X-μα_n ;
+      ell_schema:ell_bidirectionalDerivation :θέση ;
       ell_schema:bidirectionalDerivation :θέση .
 
 
@@ -246,6 +255,7 @@
 :οδηγός rdf:type owl:NamedIndividual ,
                  :ell_DerivedWord ;
         <http://mmoon.org/core/derivationalRelation> ell_schema:X-ω_v-X-ος_n ;
+        ell_schema:ell_bidirectionalDerivation :οδηγώ ;
         ell_schema:bidirectionalDerivation :οδηγώ .
 
 
