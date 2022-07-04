@@ -27,15 +27,15 @@
                                       owl:inverseOf :ell_generates .
 
 
-###  http://mmoon.org/ell/schema/omg/bidirectionalDerivation
-:bidirectionalDerivation rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf <http://mmoon.org/core/isDerivedFrom> ;
-                         rdf:type owl:SymmetricProperty .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_belongsToWord
 :ell_belongsToWord rdf:type owl:ObjectProperty ;
                    owl:inverseOf :ell_consistsOfWord .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation
+:ell_bidirectionalDerivation rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf <http://mmoon.org/core/isDerivedFrom> ;
+                             rdf:type owl:SymmetricProperty .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_consistsOfWord
