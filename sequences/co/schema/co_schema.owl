@@ -1,0 +1,629 @@
+@prefix : <http://purl.org/co/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix error: <http://www.essepuntato.it/2009/10/error/> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://purl.org/co> .
+
+<http://purl.org/co> rdf:type owl:Ontology ;
+                      owl:imports <http://purl.org/spar/error> ;
+                      dc:contributor "Marco Ocana"^^xsd:string ,
+                                     "Paolo Ciccarese"^^xsd:string ,
+                                     "Silvio Peroni"^^xsd:string ;
+                      dc:creator <http://www.paolociccarese.info> ;
+                      dc:date "March 19, 2012"^^xsd:string ;
+                      dc:format "application/rdf+xml"^^xsd:string ;
+                      dc:language "en" ;
+                      dc:title """The Collections Ontology
+(CO)"""@en ;
+                      owl:versionInfo "2.0"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/format
+dc:format rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/language
+dc:language rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/publisher
+dc:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/co/element
+:element rdf:type owl:ObjectProperty ;
+         owl:inverseOf :elementOf ;
+         rdfs:domain :Collection ;
+         owl:propertyChainAxiom ( :item
+                                  :itemContent
+                                ) ;
+         rdfs:comment "The link to the members of a collection"@en ;
+         rdfs:label "has element"@en .
+
+
+###  http://purl.org/co/elementOf
+:elementOf rdf:type owl:ObjectProperty ;
+           rdfs:comment "The link to a collection in which the object is member."@en ;
+           rdfs:label "is element of"@en .
+
+
+###  http://purl.org/co/firstItem
+:firstItem rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :item ;
+           owl:inverseOf :firstItemOf ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :List ;
+           rdfs:range [ owl:intersectionOf ( :ListItem
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :previousItem ;
+                                               owl:cardinality "0"^^xsd:nonNegativeInteger
+                                             ]
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :index ;
+                                               owl:hasValue "1"^^xsd:positiveInteger
+                                             ]
+                                           ) ;
+                        rdf:type owl:Class
+                      ] ;
+           rdfs:comment "The link to the first item of the list."@en ;
+           rdfs:label "has first item"@en .
+
+
+###  http://purl.org/co/firstItemOf
+:firstItemOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :itemOf ;
+             rdfs:comment "The link to a list in which the item is first item."@en ;
+             rdfs:label "is first item of"@en .
+
+
+###  http://purl.org/co/followedBy
+:followedBy rdf:type owl:ObjectProperty ;
+            owl:inverseOf :precededBy ;
+            rdf:type owl:TransitiveProperty ;
+            rdfs:domain :ListItem ;
+            rdfs:range :ListItem ;
+            dc:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the item I[i] is followed by I[i+1], ... , I[n-1] and I[n]."@en ;
+            rdfs:comment "The link to the following item in a list."@en ;
+            rdfs:label "is followed by"@en .
+
+
+###  http://purl.org/co/item
+:item rdf:type owl:ObjectProperty ;
+      owl:inverseOf :itemOf ;
+      rdfs:domain :Bag ;
+      rdfs:range :Item ;
+      owl:propertyChainAxiom ( :item
+                               :nextItem
+                             ) ;
+      rdfs:comment "The link to every item of the bag"@en ;
+      rdfs:label "has item"@en .
+
+
+###  http://purl.org/co/itemContent
+:itemContent rdf:type owl:ObjectProperty ;
+             owl:inverseOf :itemContentOf ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :Item ;
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:complementOf :Item
+                        ] ;
+             rdfs:comment "The link to the actual resource to which the item refers."@en ;
+             rdfs:label "has item content"@en .
+
+
+###  http://purl.org/co/itemContentOf
+:itemContentOf rdf:type owl:ObjectProperty ;
+               rdfs:comment "The link to the item that refers to the resource."@en ;
+               rdfs:label "is item content of"@en .
+
+
+###  http://purl.org/co/itemOf
+:itemOf rdf:type owl:ObjectProperty ;
+        rdfs:comment "The link to a bag in which the item is member."@en ;
+        rdfs:label "is item of"@en .
+
+
+###  http://purl.org/co/lastItem
+:lastItem rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :item ;
+          owl:inverseOf :lastItemOf ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :List ;
+          rdfs:range [ owl:intersectionOf ( :ListItem
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :nextItem ;
+                                              owl:cardinality "0"^^xsd:nonNegativeInteger
+                                            ]
+                                          ) ;
+                       rdf:type owl:Class
+                     ] ;
+          rdfs:comment "The link to the last item of the list."@en ;
+          rdfs:label "has last item"@en .
+
+
+###  http://purl.org/co/lastItemOf
+:lastItemOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :itemOf ;
+            rdfs:comment "The link to a list in which the item is last item."@en ;
+            rdfs:label "is last item of"@en .
+
+
+###  http://purl.org/co/nextItem
+:nextItem rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :followedBy ;
+          owl:inverseOf :previousItem ;
+          rdf:type owl:FunctionalProperty ;
+          dc:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the next item of I[i] is I[i+1]."@en ;
+          rdfs:comment "The link to the next item in a list."@en ;
+          rdfs:label "has next item"@en .
+
+
+###  http://purl.org/co/precededBy
+:precededBy rdf:type owl:ObjectProperty ,
+                     owl:TransitiveProperty ;
+            dc:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the item I[i] is preceded by I[i-1], ... , I[2] and I[1]."@en ;
+            rdfs:comment "The link to the preceding item in a list."@en ;
+            rdfs:label "is preceded by"@en .
+
+
+###  http://purl.org/co/previousItem
+:previousItem rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :precededBy ;
+              rdf:type owl:FunctionalProperty ;
+              dc:description "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the previous item of I[i] is I[i-1]."@en ;
+              rdfs:comment "The link to the previous item in a list."@en ;
+              rdfs:label "has previous item"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/co/index
+:index rdf:type owl:DatatypeProperty ;
+       rdfs:domain :ListItem ;
+       rdfs:range xsd:positiveInteger ;
+       rdfs:comment "A number identifying the position, starting from 1, of a particular list item within a list."@en ;
+       rdfs:label "has index"@en .
+
+
+###  http://purl.org/co/size
+:size rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Collection ;
+      rdfs:range xsd:nonNegativeInteger ;
+      dc:description """CO defines the size of a collection as the sum of the number of times entities that are part of the collection appear in it. This means that co:size considers how much each entity is involved by a particular collection, i.e.:
+- the size of the set {a, b, c} is three
+- the size of the bag [a, a, b, b, b, c] is five
+- the size of the list (a, b, c, b, a, b, c, c) is seven"""@en ;
+      rdfs:comment "The number of item belonging to a collection."@en ;
+      rdfs:label "has size"@en .
+
+
+###  http://www.essepuntato.it/2009/10/error/hasError
+error:hasError rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/co/Bag
+:Bag rdf:type owl:Class ;
+     rdfs:subClassOf :Collection ;
+     owl:disjointWith :Set ;
+     rdfs:comment "Collection that can have a number of copies of each object"@en ;
+     rdfs:label "bag"@en .
+
+
+###  http://purl.org/co/Collection
+:Collection rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :element ;
+                              owl:allValuesFrom owl:Thing
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :size ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            owl:disjointWith :Item ;
+            rdfs:comment "A group of objects that can be considered as a whole."@en ;
+            rdfs:label "collection"@en .
+
+
+###  http://purl.org/co/Item
+:Item rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty [ owl:inverseOf :item
+                                       ] ;
+                        owl:someValuesFrom :Bag
+                      ] ;
+      rdfs:comment "Element belonging to a bag"@en ;
+      rdfs:label "item"@en .
+
+
+###  http://purl.org/co/List
+:List rdf:type owl:Class ;
+      rdfs:subClassOf [ owl:intersectionOf ( :Bag
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :item ;
+                                               owl:allValuesFrom :ListItem
+                                             ]
+                                           ) ;
+                        rdf:type owl:Class
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :firstItem ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :lastItem ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ;
+      rdfs:comment "An ordered array of items, that can be present in multiple copies"@en ;
+      rdfs:label "list"@en .
+
+
+###  http://purl.org/co/ListItem
+:ListItem rdf:type owl:Class ;
+          rdfs:subClassOf :Item ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :index ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ;
+          rdfs:comment "element belonging to a list"@en ;
+          rdfs:label "list item"@en .
+
+
+###  http://purl.org/co/Set
+:Set rdf:type owl:Class ;
+     rdfs:subClassOf :Collection ;
+     rdfs:comment "A collection that cannot contain duplicate elements."@en ;
+     rdfs:label "set"@en .
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdf:type owl:Class .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf ( :List
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :item ;
+                         owl:someValuesFrom :ListItem
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ owl:intersectionOf ( :List
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :firstItem ;
+                                           owl:someValuesFrom :Item
+                                         ]
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :lastItem ;
+                                           owl:someValuesFrom :Item
+                                         ]
+                                       ) ;
+                    rdf:type owl:Class
+                  ]
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<urn:swrl#x> rdf:type swrl:Variable .
+
+<urn:swrl#i> rdf:type swrl:Variable .
+
+<urn:swrl#l> rdf:type swrl:Variable .
+
+<urn:swrl#value> rdf:type swrl:Variable .
+
+<urn:swrl#li> rdf:type swrl:Variable .
+
+<urn:swrl#li1> rdf:type swrl:Variable .
+
+<urn:swrl#li2> rdf:type swrl:Variable .
+
+<urn:swrl#r1> rdf:type swrl:Variable .
+
+<urn:swrl#r2> rdf:type swrl:Variable .
+
+<urn:swrl#list> rdf:type swrl:Variable .
+
+<urn:swrl#last> rdf:type swrl:Variable .
+
+<urn:swrl#r> rdf:type swrl:Variable .
+
+<urn:swrl#current> rdf:type swrl:Variable .
+
+<urn:swrl#next> rdf:type swrl:Variable .
+
+<urn:swrl#nextR> rdf:type swrl:Variable .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :precededBy ;
+                           swrl:argument1 <urn:swrl#x> ;
+                           swrl:argument2 <urn:swrl#x>
+                         ] ;
+               rdf:rest rdf:nil
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate error:hasError ;
+                           swrl:argument1 <urn:swrl#x> ;
+                           swrl:argument2 "A list item cannot be preceded by itself"
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :followedBy ;
+                           swrl:argument1 <urn:swrl#x> ;
+                           swrl:argument2 <urn:swrl#x>
+                         ] ;
+               rdf:rest rdf:nil
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate error:hasError ;
+                           swrl:argument1 <urn:swrl#x> ;
+                           swrl:argument2 "A list item cannot be followed by itself"
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :itemOf ;
+                           swrl:argument1 <urn:swrl#i> ;
+                           swrl:argument2 <urn:swrl#l>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :index ;
+                                      swrl:argument1 <urn:swrl#i> ;
+                                      swrl:argument2 <urn:swrl#value>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :size ;
+                                                 swrl:argument1 <urn:swrl#l> ;
+                                                 swrl:argument2 <urn:swrl#value>
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :lastItem ;
+                           swrl:argument1 <urn:swrl#l> ;
+                           swrl:argument2 <urn:swrl#i>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :itemOf ;
+                           swrl:argument1 <urn:swrl#li> ;
+                           swrl:argument2 <urn:swrl#l>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :index ;
+                                      swrl:argument1 <urn:swrl#li> ;
+                                      swrl:argument2 "1"
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :firstItem ;
+                           swrl:argument1 <urn:swrl#l> ;
+                           swrl:argument2 <urn:swrl#li>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :itemOf ;
+                           swrl:argument1 <urn:swrl#li1> ;
+                           swrl:argument2 <urn:swrl#l>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :itemOf ;
+                                      swrl:argument1 <urn:swrl#li2> ;
+                                      swrl:argument2 <urn:swrl#l>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :index ;
+                                                 swrl:argument1 <urn:swrl#li1> ;
+                                                 swrl:argument2 <urn:swrl#r1>
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                            swrl:propertyPredicate :index ;
+                                                            swrl:argument1 <urn:swrl#li2> ;
+                                                            swrl:argument2 <urn:swrl#r2>
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                                       swrl:builtin swrlb:add ;
+                                                                       swrl:arguments [ rdf:type rdf:List ;
+                                                                                        rdf:first <urn:swrl#r2> ;
+                                                                                        rdf:rest [ rdf:type rdf:List ;
+                                                                                                   rdf:first <urn:swrl#r1> ;
+                                                                                                   rdf:rest [ rdf:type rdf:List ;
+                                                                                                              rdf:first 1 ;
+                                                                                                              rdf:rest rdf:nil
+                                                                                                            ]
+                                                                                                 ]
+                                                                                      ]
+                                                                     ] ;
+                                                           rdf:rest rdf:nil
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :nextItem ;
+                           swrl:argument1 <urn:swrl#li1> ;
+                           swrl:argument2 <urn:swrl#li2>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :lastItem ;
+                           swrl:argument1 <urn:swrl#l> ;
+                           swrl:argument2 <urn:swrl#i>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :size ;
+                                      swrl:argument1 <urn:swrl#l> ;
+                                      swrl:argument2 <urn:swrl#value>
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :index ;
+                           swrl:argument1 <urn:swrl#i> ;
+                           swrl:argument2 <urn:swrl#value>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :lastItem ;
+                           swrl:argument1 <urn:swrl#list> ;
+                           swrl:argument2 <urn:swrl#last>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :index ;
+                                      swrl:argument1 <urn:swrl#last> ;
+                                      swrl:argument2 <urn:swrl#r>
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :size ;
+                           swrl:argument1 <urn:swrl#list> ;
+                           swrl:argument2 <urn:swrl#r>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate :nextItem ;
+                           swrl:argument1 <urn:swrl#current> ;
+                           swrl:argument2 <urn:swrl#next>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :index ;
+                                      swrl:argument1 <urn:swrl#current> ;
+                                      swrl:argument2 <urn:swrl#r>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:add ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first <urn:swrl#nextR> ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first <urn:swrl#r> ;
+                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                        rdf:first 1 ;
+                                                                                        rdf:rest rdf:nil
+                                                                                      ]
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate :index ;
+                           swrl:argument1 <urn:swrl#next> ;
+                           swrl:argument2 <urn:swrl#nextR>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
