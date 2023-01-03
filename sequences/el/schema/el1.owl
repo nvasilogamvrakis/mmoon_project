@@ -1,0 +1,225 @@
+@prefix : <http://www.semanticweb.org/ontologies/2023/0/el_list#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ontologies/2023/0/el_list> .
+
+<http://www.semanticweb.org/ontologies/2023/0/el_list> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_element
+:has_element rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :is_element_of ;
+             rdfs:domain :list ;
+             owl:propertyChainAxiom ( :has_item
+                                      :has_item_content
+                                    ) .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_first_item
+:has_first_item rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :has_item ;
+                owl:inverseOf :is_first_item_of ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :list ;
+                rdfs:range [ owl:intersectionOf ( :list_item
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :has_previous_item ;
+                                                    owl:cardinality "0"^^xsd:nonNegativeInteger
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_item
+:has_item rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :is_item_of ;
+          rdfs:domain :list ;
+          rdfs:range :list_item ;
+          owl:propertyChainAxiom ( :has_item
+                                   :has_next_item
+                                 ) .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_item_content
+:has_item_content rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  owl:inverseOf :is_item_content_of ;
+                  rdf:type owl:FunctionalProperty ;
+                  rdfs:domain :list_item .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_last_item
+:has_last_item rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :has_item ;
+               owl:inverseOf :is_last_item_of ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :list ;
+               rdfs:range [ owl:intersectionOf ( :list_item
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :has_next_item ;
+                                                   owl:cardinality "0"^^xsd:nonNegativeInteger
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_next_item
+:has_next_item rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :is_followed_by ;
+               owl:inverseOf :has_previous_item ;
+               rdf:type owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_previous_item
+:has_previous_item rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :is_preceded_by ;
+                   rdf:type owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_element_of
+:is_element_of rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_first_item_of
+:is_first_item_of rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :is_item_of .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_followed_by
+:is_followed_by rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf :is_preceded_by ;
+                rdf:type owl:TransitiveProperty ;
+                rdfs:domain :list_item ;
+                rdfs:range :list_item .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_item_content_of
+:is_item_content_of rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_item_of
+:is_item_of rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_last_item_of
+:is_last_item_of rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :is_item_of .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#is_preceded_by
+:is_preceded_by rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:TransitiveProperty ;
+                rdfs:domain :list_item ;
+                rdfs:range :list_item .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_index
+:has_index rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :list_item ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_size
+:has_size rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :list ;
+          rdfs:range xsd:nonNegativeInteger .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#list
+:list rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#list_item
+:list_item rdf:type owl:Class .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<http://www.semanticweb.org/ontologies/2023/0/current> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/ontologies/2023/0/next> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/ontologies/2023/0/r> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/ontologies/2023/0/nextR> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S2"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :has_next_item ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/ontologies/2023/0/current> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/ontologies/2023/0/next>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :has_index ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/ontologies/2023/0/current> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/ontologies/2023/0/r>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#add> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/ontologies/2023/0/nextR> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first <http://www.semanticweb.org/ontologies/2023/0/r> ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 1 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :has_index ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/ontologies/2023/0/next> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/ontologies/2023/0/nextR>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
