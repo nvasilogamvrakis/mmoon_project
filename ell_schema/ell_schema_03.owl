@@ -1,0 +1,469 @@
+@prefix : <http://mmoon.org/ell/schema/omg/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://mmoon.org/ell/schema/omg/> .
+
+<http://mmoon.org/ell/schema/omg/> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://mmoon.org/ell/schema/omg/0.3> ;
+                                    owl:imports <http://mmoon.org/core/v1.0.0/> ,
+                                                <http://mmoon.org/ell/schema/omg/0.2> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://mmoon.org/core/derivationalRelation
+<http://mmoon.org/core/derivationalRelation> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/core/hasMorphologicalRelationship
+<http://mmoon.org/core/hasMorphologicalRelationship> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/core/isAllomorphTo
+<http://mmoon.org/core/isAllomorphTo> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/core/isDerivedFrom
+<http://mmoon.org/core/isDerivedFrom> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_belongsToWord
+:ell_belongsToWord rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation
+:ell_bidirectionalDerivation rdf:type owl:ObjectProperty ,
+                                      owl:SymmetricProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_consistsOfWord
+:ell_consistsOfWord rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_generates
+:ell_generates rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_hasAllomorphicRelationship
+:ell_hasAllomorphicRelationship rdf:type owl:ObjectProperty ;
+                                rdfs:range :ell_Allomorphy .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_isMorphologicallyRelatedTo
+:ell_isMorphologicallyRelatedTo rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/isAllophoneTo
+:isAllophoneTo rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <http://mmoon.org/core/isAllomorphTo> ;
+               rdf:type owl:SymmetricProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/isDerivationallyRelatedTo
+:isDerivationallyRelatedTo rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :ell_isMorphologicallyRelatedTo .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://mmoon.org/ell/schema/omg/ell_morpho_phonological_representation
+:ell_morpho_phonological_representation rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain :ell_Representation ;
+                                        rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://mmoon.org/core/Affix
+<http://mmoon.org/core/Affix> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Conversion
+<http://mmoon.org/core/Conversion> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Derivation
+<http://mmoon.org/core/Derivation> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/DerivedWord
+<http://mmoon.org/core/DerivedWord> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Lexeme
+<http://mmoon.org/core/Lexeme> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/LexicalEntry
+<http://mmoon.org/core/LexicalEntry> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Morph
+<http://mmoon.org/core/Morph> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/MorphologicalRelationship
+<http://mmoon.org/core/MorphologicalRelationship> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Prefix
+<http://mmoon.org/core/Prefix> rdf:type owl:Class ;
+                               rdfs:subClassOf :ell_Affix .
+
+
+###  http://mmoon.org/core/Representation
+<http://mmoon.org/core/Representation> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/SimpleLexeme
+<http://mmoon.org/core/SimpleLexeme> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Suffix
+<http://mmoon.org/core/Suffix> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/Word
+<http://mmoon.org/core/Word> rdf:type owl:Class .
+
+
+###  http://mmoon.org/core/WordFormation
+<http://mmoon.org/core/WordFormation> rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Affix
+:ell_Affix rdf:type owl:Class ;
+           rdfs:subClassOf <http://mmoon.org/core/Affix> ,
+                           :ell_Morph .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_AffixalStem
+:ell_AffixalStem rdf:type owl:Class ;
+                 rdfs:subClassOf :ell_Stem ;
+                 owl:disjointWith :ell_Base .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Affixation
+:ell_Affixation rdf:type owl:Class ;
+                rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Allomorphy
+:ell_Allomorphy rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Auxiliary
+:ell_Auxiliary rdf:type owl:Class ;
+               rdfs:subClassOf :ell_Morph .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Back-formation
+:ell_Back-formation rdf:type owl:Class ;
+                    rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                    :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Base
+:ell_Base rdf:type owl:Class ;
+          rdfs:subClassOf :ell_Stem .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Confix
+:ell_Confix rdf:type owl:Class ;
+            rdfs:subClassOf :ell_Morph .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Conversion
+:ell_Conversion rdf:type owl:Class ;
+                rdfs:subClassOf <http://mmoon.org/core/Conversion> ,
+                                :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_CrossFormation
+:ell_CrossFormation rdf:type owl:Class ;
+                    rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                    :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_DerSuffix
+:ell_DerSuffix rdf:type owl:Class ;
+               rdfs:subClassOf :ell_Suffix ;
+               owl:disjointWith :ell_InfSuffix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Derivation
+:ell_Derivation rdf:type owl:Class ;
+                rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                :ell_WordFormation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_DerivedWord
+:ell_DerivedWord rdf:type owl:Class ;
+                 rdfs:subClassOf <http://mmoon.org/core/DerivedWord> ,
+                                 :ell_Lexeme .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Grammatical
+:ell_Grammatical rdf:type owl:Class ;
+                 rdfs:subClassOf :ell_Allomorphy .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_InfSuffix
+:ell_InfSuffix rdf:type owl:Class ;
+               rdfs:subClassOf :ell_Suffix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Lexeme
+:ell_Lexeme rdf:type owl:Class ;
+            rdfs:subClassOf <http://mmoon.org/core/Lexeme> ,
+                            :ell_LexicalEntry .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Lexical
+:ell_Lexical rdf:type owl:Class ;
+             rdfs:subClassOf :ell_Allomorphy .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_LexicalEntry
+:ell_LexicalEntry rdf:type owl:Class ;
+                  rdfs:subClassOf <http://mmoon.org/core/LexicalEntry> ,
+                                  :ell_Word .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Morph
+:ell_Morph rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_MorphoPhonological
+:ell_MorphoPhonological rdf:type owl:Class ;
+                        rdfs:subClassOf :ell_Allomorphy .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_MorphologicalRelationship
+:ell_MorphologicalRelationship rdf:type owl:Class ;
+                               rdfs:subClassOf <http://mmoon.org/core/MorphologicalRelationship> .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_PossibleWord
+:ell_PossibleWord rdf:type owl:Class ;
+                  rdfs:subClassOf :ell_DerivedWord .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_PostConfix
+:ell_PostConfix rdf:type owl:Class ;
+                rdfs:subClassOf :ell_Confix ;
+                owl:disjointWith :ell_PreConfix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_PreConfix
+:ell_PreConfix rdf:type owl:Class ;
+               rdfs:subClassOf :ell_Confix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Prefix
+:ell_Prefix rdf:type owl:Class ;
+            rdfs:subClassOf <http://mmoon.org/core/Prefix> ,
+                            :ell_Affix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Prefixation
+:ell_Prefixation rdf:type owl:Class ;
+                 rdfs:subClassOf :ell_Affixation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Reanalysis
+:ell_Reanalysis rdf:type owl:Class ;
+                rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Reduplication
+:ell_Reduplication rdf:type owl:Class ;
+                   rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                   :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Representation
+:ell_Representation rdf:type owl:Class ;
+                    rdfs:subClassOf <http://mmoon.org/core/Representation> ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <http://mmoon.org/core/hasRepresentation> ;
+                                      owl:hasSelf "true"^^xsd:boolean
+                                    ] .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_SimpleLexeme
+:ell_SimpleLexeme rdf:type owl:Class ;
+                  rdfs:subClassOf <http://mmoon.org/core/SimpleLexeme> ,
+                                  :ell_Lexeme .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Stem
+:ell_Stem rdf:type owl:Class ;
+          rdfs:subClassOf :ell_Morph .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Subtraction
+:ell_Subtraction rdf:type owl:Class ;
+                 rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                                 :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Suffix
+:ell_Suffix rdf:type owl:Class ;
+            rdfs:subClassOf <http://mmoon.org/core/Suffix> ,
+                            :ell_Affix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Suffixation
+:ell_Suffixation rdf:type owl:Class ;
+                 rdfs:subClassOf :ell_Affixation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Synizesis
+:ell_Synizesis rdf:type owl:Class ;
+               rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
+                               :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Word
+:ell_Word rdf:type owl:Class ;
+          rdfs:subClassOf <http://mmoon.org/core/Word> .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_WordFormation
+:ell_WordFormation rdf:type owl:Class ;
+                   rdfs:subClassOf <http://mmoon.org/core/WordFormation> ,
+                                   :ell_MorphologicalRelationship .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://mmoon.org/ell/schema/omg/X-ία_n-X-ιά_n
+:X-ία_n-X-ιά_n rdf:type owl:NamedIndividual ,
+                        :ell_Synizesis .
+
+
+###  http://mmoon.org/ell/schema/omg/X-αινω_v-X-α_n
+:X-αινω_v-X-α_n rdf:type owl:NamedIndividual ,
+                         :ell_Back-formation .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n
+:X-ευ-_v-X-τη-_n rdf:type owl:NamedIndividual ,
+                          :ell_Suffixation .
+
+
+###  http://mmoon.org/ell/schema/omg/X-μα_n-X-ση_n
+:X-μα_n-X-ση_n rdf:type owl:NamedIndividual ,
+                        :ell_CrossFormation .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ος_adj-X-ος_n
+:X-ος_adj-X-ος_n rdf:type owl:NamedIndividual ,
+                          :ell_Conversion .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ος_n-Χ-ω_v
+:X-ος_n-Χ-ω_v rdf:type owl:NamedIndividual ,
+                       :ell_Conversion .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ση_n-X-μα_n
+:X-ση_n-X-μα_n rdf:type owl:NamedIndividual ,
+                        :ell_CrossFormation .
+
+
+###  http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj
+:X-τη-_n-X-ικ-_adj rdf:type owl:NamedIndividual ,
+                            :ell_Suffixation .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n
+:X-ω_v-X-ος_n rdf:type owl:NamedIndividual ,
+                       :ell_Conversion .
+
+
+###  http://mmoon.org/ell/schema/omg/X-ώ_v-X-άω_v
+:X-ώ_v-X-άω_v rdf:type owl:NamedIndividual ,
+                       :ell_Reanalysis .
+
+
+###  http://mmoon.org/ell/schema/omg/X_adv-XX_adv
+:X_adv-XX_adv rdf:type owl:NamedIndividual ,
+                       :ell_Reduplication .
+
+
+###  http://mmoon.org/ell/schema/omg/X_n-X-ευ-_v
+:X_n-X-ευ-_v rdf:type owl:NamedIndividual ,
+                      :ell_Suffixation .
+
+
+###  http://mmoon.org/ell/schema/omg/X_n-X_v
+:X_n-X_v rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/schema/omg/X_v-ξε-X_v
+:X_v-ξε-X_v rdf:type owl:NamedIndividual ,
+                     :ell_Prefixation .
+
+
+###  http://mmoon.org/ell/schema/omg/X_v-παρα-X_v
+:X_v-παρα-X_v rdf:type owl:NamedIndividual ,
+                       :ell_Prefixation .
+
+
+###  http://mmoon.org/ell/schema/omg/Xέας_n-Xιάς_n
+:Xέας_n-Xιάς_n rdf:type owl:NamedIndividual ,
+                        :ell_Synizesis .
+
+
+###  http://mmoon.org/ell/schema/omg/Xβ-Χφ
+:Xβ-Χφ rdf:type owl:NamedIndividual ,
+                :ell_MorphoPhonological .
+
+
+###  http://mmoon.org/ell/schema/omg/Xβ-Χψ
+:Xβ-Χψ rdf:type owl:NamedIndividual ,
+                :ell_MorphoPhonological .
+
+
+###  http://mmoon.org/ell/schema/omg/XεC-XοC
+:XεC-XοC rdf:type owl:NamedIndividual ,
+                  :ell_Grammatical .
+
+
+###  http://mmoon.org/ell/schema/omg/εX_v-del_εX_v
+:εX_v-del_εX_v rdf:type owl:NamedIndividual ,
+                        :ell_Subtraction .
+
+
+###  http://mmoon.org/ell/schema/omg/προΧ_n-προπροΧ_n
+:προΧ_n-προπροΧ_n rdf:type owl:NamedIndividual ,
+                           :ell_Reduplication .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ell_Grammatical
+                :ell_Lexical
+                :ell_MorphoPhonological
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
