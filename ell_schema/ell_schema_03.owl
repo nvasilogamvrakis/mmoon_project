@@ -161,6 +161,11 @@
 :ell_Allomorphy rdf:type owl:Class .
 
 
+###  http://mmoon.org/ell/schema/omg/ell_Assimilation
+:ell_Assimilation rdf:type owl:Class ;
+                  rdfs:subClassOf :ell_MorphoPhonological .
+
+
 ###  http://mmoon.org/ell/schema/omg/ell_Auxiliary
 :ell_Auxiliary rdf:type owl:Class ;
                rdfs:subClassOf :ell_Morph .
@@ -194,6 +199,11 @@
                                     :ell_Derivation .
 
 
+###  http://mmoon.org/ell/schema/omg/ell_Deletion
+:ell_Deletion rdf:type owl:Class ;
+              rdfs:subClassOf :ell_MorphoPhonological .
+
+
 ###  http://mmoon.org/ell/schema/omg/ell_DerSuffix
 :ell_DerSuffix rdf:type owl:Class ;
                rdfs:subClassOf :ell_Suffix ;
@@ -212,6 +222,11 @@
                                  :ell_Lexeme .
 
 
+###  http://mmoon.org/ell/schema/omg/ell_Dissimilation
+:ell_Dissimilation rdf:type owl:Class ;
+                   rdfs:subClassOf :ell_MorphoPhonological .
+
+
 ###  http://mmoon.org/ell/schema/omg/ell_Grammatical
 :ell_Grammatical rdf:type owl:Class ;
                  rdfs:subClassOf :ell_Allomorphy .
@@ -226,11 +241,6 @@
 :ell_Lexeme rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Lexeme> ,
                             :ell_LexicalEntry .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Lexical
-:ell_Lexical rdf:type owl:Class ;
-             rdfs:subClassOf :ell_Allomorphy .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_LexicalEntry
@@ -294,11 +304,7 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_Representation
 :ell_Representation rdf:type owl:Class ;
-                    rdfs:subClassOf <http://mmoon.org/core/Representation> ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty <http://mmoon.org/core/hasRepresentation> ;
-                                      owl:hasSelf "true"^^xsd:boolean
-                                    ] .
+                    rdfs:subClassOf <http://mmoon.org/core/Representation> .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_SimpleLexeme
@@ -431,12 +437,12 @@
 
 ###  http://mmoon.org/ell/schema/omg/Xβ-Χφ
 :Xβ-Χφ rdf:type owl:NamedIndividual ,
-                :ell_MorphoPhonological .
+                :ell_Dissimilation .
 
 
 ###  http://mmoon.org/ell/schema/omg/Xβ-Χψ
 :Xβ-Χψ rdf:type owl:NamedIndividual ,
-                :ell_MorphoPhonological .
+                :ell_Dissimilation .
 
 
 ###  http://mmoon.org/ell/schema/omg/XεC-XοC
@@ -459,9 +465,9 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :ell_Grammatical
-                :ell_Lexical
-                :ell_MorphoPhonological
+  owl:members ( :ell_Assimilation
+                :ell_Deletion
+                :ell_Dissimilation
               )
 ] .
 
