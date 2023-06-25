@@ -227,11 +227,6 @@
                    rdfs:subClassOf :ell_MorphoPhonological .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Grammatical
-:ell_Grammatical rdf:type owl:Class ;
-                 rdfs:subClassOf :ell_Allomorphy .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_InfSuffix
 :ell_InfSuffix rdf:type owl:Class ;
                rdfs:subClassOf :ell_Suffix .
@@ -256,6 +251,11 @@
 ###  http://mmoon.org/ell/schema/omg/ell_MorphoPhonological
 :ell_MorphoPhonological rdf:type owl:Class ;
                         rdfs:subClassOf :ell_Allomorphy .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Morphological
+:ell_Morphological rdf:type owl:Class ;
+                   rdfs:subClassOf :ell_Allomorphy .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_MorphologicalRelationship
@@ -447,7 +447,7 @@
 
 ###  http://mmoon.org/ell/schema/omg/XεC-XοC
 :XεC-XοC rdf:type owl:NamedIndividual ,
-                  :ell_Grammatical .
+                  :ell_Morphological .
 
 
 ###  http://mmoon.org/ell/schema/omg/εX_v-del_εX_v
