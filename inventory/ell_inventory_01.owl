@@ -53,8 +53,7 @@
 
 
 ###  http://mmoon.org/core/Prefix
-<http://mmoon.org/core/Prefix> rdf:type owl:Class ;
-                               rdfs:subClassOf :ell_Affix .
+<http://mmoon.org/core/Prefix> rdf:type owl:Class .
 
 
 ###  http://mmoon.org/core/SimpleLexeme
@@ -69,83 +68,24 @@
 <http://mmoon.org/core/Word> rdf:type owl:Class .
 
 
-###  http://mmoon.org/ell/inventory/omg/ell_Affix
-:ell_Affix rdf:type owl:Class ;
-           rdfs:subClassOf <http://mmoon.org/core/Affix> ,
-                           :ell_Morph .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_DerivedWord
-:ell_DerivedWord rdf:type owl:Class ;
-                 rdfs:subClassOf <http://mmoon.org/core/DerivedWord> ,
-                                 :ell_Lexeme .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_Lexeme
-:ell_Lexeme rdf:type owl:Class ;
-            rdfs:subClassOf <http://mmoon.org/core/Lexeme> ,
-                            :ell_LexicalEntry .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_LexicalEntry
-:ell_LexicalEntry rdf:type owl:Class ;
-                  rdfs:subClassOf <http://mmoon.org/core/LexicalEntry> ,
-                                  :ell_Word .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_Morph
-:ell_Morph rdf:type owl:Class ;
-           rdfs:subClassOf <http://mmoon.org/core/Morph> .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_Prefix
-:ell_Prefix rdf:type owl:Class ;
-            rdfs:subClassOf <http://mmoon.org/core/Prefix> ,
-                            :ell_Affix .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_SimpleLexeme
-:ell_SimpleLexeme rdf:type owl:Class ;
-                  rdfs:subClassOf <http://mmoon.org/core/SimpleLexeme> ,
-                                  :ell_Lexeme .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_Stem
-:ell_Stem rdf:type owl:Class ;
-          rdfs:subClassOf <http://mmoon.org/core/Morph> ,
-                          :ell_Morph .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_Suffix
-:ell_Suffix rdf:type owl:Class ;
-            rdfs:subClassOf <http://mmoon.org/core/Suffix> ,
-                            :ell_Affix .
-
-
-###  http://mmoon.org/ell/inventory/omg/ell_Word
-:ell_Word rdf:type owl:Class ;
-          rdfs:subClassOf <http://mmoon.org/core/Word> .
-
-
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://mmoon.org/ell/inventory/omg/χορ-
-:χορ- rdf:type owl:NamedIndividual ,
-               :ell_Stem .
+:χορ- rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευ-
 :χορευ- rdf:type owl:NamedIndividual ,
-                 :ell_Stem ;
+                 ell_schema:ell_Stem ;
         <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ευ-> ;
         <http://mmoon.org/core/consistsOfStem> :χορ- .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτ-
 :χορευτ- rdf:type owl:NamedIndividual ,
-                  :ell_Stem ;
+                  ell_schema:ell_Stem ;
          <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-τ-> ;
          <http://mmoon.org/core/consistsOfStem> :χορευ- ;
          <http://mmoon.org/core/isAllomorphTo> :χορευτη- .
@@ -153,28 +93,28 @@
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτής
 :χορευτής rdf:type owl:NamedIndividual ,
-                   :ell_DerivedWord ;
+                   ell_schema:ell_DerivedWord ;
           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ς> ;
           <http://mmoon.org/core/consistsOfStem> :χορευτη- .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτη-
 :χορευτη- rdf:type owl:NamedIndividual ,
-                   :ell_Stem ;
+                   ell_schema:ell_Stem ;
           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-τη-> ;
           <http://mmoon.org/core/consistsOfStem> :χορευ- .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτικ-
 :χορευτικ- rdf:type owl:NamedIndividual ,
-                    :ell_Stem ;
+                    ell_schema:ell_Stem ;
            <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ικ-> ;
            <http://mmoon.org/core/consistsOfStem> :χορευτ- .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτικός
 :χορευτικός rdf:type owl:NamedIndividual ,
-                     :ell_DerivedWord ;
+                     ell_schema:ell_DerivedWord ;
             <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
             <http://mmoon.org/core/consistsOfStem> :χορευτικ- ;
             rdfs:label "χορευτικός" .
@@ -182,52 +122,52 @@
 
 ###  http://mmoon.org/ell/inventory/omg/χορεύω
 :χορεύω rdf:type owl:NamedIndividual ,
-                 :ell_DerivedWord ;
+                 ell_schema:ell_DerivedWord ;
         <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ω> ;
         <http://mmoon.org/core/consistsOfStem> :χορευ- .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορός
 :χορός rdf:type owl:NamedIndividual ,
-                :ell_SimpleLexeme ;
+                ell_schema:ell_SimpleLexeme ;
        <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
        <http://mmoon.org/core/consistsOfStem> :χορ- .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-ευ-
 <http://mmoon.org/ell/inventory/omg/-ευ-> rdf:type owl:NamedIndividual ,
-                                                   :ell_Suffix .
+                                                   ell_schema:ell_Suffix .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-ικ-
 <http://mmoon.org/ell/inventory/omg/-ικ-> rdf:type owl:NamedIndividual ,
-                                                   :ell_Suffix .
+                                                   ell_schema:ell_Suffix .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-ος
 <http://mmoon.org/ell/inventory/omg/-ος> rdf:type owl:NamedIndividual ,
-                                                  :ell_Suffix .
+                                                  ell_schema:ell_Suffix .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-ς
 <http://mmoon.org/ell/inventory/omg/-ς> rdf:type owl:NamedIndividual ,
-                                                 :ell_Suffix .
+                                                 ell_schema:ell_Suffix .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-τ-
 <http://mmoon.org/ell/inventory/omg/-τ-> rdf:type owl:NamedIndividual ,
-                                                  :ell_Suffix .
+                                                  ell_schema:ell_Suffix .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-τη-
 <http://mmoon.org/ell/inventory/omg/-τη-> rdf:type owl:NamedIndividual ,
-                                                   :ell_Suffix ;
+                                                   ell_schema:ell_Suffix ;
                                           <http://mmoon.org/core/isAllomorphTo> <http://mmoon.org/ell/inventory/omg/-τ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-ω
 <http://mmoon.org/ell/inventory/omg/-ω> rdf:type owl:NamedIndividual ,
-                                                 :ell_Suffix .
+                                                 ell_schema:ell_Suffix .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
