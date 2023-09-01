@@ -15,11 +15,13 @@
 #################################################################
 
 ###  http://mmoon.org/core/derivationalRelation
-<http://mmoon.org/core/derivationalRelation> owl:inverseOf :isDerivationallyRelatedTo .
+<http://mmoon.org/core/derivationalRelation> rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf :isDerivationallyRelatedTo .
 
 
 ###  http://mmoon.org/core/hasMorphologicalRelationship
-<http://mmoon.org/core/hasMorphologicalRelationship> owl:inverseOf :ell_isMorphologicallyRelatedTo .
+<http://mmoon.org/core/hasMorphologicalRelationship> rdf:type owl:ObjectProperty ;
+                                                     owl:inverseOf :ell_isMorphologicallyRelatedTo .
 
 
 ###  http://mmoon.org/core/isDerivedFrom
