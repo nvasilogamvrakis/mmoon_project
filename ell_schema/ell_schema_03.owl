@@ -64,7 +64,17 @@
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_hasVariant
-:ell_hasVariant rdf:type owl:ObjectProperty .
+:ell_hasVariant rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( <http://mmoon.org/core/Morph>
+                                            <http://mmoon.org/core/Word>
+                                          )
+                            ] ;
+                rdfs:range [ rdf:type owl:Class ;
+                             owl:unionOf ( <http://mmoon.org/core/Morph>
+                                           <http://mmoon.org/core/Word>
+                                         )
+                           ] .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_isMorphologicallyRelatedTo
@@ -248,15 +258,6 @@
 ###  http://mmoon.org/ell/schema/omg/ell_PossibleWord
 :ell_PossibleWord rdf:type owl:Class ;
                   rdfs:subClassOf :ell_DerivedWord .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_PostConfix
-:ell_PostConfix rdf:type owl:Class ;
-                owl:disjointWith :ell_PreConfix .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_PreConfix
-:ell_PreConfix rdf:type owl:Class .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Prefix
