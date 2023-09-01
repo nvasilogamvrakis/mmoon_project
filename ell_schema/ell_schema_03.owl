@@ -12,6 +12,16 @@
                                                 <http://mmoon.org/ell/schema/omg/0.2> .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  http://mmoon.org/ell/schema/omg/ell_morpho_phonological_representation
+:ell_morpho_phonological_representation rdf:type owl:AnnotationProperty ;
+                                        rdfs:range rdfs:Literal ;
+                                        rdfs:domain :ell_Representation .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -53,6 +63,10 @@
                                 rdfs:range :ell_Allomorphy .
 
 
+###  http://mmoon.org/ell/schema/omg/ell_hasVariant
+:ell_hasVariant rdf:type owl:ObjectProperty .
+
+
 ###  http://mmoon.org/ell/schema/omg/ell_isMorphologicallyRelatedTo
 :ell_isMorphologicallyRelatedTo rdf:type owl:ObjectProperty .
 
@@ -73,9 +87,7 @@
 #################################################################
 
 ###  http://mmoon.org/ell/schema/omg/ell_morpho_phonological_representation
-:ell_morpho_phonological_representation rdf:type owl:DatatypeProperty ;
-                                        rdfs:domain :ell_Representation ;
-                                        rdfs:range rdfs:Literal .
+:ell_morpho_phonological_representation rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -161,16 +173,6 @@
 :ell_Allomorphy rdf:type owl:Class .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_Assimilation
-:ell_Assimilation rdf:type owl:Class ;
-                  rdfs:subClassOf :ell_MorphoPhonological .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Auxiliary
-:ell_Auxiliary rdf:type owl:Class ;
-               rdfs:subClassOf :ell_Morph .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_Back-formation
 :ell_Back-formation rdf:type owl:Class ;
                     rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
@@ -180,11 +182,6 @@
 ###  http://mmoon.org/ell/schema/omg/ell_Base
 :ell_Base rdf:type owl:Class ;
           rdfs:subClassOf :ell_Stem .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Confix
-:ell_Confix rdf:type owl:Class ;
-            rdfs:subClassOf :ell_Morph .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Conversion
@@ -197,11 +194,6 @@
 :ell_CrossFormation rdf:type owl:Class ;
                     rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
                                     :ell_Derivation .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Deletion
-:ell_Deletion rdf:type owl:Class ;
-              rdfs:subClassOf :ell_MorphoPhonological .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_DerSuffix
@@ -220,11 +212,6 @@
 :ell_DerivedWord rdf:type owl:Class ;
                  rdfs:subClassOf <http://mmoon.org/core/DerivedWord> ,
                                  :ell_Lexeme .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Dissimilation
-:ell_Dissimilation rdf:type owl:Class ;
-                   rdfs:subClassOf :ell_MorphoPhonological .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_InfSuffix
@@ -248,19 +235,14 @@
 :ell_Morph rdf:type owl:Class .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_MorphoPhonological
-:ell_MorphoPhonological rdf:type owl:Class ;
-                        rdfs:subClassOf :ell_Allomorphy .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Morphological
-:ell_Morphological rdf:type owl:Class ;
-                   rdfs:subClassOf :ell_Allomorphy .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_MorphologicalRelationship
 :ell_MorphologicalRelationship rdf:type owl:Class ;
                                rdfs:subClassOf <http://mmoon.org/core/MorphologicalRelationship> .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Nominal
+:ell_Nominal rdf:type owl:Class ;
+             rdfs:subClassOf :ell_Allomorphy .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_PossibleWord
@@ -270,19 +252,22 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_PostConfix
 :ell_PostConfix rdf:type owl:Class ;
-                rdfs:subClassOf :ell_Confix ;
                 owl:disjointWith :ell_PreConfix .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_PreConfix
-:ell_PreConfix rdf:type owl:Class ;
-               rdfs:subClassOf :ell_Confix .
+:ell_PreConfix rdf:type owl:Class .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Prefix
 :ell_Prefix rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Prefix> ,
                             :ell_Affix .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Prefixal
+:ell_Prefixal rdf:type owl:Class ;
+              rdfs:subClassOf :ell_Allomorphy .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Prefixation
@@ -339,6 +324,11 @@
 :ell_Synizesis rdf:type owl:Class ;
                rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
                                :ell_Derivation .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Verbal
+:ell_Verbal rdf:type owl:Class ;
+            rdfs:subClassOf :ell_Allomorphy .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Word
@@ -436,18 +426,16 @@
 
 
 ###  http://mmoon.org/ell/schema/omg/Xβ-Χφ
-:Xβ-Χφ rdf:type owl:NamedIndividual ,
-                :ell_Dissimilation .
+:Xβ-Χφ rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/schema/omg/Xβ-Χψ
-:Xβ-Χψ rdf:type owl:NamedIndividual ,
-                :ell_Dissimilation .
+:Xβ-Χψ rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/schema/omg/XεC-XοC
 :XεC-XοC rdf:type owl:NamedIndividual ,
-                  :ell_Morphological .
+                  :ell_Verbal .
 
 
 ###  http://mmoon.org/ell/schema/omg/εX_v-del_εX_v
@@ -458,18 +446,6 @@
 ###  http://mmoon.org/ell/schema/omg/προΧ_n-προπροΧ_n
 :προΧ_n-προπροΧ_n rdf:type owl:NamedIndividual ,
                            :ell_Reduplication .
-
-
-#################################################################
-#    General axioms
-#################################################################
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :ell_Assimilation
-                :ell_Deletion
-                :ell_Dissimilation
-              )
-] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
