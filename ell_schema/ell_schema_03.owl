@@ -12,16 +12,6 @@
                                                 <http://mmoon.org/ell/schema/omg/0.2> .
 
 #################################################################
-#    Annotation properties
-#################################################################
-
-###  http://mmoon.org/ell/schema/omg/ell_morpho_phonological_representation
-:ell_morpho_phonological_representation rdf:type owl:AnnotationProperty ;
-                                        rdfs:range rdfs:Literal ;
-                                        rdfs:domain :ell_Representation .
-
-
-#################################################################
 #    Object Properties
 #################################################################
 
@@ -60,31 +50,12 @@
 
 ###  http://mmoon.org/ell/schema/omg/ell_hasAllomorphicRelationship
 :ell_hasAllomorphicRelationship rdf:type owl:ObjectProperty ;
+                                rdfs:domain :ell_Morph ;
                                 rdfs:range :ell_Allomorphy .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_hasVariant
-:ell_hasVariant rdf:type owl:ObjectProperty ;
-                rdfs:domain [ rdf:type owl:Class ;
-                              owl:unionOf ( <http://mmoon.org/core/Morph>
-                                            <http://mmoon.org/core/Word>
-                                          )
-                            ] ;
-                rdfs:range [ rdf:type owl:Class ;
-                             owl:unionOf ( <http://mmoon.org/core/Morph>
-                                           <http://mmoon.org/core/Word>
-                                         )
-                           ] .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_isMorphologicallyRelatedTo
 :ell_isMorphologicallyRelatedTo rdf:type owl:ObjectProperty .
-
-
-###  http://mmoon.org/ell/schema/omg/isAllophoneTo
-:isAllophoneTo rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf <http://mmoon.org/core/isAllomorphTo> ;
-               rdf:type owl:SymmetricProperty .
 
 
 ###  http://mmoon.org/ell/schema/omg/isDerivationallyRelatedTo
@@ -97,7 +68,9 @@
 #################################################################
 
 ###  http://mmoon.org/ell/schema/omg/ell_morpho_phonological_representation
-:ell_morpho_phonological_representation rdf:type owl:DatatypeProperty .
+:ell_morpho_phonological_representation rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain :ell_Representation ;
+                                        rdfs:range rdfs:Literal .
 
 
 #################################################################
@@ -167,12 +140,6 @@
                            :ell_Morph .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_AffixalStem
-:ell_AffixalStem rdf:type owl:Class ;
-                 rdfs:subClassOf :ell_Stem ;
-                 owl:disjointWith :ell_Base .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_Affixation
 :ell_Affixation rdf:type owl:Class ;
                 rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
@@ -187,11 +154,6 @@
 :ell_Back-formation rdf:type owl:Class ;
                     rdfs:subClassOf <http://mmoon.org/core/Derivation> ,
                                     :ell_Derivation .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Base
-:ell_Base rdf:type owl:Class ;
-          rdfs:subClassOf :ell_Stem .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Conversion
@@ -242,7 +204,8 @@
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Morph
-:ell_Morph rdf:type owl:Class .
+:ell_Morph rdf:type owl:Class ;
+           rdfs:subClassOf <http://mmoon.org/core/Morph> .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_MorphologicalRelationship
@@ -255,20 +218,10 @@
              rdfs:subClassOf :ell_Allomorphy .
 
 
-###  http://mmoon.org/ell/schema/omg/ell_PossibleWord
-:ell_PossibleWord rdf:type owl:Class ;
-                  rdfs:subClassOf :ell_DerivedWord .
-
-
 ###  http://mmoon.org/ell/schema/omg/ell_Prefix
 :ell_Prefix rdf:type owl:Class ;
             rdfs:subClassOf <http://mmoon.org/core/Prefix> ,
                             :ell_Affix .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_Prefixal
-:ell_Prefixal rdf:type owl:Class ;
-              rdfs:subClassOf :ell_Allomorphy .
 
 
 ###  http://mmoon.org/ell/schema/omg/ell_Prefixation
