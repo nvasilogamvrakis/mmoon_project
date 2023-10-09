@@ -17,109 +17,118 @@
 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_first_item
+:has_first_item rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_index
+:has_index rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_item_content
+:has_item_content rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_last_item
+:has_last_item rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_next_item
+:has_next_item rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#has_size
+:has_size rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i1
-:i1 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :τελειω ;
-    :has_next_item :i2 ;
-    :has_index 0 .
+:i1 rdf:type owl:NamedIndividual ;
+    :hasItemContent :τελειω- ;
+    :hasNextItem :i2 ;
+    :hasIndex 0 .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i2
-:i2 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :τ1 ;
-    :has_next_item :i3 .
+:i2 rdf:type owl:NamedIndividual ;
+    :hasItemContent <http://www.semanticweb.org/ontologies/2023/0/el_list#-τ-1> ;
+    :hasNextItem :i3 .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i3
-:i3 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :ικ ;
-    :has_next_item :i4 .
+:i3 rdf:type owl:NamedIndividual ;
+    :hasItemContent <http://www.semanticweb.org/ontologies/2023/0/el_list#-ικ-> ;
+    :hasNextItem :i4 .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i4
-:i4 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :ος .
+:i4 rdf:type owl:NamedIndividual ;
+    :hasItemContent <http://www.semanticweb.org/ontologies/2023/0/el_list#-ος> .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i5
-:i5 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :α ;
-    :has_next_item :i6 ;
-    :has_index -1 .
+:i5 rdf:type owl:NamedIndividual ;
+    :hasItemContent :α- ;
+    :hasNextItem :i6 ;
+    :hasIndex -1 .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i6
-:i6 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :τελειω ;
-    :has_next_item :i7 .
+:i6 rdf:type owl:NamedIndividual ;
+    :hasItemContent :τελειω- ;
+    :hasNextItem :i7 .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i7
-:i7 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :τ2 ;
-    :has_next_item :i8 .
+:i7 rdf:type owl:NamedIndividual ;
+    :hasItemContent <http://www.semanticweb.org/ontologies/2023/0/el_list#-τ-2> ;
+    :hasNextItem :i8 .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#i8
-:i8 rdf:type owl:NamedIndividual ,
-             :list_item ;
-    :has_item_content :ος .
+:i8 rdf:type owl:NamedIndividual ;
+    :hasItemContent <http://www.semanticweb.org/ontologies/2023/0/el_list#-ος> .
 
 
-###  http://www.semanticweb.org/ontologies/2023/0/el_list#α
-:α rdf:type owl:NamedIndividual ,
-            :morph .
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#α-
+:α- rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#ατέλειωτος
-:ατέλειωτος rdf:type owl:NamedIndividual ,
-                     :list ;
-            :has_first_item :i5 ;
-            :has_last_item :i8 ;
-            :has_size "4"^^xsd:positiveInteger .
+:ατέλειωτος rdf:type owl:NamedIndividual ;
+            :hasFirstItem :i5 ;
+            :hasLastItem :i8 ;
+            :hasSize "4"^^xsd:nonNegativeInteger .
 
 
-###  http://www.semanticweb.org/ontologies/2023/0/el_list#ικ
-:ικ rdf:type owl:NamedIndividual ,
-             :morph .
-
-
-###  http://www.semanticweb.org/ontologies/2023/0/el_list#ος
-:ος rdf:type owl:NamedIndividual ,
-             :morph .
-
-
-###  http://www.semanticweb.org/ontologies/2023/0/el_list#τ1
-:τ1 rdf:type owl:NamedIndividual ,
-             :morph .
-
-
-###  http://www.semanticweb.org/ontologies/2023/0/el_list#τ2
-:τ2 rdf:type owl:NamedIndividual ,
-             :morph .
-
-
-###  http://www.semanticweb.org/ontologies/2023/0/el_list#τελειω
-:τελειω rdf:type owl:NamedIndividual ,
-                 :morph .
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#τελειω-
+:τελειω- rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/ontologies/2023/0/el_list#τελειωτικός
-:τελειωτικός rdf:type owl:NamedIndividual ,
-                      :list ;
-             :has_first_item :i1 ;
-             :has_last_item :i4 .
+:τελειωτικός rdf:type owl:NamedIndividual ;
+             :hasFirstItem :i1 ;
+             :hasLastItem :i4 ;
+             :hasSize "4"^^xsd:nonNegativeInteger .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#-ικ-
+<http://www.semanticweb.org/ontologies/2023/0/el_list#-ικ-> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#-ος
+<http://www.semanticweb.org/ontologies/2023/0/el_list#-ος> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#-τ-1
+<http://www.semanticweb.org/ontologies/2023/0/el_list#-τ-1> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ontologies/2023/0/el_list#-τ-2
+<http://www.semanticweb.org/ontologies/2023/0/el_list#-τ-2> rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
