@@ -68,6 +68,22 @@
 <http://mmoon.org/core/Word> rdf:type owl:Class .
 
 
+###  http://mmoon.org/ell/schema/omg/ell_DerivedWord
+ell_schema:ell_DerivedWord rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_SimpleLexeme
+ell_schema:ell_SimpleLexeme rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Stem
+ell_schema:ell_Stem rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Suffix
+ell_schema:ell_Suffix rdf:type owl:Class .
+
+
 #################################################################
 #    Individuals
 #################################################################
