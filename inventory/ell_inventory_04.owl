@@ -305,9 +305,6 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 <http://mmoon.org/core/derivationalMeaning> rdf:type owl:ObjectProperty ;
                                             rdfs:subPropertyOf <http://mmoon.org/core/hasMeaning> ;
                                             rdfs:range <http://mmoon.org/core/DerivationalMeaning> ;
-                                            owl:propertyChainAxiom ( :consists_of_DerSuf
-                                                                     <http://mmoon.org/core/derivationalMeaning>
-                                                                   ) ;
                                             <http://mmoon.org/core/definition> "States that a morph, morpheme or word resource has some derivational meaning."@en ;
                                             rdfs:label "derivational meaning"@en .
 
@@ -423,7 +420,13 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 <http://mmoon.org/core/hasSense> rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf <http://mmoon.org/core/hasMeaning> ;
                                  rdfs:range <http://mmoon.org/core/Sense> ;
-                                 owl:propertyChainAxiom ( :consists_of_StemOfAWord
+                                 owl:propertyChainAxiom ( :consists_of_DerPref
+                                                          <http://mmoon.org/core/hasSense>
+                                                        ) ,
+                                                        ( :consists_of_DerSuf
+                                                          <http://mmoon.org/core/hasSense>
+                                                        ) ,
+                                                        ( :consists_of_StemOfAWord
                                                           <http://mmoon.org/core/hasSense>
                                                         ) ;
                                  <http://mmoon.org/core/definition> "States that a morph, morpheme or word resource has some sense."@en ;
@@ -534,6 +537,11 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
                                   rdfs:range rdfs:Resource ;
                                   <http://mmoon.org/core/definition> "This relation points to an external sense resource defining the meaning of a lexeme, morph or morpheme."@en ;
                                   rdfs:label "sense link"@en .
+
+
+###  http://mmoon.org/ell/inventory/omg#consists_of_DerPref
+:consists_of_DerPref rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
 
 
 ###  http://purl.org/co/element
@@ -9318,9 +9326,9 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/-ικ-
 <http://mmoon.org/ell/inventory/omg/-ικ-> rdf:type owl:NamedIndividual ,
                                                    :ell_DerSuf ;
-                                          <http://mmoon.org/core/derivationalMeaning> <http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#+relational> ;
                                           <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Adjective> ,
-                                                                                     <http://mmoon.org/core/Masculine> .
+                                                                                     <http://mmoon.org/core/Masculine> ;
+                                          <http://mmoon.org/core/hasSense> :relational .
 
 
 ###  http://mmoon.org/ell/inventory/omg/-ος
@@ -9726,6 +9734,10 @@ owl:Thing rdf:type owl:Class .
      <http://purl.org/co/itemContent> <http://www.semanticweb.org/owl/owlapi/turtle#λίγο> .
 
 
+###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#relational
+:relational rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#road
 :road rdf:type owl:NamedIndividual ,
                <http://mmoon.org/core/Sense> .
@@ -9786,7 +9798,7 @@ owl:Thing rdf:type owl:Class .
 ###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περι-
 :περι- rdf:type owl:NamedIndividual ,
                 <http://mmoon.org/core/Prefix> ;
-       <http://mmoon.org/core/derivationalMeaning> :around .
+       <http://mmoon.org/core/hasSense> :around .
 
 
 ###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περιγράφω
@@ -9798,7 +9810,7 @@ owl:Thing rdf:type owl:Class .
 ###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περιγραφ-
 :περιγραφ- rdf:type owl:NamedIndividual ;
            <http://mmoon.org/core/hasSense> :to_describe ;
-           :consists_of_DerSuf :περι- ;
+           :consists_of_DerPref :περι- ;
            :consists_of_StemOfAPrefStem :γραφ- .
 
 
@@ -9813,10 +9825,6 @@ owl:Thing rdf:type owl:Class .
 :περιγραφικός rdf:type owl:NamedIndividual ;
               :consists_of_InfSuf <http://mmoon.org/ell/inventory/omg/-ος> ;
               :consists_of_StemOfAWord :περιγραφικ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#+relational
-<http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#+relational> rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπάω
@@ -10050,9 +10058,9 @@ The term stems from Latin grammar. In Latin and some other languages. the ablati
 
 
 <http://mmoon.org/core/Accusative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Accusative> ;
-                                   rdfs:label "Accusative"@en ;
                                    <http://mmoon.org/core/definition> """The accusative is the case that, in the accusative system of fundamental relations, marks the direct object and sometimes other syntactic functions, too.
-[Christian Lehmann, under \"accusative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
+[Christian Lehmann, under \"accusative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                   rdfs:label "Accusative"@en .
 
 
 <http://mmoon.org/core/ActionNominalizer> rdfs:label "Action Nominalizer"@en ;
@@ -10093,8 +10101,8 @@ It occurs in Finno-Ugric languages.
                                    <http://mmoon.org/core/definition> "The admonitive mood expresses warnings, encouragement or recommendations."@de .
 
 
-<http://mmoon.org/core/Adposition> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Adposition> ;
-                                   rdfs:label "Adposition"@en ;
+<http://mmoon.org/core/Adposition> rdfs:label "Adposition"@en ;
+                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Adposition> ;
                                    <http://mmoon.org/core/definition> "An adposition is a more or less grammaticalized relator word that takes a noun phrase as a complement and forms with it an adposition phrase. Its meaning is the grammatical or semantic relation between the dependent noun phrase and whatever the adposition phrase depends on.  [Christian Lehmann, under \"adposition\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
@@ -10120,9 +10128,9 @@ The unit modified by an adverb is typically a clause, but may be any other categ
                                          rdfs:label "Agent Nominalizer"@en .
 
 
-<http://mmoon.org/core/Agentive> rdfs:label "Agentive"@en ;
-                                 <http://mmoon.org/core/definition> """The agentive is the case of the agent in a passive construction.
-[Christian Lehmann, under \"agentive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
+<http://mmoon.org/core/Agentive> <http://mmoon.org/core/definition> """The agentive is the case of the agent in a passive construction.
+[Christian Lehmann, under \"agentive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                 rdfs:label "Agentive"@en .
 
 
 <http://mmoon.org/core/Alienable> <http://mmoon.org/core/definition> """An alienable noun is a noun that a) refers to something viewed as not permanently or necessarily possessed, and b) is thus not obligatorily expressed as possessed in a language that also has inalienable nouns. (Crystal 1980:20; McKaughan and Loving 1973:31)
@@ -10134,11 +10142,11 @@ The unit modified by an adverb is typically a clause, but may be any other categ
 <http://mmoon.org/core/Allative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#AditiveCase> ;
                                  <http://mmoon.org/core/definition> """The allative is a case which expresses spatial orientation, esp. motion, to or toward the referent of its carrier.
 [Christian Lehmann, under \"aditive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                 <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#AllativeCase> ;
                                  rdfs:label "Allative"@en ;
                                  <http://mmoon.org/core/usageNote> """“Allative“ has been used in studies of Finnish and Eskimo.
 The synonym „aditive“ is used especially of Basque.
-[Christian Lehmann, under \"aditive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
+[Christian Lehmann, under \"aditive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                 <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#AllativeCase> .
 
 
 <http://mmoon.org/core/Animal> rdfs:label "Animal"@en ;
@@ -10153,8 +10161,8 @@ The synonym „aditive“ is used especially of Basque.
                                 rdfs:label "Animate"@en .
 
 
-<http://mmoon.org/core/Anterior> rdfs:label "Anterior"@en ;
-                                 <http://mmoon.org/core/definition> "Anteriority is the temporal relation of a proposition P to a point of reference iff the moment of the event which is described by P precedes the period of time of the point of reference.   [Christian Lehmann, under \"anteriority\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
+<http://mmoon.org/core/Anterior> <http://mmoon.org/core/definition> "Anteriority is the temporal relation of a proposition P to a point of reference iff the moment of the event which is described by P precedes the period of time of the point of reference.   [Christian Lehmann, under \"anteriority\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                 rdfs:label "Anterior"@en .
 
 
 <http://mmoon.org/core/Anticausative> <http://mmoon.org/core/definition> "A verb is deagentive iff it is derived by a valency decrease which deletes the agent from the participant frame of the underlying base. The situation designated by the verb happens by itself, without the intervention of an agent. [Christian Lehmann, under \"anticausativity\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
@@ -10172,8 +10180,8 @@ The synonym „aditive“ is used especially of Basque.
 [Christian Lehmann, under \"anticausativity\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
-<http://mmoon.org/core/Antipassive> <http://mmoon.org/core/definition> "The antipassive is a voice of an ergative system which demotes the undergoer (in absolutive function) to an adjunct - e.g. an instrumental or a locative or dative - and promotes the actor (in ergative function) to absolutive function. [Christian Lehmann, under \"antipassive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@de ;
-                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Antipassive> ;
+<http://mmoon.org/core/Antipassive> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Antipassive> ;
+                                    <http://mmoon.org/core/definition> "The antipassive is a voice of an ergative system which demotes the undergoer (in absolutive function) to an adjunct - e.g. an instrumental or a locative or dative - and promotes the actor (in ergative function) to absolutive function. [Christian Lehmann, under \"antipassive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@de ;
                                     rdfs:label "Antipassive"@en .
 
 
@@ -10196,9 +10204,9 @@ The applicative 2 is a (normally derivational) verbal category which marks the v
 [Christian Lehmann, under \"applicative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@de .
 
 
-<http://mmoon.org/core/Article> <http://mmoon.org/core/example> """The definite article \"the\" and the indefinite article \"a/an\" in English.
+<http://mmoon.org/core/Article> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Article> ;
+                                <http://mmoon.org/core/example> """The definite article \"the\" and the indefinite article \"a/an\" in English.
 [Christian Lehmann, under \"article\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Article> ;
                                 rdfs:label "Article"@en ;
                                 <http://mmoon.org/core/definition> "An article is a highly grammaticalized determiner that expresses one or a few of the basic determinations (definite/indefinite, generic/specific, given/new). [Christian Lehmann, under \"article\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
@@ -10209,8 +10217,8 @@ The applicative 2 is a (normally derivational) verbal category which marks the v
 
 
 <http://mmoon.org/core/Attenuation> rdfs:label "Attenuation"@en ;
-                                    <http://mmoon.org/core/definition> "The attenuation of a verb or adjective is its derivational modification by concepts such as 'a little, lightly'. [Christian Lehmann, under \"attenuation\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                     <http://mmoon.org/core/usageNote> "Attenuation is the verbal or adjectival counterpart to diminution."@en ;
+                                    <http://mmoon.org/core/definition> "The attenuation of a verb or adjective is its derivational modification by concepts such as 'a little, lightly'. [Christian Lehmann, under \"attenuation\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                     <http://mmoon.org/core/example> """lachen -> lächeln,
 [Christian Lehmann, under \"attenuation\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@de ,
                                                                     """yellow -> yellow-ish
@@ -10246,9 +10254,9 @@ SBJ.1.SG fear-PRS dog-AVERS
 [Christian Lehmann, under \"aversive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""^^xsd:string .
 
 
-<http://mmoon.org/core/Benefactive> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#BenefactiveCase> ;
-                                    <http://mmoon.org/core/definition> """The benefactive (casus benefactivus) is a case which marks the semantic role of beneficiary.
+<http://mmoon.org/core/Benefactive> <http://mmoon.org/core/definition> """The benefactive (casus benefactivus) is a case which marks the semantic role of beneficiary.
 [Christian Lehmann, under \"benefactive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#BenefactiveCase> ;
                                     rdfs:label "Benefactive"@en .
 
 
@@ -10334,9 +10342,9 @@ Since the causer occupies the subject slot of the causative verb and the base ve
                                          <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#CompletiveAspect> .
 
 
-<http://mmoon.org/core/ConativeAktionsart> <http://mmoon.org/core/example> """\"John kicked at the wall.\" [implying that he did not hit it]
+<http://mmoon.org/core/ConativeAktionsart> <http://mmoon.org/core/definition> "The conative is a verbal aspect or aktionsart which means that the agent of the situation tries to achieve the action desginated by the verb stem. [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                           <http://mmoon.org/core/example> """\"John kicked at the wall.\" [implying that he did not hit it]
 [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                           <http://mmoon.org/core/definition> "The conative is a verbal aspect or aktionsart which means that the agent of the situation tries to achieve the action desginated by the verb stem. [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                            rdfs:label "Conative Aktionsart"@en .
 
 
@@ -10484,11 +10492,11 @@ More generally, the dativus ethicus is such an adjunct.
                                            <http://mmoon.org/core/example> "\"necessary\"  vs. \"un-necessary\", \"use-ful\" vs. \"use-less\""@en .
 
 
-<http://mmoon.org/core/Desiderative> <http://mmoon.org/core/definition> """The desiderative is a category deriving a verb Vd from a verbal base Vb such that Vd means 'to want to Vb'.
-[Christian Lehmann, under \"desiderative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                     <http://mmoon.org/core/example> """Sanskrit:
+<http://mmoon.org/core/Desiderative> <http://mmoon.org/core/example> """Sanskrit:
 ,s:r.no-ti 'hears',  ,su-'sriu-.sa-ti (RED-hear-DES-3.SG) 'wants to hear'.
 [Christian Lehmann, under \"desiderative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@sa ;
+                                     <http://mmoon.org/core/definition> """The desiderative is a category deriving a verb Vd from a verbal base Vb such that Vd means 'to want to Vb'.
+[Christian Lehmann, under \"desiderative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
                                      rdfs:label "Desiderative"@en .
 
 
@@ -10519,9 +10527,9 @@ The carrier of a destinative typically includes nominalized verb forms or even s
 <http://mmoon.org/core/Diminution> <http://mmoon.org/core/definition> "The diminution of a noun is its derivational modification by the concept 'little'. Possible connotations include 'cute, dear, weak, unimportant, contemptuous'. [Christian Lehmann, under \"diminution\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Diminuitive> ;
                                    <http://mmoon.org/core/example> "Kind --> Kind-lein"@de ;
-                                   rdfs:label "Diminution"@en ;
                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/linguistics/gold/DiminuativeSize> ;
-                                   <http://mmoon.org/core/usageNote> "Dminution is the nominal counterpart to attenuation."@en .
+                                   <http://mmoon.org/core/usageNote> "Dminution is the nominal counterpart to attenuation."@en ;
+                                   rdfs:label "Diminution"@en .
 
 
 <http://mmoon.org/core/DirectCase> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#DirectCase> ;
@@ -10551,13 +10559,13 @@ The carrier of a destinative typically includes nominalized verb forms or even s
                              <http://mmoon.org/core/definition> "The dual is a number forming a subset of two elements of the designated class. The dual is most common with natural pairs such as paired body parts. [Christian Lehmann, under \"dual\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en .
 
 
-<http://mmoon.org/core/Dubitative> <http://mmoon.org/core/example> """The Ojibwa suffix -tik expresses dubitative mood, as in the following construction:
+<http://mmoon.org/core/Dubitative> rdfs:label "Dubitative"@en ;
+                                   <http://mmoon.org/core/example> """The Ojibwa suffix -tik expresses dubitative mood, as in the following construction:
 
 \"kenapac uwaya pieya:tik\" ‘someone seems to be coming here’
 (Leonard Bloomfield, cited by Bybee 1985 179)
 
 (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsDubitativeMood.htm)"""^^xsd:string ;
-                                   rdfs:label "Dubitative"@en ;
                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#DubitativeMood> ;
                                    <http://mmoon.org/core/definition> """Dubitative mood is an epistemic mood which signals a speaker’s reservation about the accuracy of his or her statement.
 (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsDubitativeMood.htm)"""@en .
@@ -10718,9 +10726,9 @@ particle 2: A particle (particula s.s.), or particle proper, is a particle (part
 
 
 <http://mmoon.org/core/FuturePerfect> rdfs:label "Future Perfect"@en ;
-                                      <http://mmoon.org/core/definition> "an absolute-relative tense that refers to a time located before a contextually determined temporal reference point which in turn must be located in the future relative to the moment of utterance.  [Christian Lehmann, under \"future perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                       <http://mmoon.org/core/example> """future perfect \"will have\" in \"By that time, he will have returned\".
 [Christian Lehmann, under \"future perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                      <http://mmoon.org/core/definition> "an absolute-relative tense that refers to a time located before a contextually determined temporal reference point which in turn must be located in the future relative to the moment of utterance.  [Christian Lehmann, under \"future perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                       <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#FuturePerfect> .
 
 
@@ -10828,8 +10836,8 @@ The imperative in the strict sense is of second person. The imperative in the wi
                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Imperfect> .
 
 
-<http://mmoon.org/core/ImperfectiveAspect> rdfs:label "Imperfective Aspect"@en ;
-                                           <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#ImperfectiveAspect> ;
+<http://mmoon.org/core/ImperfectiveAspect> <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#ImperfectiveAspect> ;
+                                           rdfs:label "Imperfective Aspect"@en ;
                                            <http://mmoon.org/core/definition> """An imperfective 1 verb is one which views a situation from inside, not seeing its temporal borders, thus providing a partial view of it.
 The imperfective 2 is the imperfective 1 aspect. [Christian Lehmann, under \"imperfective\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
                                            <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/ImperfectiveAspect#examples> .
@@ -10886,10 +10894,10 @@ Its application in a language is sometimes so general that it is a general devic
 For the sake of consistency accross MMoOn morpheme inventories person and number values must be assigned seperately to morphs exhibiting this combination of category values. Hence, values such as \"first person inclusive\" are not provided under the clusivity category."""@en .
 
 
-<http://mmoon.org/core/Indefinite> <http://mmoon.org/core/definition> """Indefiniteness is a kind of definiteness indicating that the referent(s) of an expression are not presumed to be identifiable.
+<http://mmoon.org/core/Indefinite> rdfs:label "Indefinite"@en ;
+                                   <http://mmoon.org/core/definition> """Indefiniteness is a kind of definiteness indicating that the referent(s) of an expression are not presumed to be identifiable.
 The referent is not identifiable because of a lack of shared knowledge or situation, including no previous mention of the referent.
 (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsIndefiniteness.htm)"""@en ;
-                                   rdfs:label "Indefinite"@en ;
                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Indefinite> .
 
 
@@ -11024,8 +11032,8 @@ Introversion is an intransitivation which suppresses the direct object slot of t
 
 
 <http://mmoon.org/core/Irrealis> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#IrrealisMood> ;
-                                 <http://mmoon.org/core/definition> "Irrealis is a modality which conveys that the proposition is counterfactual.  [Christian Lehmann, under \"irrealis\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                 rdfs:label "Irrealis"@en .
+                                 rdfs:label "Irrealis"@en ;
+                                 <http://mmoon.org/core/definition> "Irrealis is a modality which conveys that the proposition is counterfactual.  [Christian Lehmann, under \"irrealis\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
 <http://mmoon.org/core/IterativeAktionsart> <http://mmoon.org/core/definition> """A verb is iterative iff it designates a sequence of instances of a given elementary situation.
@@ -11053,9 +11061,9 @@ The notion will normally be relevant only if there is an iterative derivation. [
 
 
 <http://mmoon.org/core/Lative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#LativeCase> ;
+                               rdfs:label "Lative"@en ;
                                <http://mmoon.org/core/definition> """A lative is a case that expresses motion with respect to the referent of its carrier.
 [Christian Lehmann, under \"lative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                               rdfs:label "Lative"@en ;
                                <http://mmoon.org/core/usageNote> """This term is used especially in Finno-Ugric grammar.
 [Christian Lehmann, under \"lative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
@@ -11102,8 +11110,8 @@ The notion will normally be relevant only if there is an iterative derivation. [
 <http://mmoon.org/core/Masculine> <http://mmoon.org/core/definition> """Masculine gender is a grammatical gender that marks nouns having human or animal male referents, and often marks nouns having referents that do not have distinctions of sex.
 (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsMasculineGender.htm)"""@en ;
                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Masculine> ;
-                                  rdfs:label "Masculine"@en ;
-                                  <http://mmoon.org/core/externalDefinitionDesc> "The masculine is a gender such that if born by an animate noun, this typically designates a male being.  [Christian Lehmann, under \"masculine\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en .
+                                  <http://mmoon.org/core/externalDefinitionDesc> "The masculine is a gender such that if born by an animate noun, this typically designates a male being.  [Christian Lehmann, under \"masculine\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en ;
+                                  rdfs:label "Masculine"@en .
 
 
 <http://mmoon.org/core/MaterialAdjectivizer> <http://mmoon.org/core/definition> "An adjective which is derived from a noun denoting some kind of material and means 'being made of this material'."@en ;
@@ -11230,9 +11238,9 @@ Phenomenology:
 
 <http://mmoon.org/core/ObjectiveCase> <http://mmoon.org/core/usageNote> "This case shall only be used if no other more specific case (i.e. accusative or dative) applies."@en ;
                                       <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#ObjectiveCase> ;
+                                      rdfs:label "Objective Case"@en ;
                                       <http://mmoon.org/core/definition> """Case used to express the direct object, indirect object, object of a preposition, object complement and subject of an infinitive.
-(http://www.isocat.org/rest/dc/2798)"""@en ;
-                                      rdfs:label "Objective Case"@en .
+(http://www.isocat.org/rest/dc/2798)"""@en .
 
 
 <http://mmoon.org/core/Obligative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#ObligativeModality> ;
@@ -11625,9 +11633,9 @@ Often, the reflexive pronoun functions as a reciprocal pronoun. [Christian Lehma
 [Christian Lehmann, under \"repetitive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
-<http://mmoon.org/core/Reportative> <http://mmoon.org/core/definition> """The reportative evidential is an evidential that signals that the speaker reports what he has been told. It is the evidential of hearsay.
+<http://mmoon.org/core/Reportative> rdfs:label "Reportative"@en ;
+                                    <http://mmoon.org/core/definition> """The reportative evidential is an evidential that signals that the speaker reports what he has been told. It is the evidential of hearsay.
 [Christian Lehmann, under \"reportative evidential\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                    rdfs:label "Reportative"@en ;
                                     <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/IndirectEvidentiality#examples> ;
                                     <http://mmoon.org/core/usageNote> """Given the definittions of the  two classes gold:IndirectEvidentiality and gold:HearsayEvidentiality, both are considered to be equivalent to the mmoon:Reportative class, being expressed by these three terms for the same concept.
 This class should be used whenever one of the terms \"indirect evidential\" or \"hearsay evidential\" is encountered."""@en .
@@ -11691,9 +11699,9 @@ This class should be used whenever one of the terms \"indirect evidential\" or \
 
 <http://mmoon.org/core/Sociative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#SociativeCase> ;
                                   rdfs:label "Sociative"@en ;
+                                  <http://mmoon.org/core/usageNote> "Also called associative."@en ;
                                   <http://mmoon.org/core/definition> """a case having the meaning of 'with'.
-[Christian Lehmann, under \"sociative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                  <http://mmoon.org/core/usageNote> "Also called associative."@en .
+[Christian Lehmann, under \"sociative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
 <http://mmoon.org/core/Speculative> rdfs:label "Speculative"@en ;
@@ -11838,16 +11846,16 @@ marsh(NOM) change:PAST-3.SG field-TRNSF
                                        rdfs:label "Transformative"@en .
 
 
-<http://mmoon.org/core/Transitivizer> <http://mmoon.org/core/definition> "A transitiviser is an affix which changes the transitivity of an intransitive verb into a transitive one. [Christian Lehmann, under \"transitivizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                      rdfs:label "Transitivizer"@en .
+<http://mmoon.org/core/Transitivizer> rdfs:label "Transitivizer"@en ;
+                                      <http://mmoon.org/core/definition> "A transitiviser is an affix which changes the transitivity of an intransitive verb into a transitive one. [Christian Lehmann, under \"transitivizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
 <http://mmoon.org/core/Translative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#TranslativeCase> ;
-                                    rdfs:label "Translative"@en ;
                                     <http://mmoon.org/core/example> """Finnish:
 \"-ksi\" with local and transformative meaning. ISE 129a
 ISE 129b
 [Christian Lehmann, under \"translative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@fi ;
+                                    rdfs:label "Translative"@en ;
                                     <http://mmoon.org/core/definition> """The translative is a case marking an NP through whose referent something moves.
 [Christian Lehmann, under \"translative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
@@ -11898,14 +11906,14 @@ If the vocative needs to be classified as either casus rectus or obliquus, since
 
 <http://mmoon.org/core/ZeroMorph> <http://mmoon.org/core/definition> "A morpheme that has a morphological meaning that corresponds to no overt form.  [Haspelmath and Sims: Understanding morphology. 2002:64]"@en ;
                                   <http://mmoon.org/core/externalDefinitionDesc> "A zero morpheme is a morpheme which has no significans. [Christian Lehmann, under \"zero    morpheme\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                  <http://mmoon.org/core/usageNote> """Since zero morphs have no corresponding orthographic or phonetic representation the representation of of a zero morph instance to be chosen for consistency across all MMoOn morpheme inventories is \"mmoon:Representation_ZM\", which is already specified for its morphemic representation “-Z” in the MMoOn Core ontology .
+                                  <http://mmoon.org/core/usageNote> "A zero morpheme is posited only if it is in equipollent opposition to overt morphemes. If the term in question is, instead, the unmarked member of a privative opposition, no morpheme is posited. Conversion  can be conceived as derivation using a zero morpheme.  [Christian Lehmann, under \"zero morpheme\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ,
+                                                                    """Since zero morphs have no corresponding orthographic or phonetic representation the representation of of a zero morph instance to be chosen for consistency across all MMoOn morpheme inventories is \"mmoon:Representation_ZM\", which is already specified for its morphemic representation “-Z” in the MMoOn Core ontology .
 
 lang_inv:Zeromorph_x rdf:type lang_schema:ZeroMorph ;
                      mmoon:hasRepresentation mmoon:Representation_ZM .
 
 mmoon:Representation_ZM rdf:type mmoon:Representation ;
-                        mmoon:morphemicRepresentation \"-Z\" ."""@en ,
-                                                                    "A zero morpheme is posited only if it is in equipollent opposition to overt morphemes. If the term in question is, instead, the unmarked member of a privative opposition, no morpheme is posited. Conversion  can be conceived as derivation using a zero morpheme.  [Christian Lehmann, under \"zero morpheme\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                        mmoon:morphemicRepresentation \"-Z\" ."""@en ;
                                   rdfs:label "Zero Morph"@en .
 
 
