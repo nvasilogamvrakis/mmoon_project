@@ -78,18 +78,6 @@ reference point or when additional textual information has to be provided for an
                                   rdfs:subPropertyOf rdfs:comment .
 
 
-###  http://mmoon.org/ell/schema/omg/bidirectionalDerivation
-<http://mmoon.org/ell/schema/omg/bidirectionalDerivation> rdf:type owl:AnnotationProperty .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation
-<http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> rdf:type owl:AnnotationProperty .
-
-
-###  http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to
-<http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to> rdf:type owl:AnnotationProperty .
-
-
 ###  http://purl.org/dc/elements/1.1/contributor
 <http://purl.org/dc/elements/1.1/contributor> rdf:type owl:AnnotationProperty .
 
@@ -576,8 +564,17 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 <http://mmoon.org/ell/schema/omg/consists_of_BaseOfAStem> rdf:type owl:ObjectProperty .
 
 
+###  http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation
+<http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> rdf:type owl:ObjectProperty ,
+                                                                       owl:SymmetricProperty .
+
+
 ###  http://mmoon.org/ell/schema/omg/ell_consistsOfWord
 <http://mmoon.org/ell/schema/omg/ell_consistsOfWord> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to
+<http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to> rdf:type owl:ObjectProperty .
 
 
 ###  http://mmoon.org/ell/schema/omg/input_stem_meaning
@@ -9380,7 +9377,7 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/i13
 <http://mmoon.org/ell/inventory/omg/i13> rdf:type owl:NamedIndividual ;
-                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ση-> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-ση-> ;
                                          <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i14> .
 
 
@@ -9416,21 +9413,21 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/i19
 <http://mmoon.org/ell/inventory/omg/i19> rdf:type owl:NamedIndividual ;
-                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ιζ-> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-ιζ-> ;
                                          <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i20> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/i2
 <http://mmoon.org/ell/inventory/omg/i2> rdf:type owl:NamedIndividual ,
                                                  <http://purl.org/co/ListItem> ;
-                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/μα-> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-μα-> ;
                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i3> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/i20
 <http://mmoon.org/ell/inventory/omg/i20> rdf:type owl:NamedIndividual ,
                                                   <http://purl.org/co/ListItem> ;
-                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ω> .
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-ω> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/i21
@@ -9458,14 +9455,14 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/i24
 <http://mmoon.org/ell/inventory/omg/i24> rdf:type owl:NamedIndividual ,
                                                   <http://purl.org/co/ListItem> ;
-                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ισ-> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-ισ-> ;
                                          <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i25> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/i25
 <http://mmoon.org/ell/inventory/omg/i25> rdf:type owl:NamedIndividual ,
                                                   <http://purl.org/co/ListItem> ;
-                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τ-> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-τ-> ;
                                          <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i26> .
 
 
@@ -9516,7 +9513,7 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/i6
 <http://mmoon.org/ell/inventory/omg/i6> rdf:type owl:NamedIndividual ,
                                                  <http://purl.org/co/ListItem> ;
-                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/μα-> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-μα-> ;
                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i7> .
 
 
@@ -9537,7 +9534,7 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/i9
 <http://mmoon.org/ell/inventory/omg/i9> rdf:type owl:NamedIndividual ,
                                                  <http://purl.org/co/ListItem> ;
-                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τ-> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-τ-> ;
                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i10> .
 
 
@@ -9610,12 +9607,12 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/γράφος
 <http://mmoon.org/ell/inventory/omg/γράφος> rdf:type owl:NamedIndividual ;
-                                            <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> .
+                                            <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/-ος> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/γράφω
 <http://mmoon.org/ell/inventory/omg/γράφω> rdf:type owl:NamedIndividual ;
-                                           <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ω> ;
+                                           <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/-ω> ;
                                            <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/γραφ-> .
 
 
@@ -9629,14 +9626,14 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/γραφικ-
 <http://mmoon.org/ell/inventory/omg/γραφικ-> rdf:type owl:NamedIndividual ;
                                              <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/graphic> ;
-                                             <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/ικ-> ;
+                                             <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/-ικ-> ;
                                              <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/γραφ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/γραφικός
 <http://mmoon.org/ell/inventory/omg/γραφικός> rdf:type owl:NamedIndividual ,
                                                        <http://mmoon.org/core/DerivedWord> ;
-                                              <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                              <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/-ος> ;
                                               <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/γραφικ-> .
 
 
@@ -9653,44 +9650,22 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/δρόμος
 <http://mmoon.org/ell/inventory/omg/δρόμος> rdf:type owl:NamedIndividual ;
-                                            <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> .
+                                            <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/-ος> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/ερωτώ
 <http://mmoon.org/ell/inventory/omg/ερωτώ> rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/inventory/omg/ευ-
-<http://mmoon.org/ell/inventory/omg/ευ-> rdf:type owl:NamedIndividual ;
-                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Verb> .
-
-
 ###  http://mmoon.org/ell/inventory/omg/θέμα
 <http://mmoon.org/ell/inventory/omg/θέμα> rdf:type owl:NamedIndividual ;
                                           <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ση_n-X-μα_n> ;
-                                          <http://mmoon.org/ell/schema/omg/bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/θέση> ;
                                           <http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/θέση> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/θέση
 <http://mmoon.org/ell/inventory/omg/θέση> rdf:type owl:NamedIndividual ;
                                           <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-μα_n-X-ση_n> .
-
-
-###  http://mmoon.org/ell/inventory/omg/ιζ-
-<http://mmoon.org/ell/inventory/omg/ιζ-> rdf:type owl:NamedIndividual .
-
-
-###  http://mmoon.org/ell/inventory/omg/ικ-
-<http://mmoon.org/ell/inventory/omg/ικ-> rdf:type owl:NamedIndividual ,
-                                                  <http://mmoon.org/ell/schema/omg/ell_DerSuf> ;
-                                         <http://mmoon.org/core/derivationalMeaning> <http://mmoon.org/ell/inventory/omg/relational> ;
-                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Adjective> ,
-                                                                                    <http://mmoon.org/core/Masculine> .
-
-
-###  http://mmoon.org/ell/inventory/omg/ισ-
-<http://mmoon.org/ell/inventory/omg/ισ-> rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/inventory/omg/λέω
@@ -9707,10 +9682,6 @@ owl:Thing rdf:type owl:Class .
                                                <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/λίγο> ;
                                                <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i28> ,
                                                                          <http://mmoon.org/ell/inventory/omg/i29> .
-
-
-###  http://mmoon.org/ell/inventory/omg/μα-
-<http://mmoon.org/ell/inventory/omg/μα-> rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/inventory/omg/νομικός1
@@ -9743,7 +9714,6 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/οδηγός
 <http://mmoon.org/ell/inventory/omg/οδηγός> rdf:type owl:NamedIndividual ;
                                             <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n> ;
-                                            <http://mmoon.org/ell/schema/omg/bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/οδηγώ> ;
                                             <http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/οδηγώ> .
 
 
@@ -9754,13 +9724,6 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/ορ-
 <http://mmoon.org/ell/inventory/omg/ορ-> rdf:type owl:NamedIndividual .
-
-
-###  http://mmoon.org/ell/inventory/omg/ος
-<http://mmoon.org/ell/inventory/omg/ος> rdf:type owl:NamedIndividual ,
-                                                 <http://mmoon.org/ell/schema/omg/ell_InfSuf> ;
-                                        <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Nominative> ,
-                                                                                   <http://mmoon.org/core/Singular> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/παρα-
@@ -9783,7 +9746,7 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/περιγράφω
 <http://mmoon.org/ell/inventory/omg/περιγράφω> rdf:type owl:NamedIndividual ;
-                                               <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ω> ;
+                                               <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/-ω> ;
                                                <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/περιγραφ-> .
 
 
@@ -9797,13 +9760,13 @@ owl:Thing rdf:type owl:Class .
 ###  http://mmoon.org/ell/inventory/omg/περιγραφικ-
 <http://mmoon.org/ell/inventory/omg/περιγραφικ-> rdf:type owl:NamedIndividual ;
                                                  <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/descriptive> ;
-                                                 <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/ικ-> ;
+                                                 <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/-ικ-> ;
                                                  <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/περιγραφ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/περιγραφικός
 <http://mmoon.org/ell/inventory/omg/περιγραφικός> rdf:type owl:NamedIndividual ;
-                                                  <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                                  <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/-ος> ;
                                                   <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/περιγραφικ-> .
 
 
@@ -9843,17 +9806,8 @@ owl:Thing rdf:type owl:Class .
                                           <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/ερωτώ> .
 
 
-###  http://mmoon.org/ell/inventory/omg/ς
-<http://mmoon.org/ell/inventory/omg/ς> rdf:type owl:NamedIndividual .
-
-
-###  http://mmoon.org/ell/inventory/omg/ση-
-<http://mmoon.org/ell/inventory/omg/ση-> rdf:type owl:NamedIndividual .
-
-
 ###  http://mmoon.org/ell/inventory/omg/τ-
-<http://mmoon.org/ell/inventory/omg/τ-> rdf:type owl:NamedIndividual ;
-                                        <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> .
+<http://mmoon.org/ell/inventory/omg/τ-> rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/inventory/omg/τελείωμα
@@ -9881,12 +9835,6 @@ owl:Thing rdf:type owl:Class .
                                                  <http://purl.org/co/size> 4 .
 
 
-###  http://mmoon.org/ell/inventory/omg/τη-
-<http://mmoon.org/ell/inventory/omg/τη-> rdf:type owl:NamedIndividual ;
-                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> ;
-                                         <http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to> <http://mmoon.org/ell/inventory/omg/τ-> .
-
-
 ###  http://mmoon.org/ell/inventory/omg/χορ-
 <http://mmoon.org/ell/inventory/omg/χορ-> rdf:type owl:NamedIndividual ;
                                           <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Masculine> ,
@@ -9896,19 +9844,19 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/χορευ-
 <http://mmoon.org/ell/inventory/omg/χορευ-> rdf:type owl:NamedIndividual ;
-                                            <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/ευ-> ;
+                                            <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/-ευ-> ;
                                             <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτ-
 <http://mmoon.org/ell/inventory/omg/χορευτ-> rdf:type owl:NamedIndividual ;
-                                             <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/τ-> ;
+                                             <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/-τ-> ;
                                              <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορευ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτής
 <http://mmoon.org/ell/inventory/omg/χορευτής> rdf:type owl:NamedIndividual ;
-                                              <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ς> ;
+                                              <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ς> ;
                                               <http://mmoon.org/core/consistsOfStem> <http://mmoon.org/ell/inventory/omg/χορευτη-> ;
                                               <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n> ;
                                               <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/χορεύω> .
@@ -9916,20 +9864,20 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτη-
 <http://mmoon.org/ell/inventory/omg/χορευτη-> rdf:type owl:NamedIndividual ;
-                                              <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/τη-> ;
+                                              <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/-τη-> ;
                                               <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορευ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτικ-
 <http://mmoon.org/ell/inventory/omg/χορευτικ-> rdf:type owl:NamedIndividual ,
                                                         <http://mmoon.org/ell/schema/omg/StemOfASufStem> ;
-                                               <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ικ-> ;
+                                               <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ικ-> ;
                                                <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορευτ-> .
 
 
 ###  http://mmoon.org/ell/inventory/omg/χορευτικός
 <http://mmoon.org/ell/inventory/omg/χορευτικός> rdf:type owl:NamedIndividual ;
-                                                <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                                <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
                                                 <http://mmoon.org/core/consistsOfStem> <http://mmoon.org/ell/inventory/omg/χορευτικ-> ;
                                                 <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj> ;
                                                 <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/χορευτής> .
@@ -9937,7 +9885,7 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/χορεύω
 <http://mmoon.org/ell/inventory/omg/χορεύω> rdf:type owl:NamedIndividual ;
-                                            <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ω> ;
+                                            <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ω> ;
                                             <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_n-X-ευ-_v> ;
                                             <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/χορός> ;
                                             <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/χορευ-> .
@@ -9945,15 +9893,66 @@ owl:Thing rdf:type owl:Class .
 
 ###  http://mmoon.org/ell/inventory/omg/χορός
 <http://mmoon.org/ell/inventory/omg/χορός> rdf:type owl:NamedIndividual ;
-                                           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
                                            <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/χορ-> .
 
 
-###  http://mmoon.org/ell/inventory/omg/ω
-<http://mmoon.org/ell/inventory/omg/ω> rdf:type owl:NamedIndividual ,
-                                                <http://mmoon.org/ell/schema/omg/ell_InfSuf> ;
-                                       <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/ImperfectiveAspect> ,
-                                                                                  <http://mmoon.org/core/Indicative> .
+###  http://mmoon.org/ell/inventory/omg/-ευ-
+<http://mmoon.org/ell/inventory/omg/-ευ-> rdf:type owl:NamedIndividual ;
+                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Verb> .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ιζ-
+<http://mmoon.org/ell/inventory/omg/-ιζ-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ικ-
+<http://mmoon.org/ell/inventory/omg/-ικ-> rdf:type owl:NamedIndividual ,
+                                                   <http://mmoon.org/ell/schema/omg/ell_DerSuf> ;
+                                          <http://mmoon.org/core/derivationalMeaning> <http://mmoon.org/ell/inventory/omg/relational> ;
+                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Adjective> ,
+                                                                                     <http://mmoon.org/core/Masculine> .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ισ-
+<http://mmoon.org/ell/inventory/omg/-ισ-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/-μα-
+<http://mmoon.org/ell/inventory/omg/-μα-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ος
+<http://mmoon.org/ell/inventory/omg/-ος> rdf:type owl:NamedIndividual ,
+                                                  <http://mmoon.org/ell/schema/omg/ell_InfSuf> ;
+                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Nominative> ,
+                                                                                    <http://mmoon.org/core/Singular> .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ς
+<http://mmoon.org/ell/inventory/omg/-ς> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ση-
+<http://mmoon.org/ell/inventory/omg/-ση-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/-τ-
+<http://mmoon.org/ell/inventory/omg/-τ-> rdf:type owl:NamedIndividual ;
+                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> .
+
+
+###  http://mmoon.org/ell/inventory/omg/-τη-
+<http://mmoon.org/ell/inventory/omg/-τη-> rdf:type owl:NamedIndividual ;
+                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> ;
+                                          <http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to> <http://mmoon.org/ell/inventory/omg/τ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/-ω
+<http://mmoon.org/ell/inventory/omg/-ω> rdf:type owl:NamedIndividual ,
+                                                 <http://mmoon.org/ell/schema/omg/ell_InfSuf> ;
+                                        <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/ImperfectiveAspect> ,
+                                                                                   <http://mmoon.org/core/Indicative> .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ία_n-X-ιά_n
