@@ -305,6 +305,12 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 <http://mmoon.org/core/derivationalMeaning> rdf:type owl:ObjectProperty ;
                                             rdfs:subPropertyOf <http://mmoon.org/core/hasMeaning> ;
                                             rdfs:range <http://mmoon.org/core/DerivationalMeaning> ;
+                                            owl:propertyChainAxiom ( <http://mmoon.org/ell/schema/omg/consistOfDerSuf>
+                                                                     <http://mmoon.org/core/derivationalMeaning>
+                                                                   ) ,
+                                                                   ( <http://mmoon.org/ell/schema/omg/consistsOfDerPref>
+                                                                     <http://mmoon.org/core/derivationalMeaning>
+                                                                   ) ;
                                             <http://mmoon.org/core/definition> "States that a morph, morpheme or word resource has some derivational meaning."@en ;
                                             rdfs:label "derivational meaning"@en .
 
@@ -335,16 +341,16 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
                                                                       <http://mmoon.org/core/WordclassAffiliation>
                                                                     )
                                                       ] ;
-                                           owl:propertyChainAxiom ( :consistsOfDerSuf
+                                           owl:propertyChainAxiom ( <http://mmoon.org/ell/schema/omg/consistOfDerSuf>
                                                                     <http://mmoon.org/core/grammaticalMeaning>
                                                                   ) ,
-                                                                  ( :consistsOfInfSuf
+                                                                  ( <http://mmoon.org/ell/schema/omg/consistsOfInfSuf>
                                                                     <http://mmoon.org/core/grammaticalMeaning>
                                                                   ) ,
-                                                                  ( :consistsOfStemOfAPrefStem
+                                                                  ( <http://mmoon.org/ell/schema/omg/consistsOfStemOfAPrefStem>
                                                                     <http://mmoon.org/core/grammaticalMeaning>
                                                                   ) ,
-                                                                  ( :consistsOfStemOfAWord
+                                                                  ( <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord>
                                                                     <http://mmoon.org/core/grammaticalMeaning>
                                                                   ) ;
                                            <http://mmoon.org/core/definition> "States that a morph, morpheme or word resource has some grammatical meaning."@en ;
@@ -420,13 +426,7 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 <http://mmoon.org/core/hasSense> rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf <http://mmoon.org/core/hasMeaning> ;
                                  rdfs:range <http://mmoon.org/core/Sense> ;
-                                 owl:propertyChainAxiom ( :consistsOfDerPref
-                                                          <http://mmoon.org/core/hasSense>
-                                                        ) ,
-                                                        ( :consistsOfDerSuf
-                                                          <http://mmoon.org/core/hasSense>
-                                                        ) ,
-                                                        ( :consistsOfStemOfAWord
+                                 owl:propertyChainAxiom ( <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord>
                                                           <http://mmoon.org/core/hasSense>
                                                         ) ;
                                  <http://mmoon.org/core/definition> "States that a morph, morpheme or word resource has some sense."@en ;
@@ -539,9 +539,57 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
                                   rdfs:label "sense link"@en .
 
 
-###  http://mmoon.org/ell/inventory/omg#consistsOfDerPref
-:consistsOfDerPref rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
+###  http://mmoon.org/ell/schema/omg/consistOfDerSuf
+<http://mmoon.org/ell/schema/omg/consistOfDerSuf> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
+
+
+###  http://mmoon.org/ell/schema/omg/consistsOfDerPref
+<http://mmoon.org/ell/schema/omg/consistsOfDerPref> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
+
+
+###  http://mmoon.org/ell/schema/omg/consistsOfInfSuf
+<http://mmoon.org/ell/schema/omg/consistsOfInfSuf> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
+
+
+###  http://mmoon.org/ell/schema/omg/consistsOfStemOfAPrefStem
+<http://mmoon.org/ell/schema/omg/consistsOfStemOfAPrefStem> rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf <http://mmoon.org/core/consistsOfStem> ;
+                                                            rdfs:range <http://mmoon.org/ell/schema/omg/StemOfAPrefStem> .
+
+
+###  http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem
+<http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> rdf:type owl:ObjectProperty ;
+                                                           rdfs:subPropertyOf <http://mmoon.org/core/consistsOfStem> ;
+                                                           rdfs:range <http://mmoon.org/ell/schema/omg/StemOfASufStem> .
+
+
+###  http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord
+<http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf <http://mmoon.org/core/consistsOfStem> ;
+                                                        rdfs:range <http://mmoon.org/ell/schema/omg/StemOfAWord> .
+
+
+###  http://mmoon.org/ell/schema/omg/consists_of_BaseOfAStem
+<http://mmoon.org/ell/schema/omg/consists_of_BaseOfAStem> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_consistsOfWord
+<http://mmoon.org/ell/schema/omg/ell_consistsOfWord> rdf:type owl:ObjectProperty .
+
+
+###  http://mmoon.org/ell/schema/omg/input_stem_meaning
+<http://mmoon.org/ell/schema/omg/input_stem_meaning> rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf <http://mmoon.org/core/hasMeaning> ;
+                                                     rdfs:domain <http://mmoon.org/core/Stem> ;
+                                                     owl:propertyChainAxiom ( <http://mmoon.org/ell/schema/omg/consistsOfStemOfAPrefStem>
+                                                                              <http://mmoon.org/ell/schema/omg/input_stem_meaning>
+                                                                            ) ,
+                                                                            ( <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem>
+                                                                              <http://mmoon.org/ell/schema/omg/input_stem_meaning>
+                                                                            ) .
 
 
 ###  http://purl.org/co/element
@@ -687,38 +735,6 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
                                   <http://purl.org/dc/elements/1.1/description> "Given the list (I[1], I[2], ... , I[i-1], I[i], I[i+1], ... , I[n-1], I[n]), the previous item of I[i] is I[i-1]."@en ;
                                   rdfs:comment "The link to the previous item in a list."@en ;
                                   rdfs:label "has previous item"@en .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#consistsOfDerSuf
-:consistsOfDerSuf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#consistsOfInfSuf
-:consistsOfInfSuf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf <http://mmoon.org/core/consistsOfAffix> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#consistsOfStemOfAPrefStem
-:consistsOfStemOfAPrefStem rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf <http://mmoon.org/core/consistsOfStem> ;
-                           rdfs:range :ell_StemOfAPrefStem .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#consistsOfStemOfASufStem
-:consistsOfStemOfASufStem rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf <http://mmoon.org/core/consistsOfStem> ;
-                          rdfs:range :ell_StemOfASufStem .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#consistsOfStemOfAWord
-:consistsOfStemOfAWord rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf <http://mmoon.org/core/consistsOfStem> ;
-                       rdfs:range :ell_StemOfAWord .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ell_consistsOfWord
-<http://www.semanticweb.org/owl/owlapi/turtle#ell_consistsOfWord> rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -4834,8 +4850,45 @@ b) with additional semantic content by adding a derivational morpheme."""@en ;
                                   rdfs:subClassOf <http://mmoon.org/core/Affix> .
 
 
+###  http://mmoon.org/ell/schema/omg/StemOfAPrefStem
+<http://mmoon.org/ell/schema/omg/StemOfAPrefStem> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://mmoon.org/core/Stem> .
+
+
+###  http://mmoon.org/ell/schema/omg/StemOfASufStem
+<http://mmoon.org/ell/schema/omg/StemOfASufStem> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://mmoon.org/core/Stem> ;
+                                                 <http://mmoon.org/core/definition> "A stem that belongs to an affixal stem." .
+
+
+###  http://mmoon.org/ell/schema/omg/StemOfAWord
+<http://mmoon.org/ell/schema/omg/StemOfAWord> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://mmoon.org/core/Stem> ;
+                                              <http://mmoon.org/core/definition> "A stem that belongs to a derived word." .
+
+
 ###  http://mmoon.org/ell/schema/omg/ell_Base
 <http://mmoon.org/ell/schema/omg/ell_Base> rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Conversion
+<http://mmoon.org/ell/schema/omg/ell_Conversion> rdf:type owl:Class .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_DerSuf
+<http://mmoon.org/ell/schema/omg/ell_DerSuf> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://mmoon.org/core/Suffix> ;
+                                             owl:disjointWith <http://mmoon.org/ell/schema/omg/ell_InfSuf> .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_InfSuf
+<http://mmoon.org/ell/schema/omg/ell_InfSuf> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://mmoon.org/core/Suffix> .
+
+
+###  http://mmoon.org/ell/schema/omg/ell_Word
+<http://mmoon.org/ell/schema/omg/ell_Word> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://mmoon.org/core/Word> .
 
 
 ###  http://purl.org/co/Bag
@@ -5660,43 +5713,6 @@ b) with additional semantic content by adding a derivational morpheme."""@en ;
 
 ###  http://purl.org/linguistics/gold/VoiceProperty
 <http://purl.org/linguistics/gold/VoiceProperty> rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#ell_DerSuf
-:ell_DerSuf rdf:type owl:Class ;
-            rdfs:subClassOf <http://mmoon.org/core/Suffix> ;
-            owl:disjointWith :ell_InfSuf .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#ell_InfSuf
-:ell_InfSuf rdf:type owl:Class ;
-            rdfs:subClassOf <http://mmoon.org/core/Suffix> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#ell_StemOfAPrefStem
-:ell_StemOfAPrefStem rdf:type owl:Class ;
-                     rdfs:subClassOf <http://mmoon.org/core/Stem> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#ell_StemOfASufStem
-:ell_StemOfASufStem rdf:type owl:Class ;
-                    rdfs:subClassOf <http://mmoon.org/core/Stem> ;
-                    <http://mmoon.org/core/definition> "A stem that belongs to an affixal stem." .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#ell_StemOfAWord
-:ell_StemOfAWord rdf:type owl:Class ;
-                 rdfs:subClassOf <http://mmoon.org/core/Stem> ;
-                 <http://mmoon.org/core/definition> "A stem that belongs to a derived word." .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Conversion
-<http://www.semanticweb.org/owl/owlapi/turtle#ell_Conversion> rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ell_Word
-<http://www.semanticweb.org/owl/owlapi/turtle#ell_Word> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <http://mmoon.org/core/Word> .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#Resource
@@ -9314,46 +9330,630 @@ owl:Thing rdf:type owl:Class .
                                   <http://mmoon.org/core/hasRepresentation> <http://mmoon.org/core/Representation_ZM> .
 
 
-###  http://mmoon.org/ell/inventory/omg/-ευ-
-<http://mmoon.org/ell/inventory/omg/-ευ-> rdf:type owl:NamedIndividual ;
-                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Verb> .
+###  http://mmoon.org/ell/inventory/omg/around
+<http://mmoon.org/ell/inventory/omg/around> rdf:type owl:NamedIndividual ,
+                                                     <http://mmoon.org/core/Sense> .
 
 
-###  http://mmoon.org/ell/inventory/omg/-ικ-
-<http://mmoon.org/ell/inventory/omg/-ικ-> rdf:type owl:NamedIndividual ,
-                                                   :ell_DerSuf ;
-                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Adjective> ,
-                                                                                     <http://mmoon.org/core/Masculine> ;
-                                          <http://mmoon.org/core/hasSense> :relational .
+###  http://mmoon.org/ell/inventory/omg/dance
+<http://mmoon.org/ell/inventory/omg/dance> rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/inventory/omg/-ος
-<http://mmoon.org/ell/inventory/omg/-ος> rdf:type owl:NamedIndividual ,
-                                                  :ell_InfSuf ;
-                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Nominative> ,
-                                                                                    <http://mmoon.org/core/Singular> .
+###  http://mmoon.org/ell/inventory/omg/descriptive
+<http://mmoon.org/ell/inventory/omg/descriptive> rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/inventory/omg/-ς
-<http://mmoon.org/ell/inventory/omg/-ς> rdf:type owl:NamedIndividual .
+###  http://mmoon.org/ell/inventory/omg/graph
+<http://mmoon.org/ell/inventory/omg/graph> rdf:type owl:NamedIndividual .
 
 
-###  http://mmoon.org/ell/inventory/omg/-τ-
-<http://mmoon.org/ell/inventory/omg/-τ-> rdf:type owl:NamedIndividual ;
-                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> .
+###  http://mmoon.org/ell/inventory/omg/graphic
+<http://mmoon.org/ell/inventory/omg/graphic> rdf:type owl:NamedIndividual ,
+                                                      <http://mmoon.org/core/Sense> .
 
 
-###  http://mmoon.org/ell/inventory/omg/-τη-
-<http://mmoon.org/ell/inventory/omg/-τη-> rdf:type owl:NamedIndividual ;
-                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> ;
-                                          <http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to> <http://mmoon.org/ell/inventory/omg/-τ-> .
+###  http://mmoon.org/ell/inventory/omg/i1
+<http://mmoon.org/ell/inventory/omg/i1> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τελειω-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i2> ;
+                                        <http://purl.org/co/index> 0 .
 
 
-###  http://mmoon.org/ell/inventory/omg/-ω
-<http://mmoon.org/ell/inventory/omg/-ω> rdf:type owl:NamedIndividual ,
-                                                 :ell_InfSuf ;
-                                        <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/ImperfectiveAspect> ,
-                                                                                   <http://mmoon.org/core/Indicative> .
+###  http://mmoon.org/ell/inventory/omg/i10
+<http://mmoon.org/ell/inventory/omg/i10> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i11> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i11
+<http://mmoon.org/ell/inventory/omg/i11> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i12
+<http://mmoon.org/ell/inventory/omg/i12> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τελειω-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i13> ;
+                                         <http://purl.org/co/index> 0 .
+
+
+###  http://mmoon.org/ell/inventory/omg/i13
+<http://mmoon.org/ell/inventory/omg/i13> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ση-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i14> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i14
+<http://mmoon.org/ell/inventory/omg/i14> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/zeroMorph> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i15
+<http://mmoon.org/ell/inventory/omg/i15> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ανα-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i16> ;
+                                         <http://purl.org/co/index> -3 .
+
+
+###  http://mmoon.org/ell/inventory/omg/i16
+<http://mmoon.org/ell/inventory/omg/i16> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/προσ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i17> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i17
+<http://mmoon.org/ell/inventory/omg/i17> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/δι-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i18> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i18
+<http://mmoon.org/ell/inventory/omg/i18> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ορ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i19> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i19
+<http://mmoon.org/ell/inventory/omg/i19> rdf:type owl:NamedIndividual ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ιζ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i20> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i2
+<http://mmoon.org/ell/inventory/omg/i2> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/μα-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i3> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i20
+<http://mmoon.org/ell/inventory/omg/i20> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ω> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i21
+<http://mmoon.org/ell/inventory/omg/i21> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/προσ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i22> ;
+                                         <http://purl.org/co/index> 1 .
+
+
+###  http://mmoon.org/ell/inventory/omg/i22
+<http://mmoon.org/ell/inventory/omg/i22> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/δι-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i23> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i23
+<http://mmoon.org/ell/inventory/omg/i23> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ορ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i24> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i24
+<http://mmoon.org/ell/inventory/omg/i24> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/ισ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i25> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i25
+<http://mmoon.org/ell/inventory/omg/i25> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τ-> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i26> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i26
+<http://mmoon.org/ell/inventory/omg/i26> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i27> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i27
+<http://mmoon.org/ell/inventory/omg/i27> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/i28
+<http://mmoon.org/ell/inventory/omg/i28> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/λίγο> ;
+                                         <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i29> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i29
+<http://mmoon.org/ell/inventory/omg/i29> rdf:type owl:NamedIndividual ,
+                                                  <http://purl.org/co/ListItem> ;
+                                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/λίγο> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i3
+<http://mmoon.org/ell/inventory/omg/i3> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/zeroMorph> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i4
+<http://mmoon.org/ell/inventory/omg/i4> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/απο-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i5> ;
+                                        <http://purl.org/co/index> -1 .
+
+
+###  http://mmoon.org/ell/inventory/omg/i5
+<http://mmoon.org/ell/inventory/omg/i5> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τελειω-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i6> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i6
+<http://mmoon.org/ell/inventory/omg/i6> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/μα-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i7> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i7
+<http://mmoon.org/ell/inventory/omg/i7> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/zeroMorph> .
+
+
+###  http://mmoon.org/ell/inventory/omg/i8
+<http://mmoon.org/ell/inventory/omg/i8> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τελειω-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i9> ;
+                                        <http://purl.org/co/index> 0 .
+
+
+###  http://mmoon.org/ell/inventory/omg/i9
+<http://mmoon.org/ell/inventory/omg/i9> rdf:type owl:NamedIndividual ,
+                                                 <http://purl.org/co/ListItem> ;
+                                        <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/τ-> ;
+                                        <http://purl.org/co/nextItem> <http://mmoon.org/ell/inventory/omg/i10> .
+
+
+###  http://mmoon.org/ell/inventory/omg/relational
+<http://mmoon.org/ell/inventory/omg/relational> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/road
+<http://mmoon.org/ell/inventory/omg/road> rdf:type owl:NamedIndividual ,
+                                                   <http://mmoon.org/core/Sense> .
+
+
+###  http://mmoon.org/ell/inventory/omg/to_describe
+<http://mmoon.org/ell/inventory/omg/to_describe> rdf:type owl:NamedIndividual ,
+                                                          <http://mmoon.org/core/Sense> .
+
+
+###  http://mmoon.org/ell/inventory/omg/to_write
+<http://mmoon.org/ell/inventory/omg/to_write> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/zeroMorph
+<http://mmoon.org/ell/inventory/omg/zeroMorph> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/αγαπάω
+<http://mmoon.org/ell/inventory/omg/αγαπάω> rdf:type owl:NamedIndividual ;
+                                            <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ώ_v-X-άω_v> ;
+                                            <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/αγαπώ> .
+
+
+###  http://mmoon.org/ell/inventory/omg/αγαπώ
+<http://mmoon.org/ell/inventory/omg/αγαπώ> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ανάσα
+<http://mmoon.org/ell/inventory/omg/ανάσα> rdf:type owl:NamedIndividual ;
+                                           <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-αινω_v-X-α_n> ;
+                                           <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/ανασαίνω> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ανα-
+<http://mmoon.org/ell/inventory/omg/ανα-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ανασαίνω
+<http://mmoon.org/ell/inventory/omg/ανασαίνω> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/απο-
+<http://mmoon.org/ell/inventory/omg/απο-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/αποτελείωμα
+<http://mmoon.org/ell/inventory/omg/αποτελείωμα> rdf:type owl:NamedIndividual ,
+                                                          <http://purl.org/co/List> ;
+                                                 <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i4> ;
+                                                 <http://purl.org/co/size> 4 .
+
+
+###  http://mmoon.org/ell/inventory/omg/βασιλέας
+<http://mmoon.org/ell/inventory/omg/βασιλέας> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/βασιλιάς
+<http://mmoon.org/ell/inventory/omg/βασιλιάς> rdf:type owl:NamedIndividual ;
+                                              <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/Xέας_n-Xιάς_n> ;
+                                              <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/βασιλέας> .
+
+
+###  http://mmoon.org/ell/inventory/omg/γράφος
+<http://mmoon.org/ell/inventory/omg/γράφος> rdf:type owl:NamedIndividual ;
+                                            <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> .
+
+
+###  http://mmoon.org/ell/inventory/omg/γράφω
+<http://mmoon.org/ell/inventory/omg/γράφω> rdf:type owl:NamedIndividual ;
+                                           <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ω> ;
+                                           <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/γραφ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/γραφ-
+<http://mmoon.org/ell/inventory/omg/γραφ-> rdf:type owl:NamedIndividual ;
+                                           <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Verb> ;
+                                           <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/to_write> ;
+                                           <http://mmoon.org/ell/schema/omg/input_stem_meaning> <http://mmoon.org/ell/inventory/omg/to_write> .
+
+
+###  http://mmoon.org/ell/inventory/omg/γραφικ-
+<http://mmoon.org/ell/inventory/omg/γραφικ-> rdf:type owl:NamedIndividual ;
+                                             <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/graphic> ;
+                                             <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/ικ-> ;
+                                             <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/γραφ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/γραφικός
+<http://mmoon.org/ell/inventory/omg/γραφικός> rdf:type owl:NamedIndividual ,
+                                                       <http://mmoon.org/core/DerivedWord> ;
+                                              <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                              <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/γραφικ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/δι-
+<http://mmoon.org/ell/inventory/omg/δι-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/δρομ-
+<http://mmoon.org/ell/inventory/omg/δρομ-> rdf:type owl:NamedIndividual ,
+                                                    <http://mmoon.org/ell/schema/omg/StemOfAWord> ;
+                                           <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> ;
+                                           <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/road> .
+
+
+###  http://mmoon.org/ell/inventory/omg/δρόμος
+<http://mmoon.org/ell/inventory/omg/δρόμος> rdf:type owl:NamedIndividual ;
+                                            <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ερωτώ
+<http://mmoon.org/ell/inventory/omg/ερωτώ> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ευ-
+<http://mmoon.org/ell/inventory/omg/ευ-> rdf:type owl:NamedIndividual ;
+                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Verb> .
+
+
+###  http://mmoon.org/ell/inventory/omg/θέμα
+<http://mmoon.org/ell/inventory/omg/θέμα> rdf:type owl:NamedIndividual ;
+                                          <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ση_n-X-μα_n> ;
+                                          <http://mmoon.org/ell/schema/omg/bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/θέση> ;
+                                          <http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/θέση> .
+
+
+###  http://mmoon.org/ell/inventory/omg/θέση
+<http://mmoon.org/ell/inventory/omg/θέση> rdf:type owl:NamedIndividual ;
+                                          <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-μα_n-X-ση_n> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ιζ-
+<http://mmoon.org/ell/inventory/omg/ιζ-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ικ-
+<http://mmoon.org/ell/inventory/omg/ικ-> rdf:type owl:NamedIndividual ,
+                                                  <http://mmoon.org/ell/schema/omg/ell_DerSuf> ;
+                                         <http://mmoon.org/core/derivationalMeaning> <http://mmoon.org/ell/inventory/omg/relational> ;
+                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Adjective> ,
+                                                                                    <http://mmoon.org/core/Masculine> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ισ-
+<http://mmoon.org/ell/inventory/omg/ισ-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/λέω
+<http://mmoon.org/ell/inventory/omg/λέω> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/λίγο
+<http://mmoon.org/ell/inventory/omg/λίγο> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/λίγο-λίγο
+<http://mmoon.org/ell/inventory/omg/λίγο-λίγο> rdf:type owl:NamedIndividual ;
+                                               <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_adv-XX_adv> ;
+                                               <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/λίγο> ;
+                                               <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i28> ,
+                                                                         <http://mmoon.org/ell/inventory/omg/i29> .
+
+
+###  http://mmoon.org/ell/inventory/omg/μα-
+<http://mmoon.org/ell/inventory/omg/μα-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/νομικός1
+<http://mmoon.org/ell/inventory/omg/νομικός1> rdf:type owl:NamedIndividual ;
+                                              <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/νόμος> .
+
+
+###  http://mmoon.org/ell/inventory/omg/νομικός2
+<http://mmoon.org/ell/inventory/omg/νομικός2> rdf:type owl:NamedIndividual ;
+                                              <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ος_adj-X-ος_n> ;
+                                              <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/νομικός1> .
+
+
+###  http://mmoon.org/ell/inventory/omg/νόμος
+<http://mmoon.org/ell/inventory/omg/νόμος> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ξε-
+<http://mmoon.org/ell/inventory/omg/ξε-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ξελέω
+<http://mmoon.org/ell/inventory/omg/ξελέω> rdf:type owl:NamedIndividual ;
+                                           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ξε-> ;
+                                           <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_v-ξε-X_v> ;
+                                           <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/λέω> ;
+                                           <http://mmoon.org/ell/schema/omg/ell_consistsOfWord> <http://mmoon.org/ell/inventory/omg/λέω> .
+
+
+###  http://mmoon.org/ell/inventory/omg/οδηγός
+<http://mmoon.org/ell/inventory/omg/οδηγός> rdf:type owl:NamedIndividual ;
+                                            <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n> ;
+                                            <http://mmoon.org/ell/schema/omg/bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/οδηγώ> ;
+                                            <http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> <http://mmoon.org/ell/inventory/omg/οδηγώ> .
+
+
+###  http://mmoon.org/ell/inventory/omg/οδηγώ
+<http://mmoon.org/ell/inventory/omg/οδηγώ> rdf:type owl:NamedIndividual ;
+                                           <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ος_n-Χ-ω_v> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ορ-
+<http://mmoon.org/ell/inventory/omg/ορ-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ος
+<http://mmoon.org/ell/inventory/omg/ος> rdf:type owl:NamedIndividual ,
+                                                 <http://mmoon.org/ell/schema/omg/ell_InfSuf> ;
+                                        <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Nominative> ,
+                                                                                   <http://mmoon.org/core/Singular> .
+
+
+###  http://mmoon.org/ell/inventory/omg/παρα-
+<http://mmoon.org/ell/inventory/omg/παρα-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/παραλέω
+<http://mmoon.org/ell/inventory/omg/παραλέω> rdf:type owl:NamedIndividual ;
+                                             <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/παρα-> ;
+                                             <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_v-παρα-X_v> ;
+                                             <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/λέω> ;
+                                             <http://mmoon.org/ell/schema/omg/ell_consistsOfWord> <http://mmoon.org/ell/inventory/omg/λέω> .
+
+
+###  http://mmoon.org/ell/inventory/omg/περι-
+<http://mmoon.org/ell/inventory/omg/περι-> rdf:type owl:NamedIndividual ,
+                                                    <http://mmoon.org/core/Prefix> ;
+                                           <http://mmoon.org/core/derivationalMeaning> <http://mmoon.org/ell/inventory/omg/around> .
+
+
+###  http://mmoon.org/ell/inventory/omg/περιγράφω
+<http://mmoon.org/ell/inventory/omg/περιγράφω> rdf:type owl:NamedIndividual ;
+                                               <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ω> ;
+                                               <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/περιγραφ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/περιγραφ-
+<http://mmoon.org/ell/inventory/omg/περιγραφ-> rdf:type owl:NamedIndividual ;
+                                               <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/to_describe> ;
+                                               <http://mmoon.org/ell/schema/omg/consistsOfDerPref> <http://mmoon.org/ell/inventory/omg/περι-> ;
+                                               <http://mmoon.org/ell/schema/omg/consistsOfStemOfAPrefStem> <http://mmoon.org/ell/inventory/omg/γραφ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/περιγραφικ-
+<http://mmoon.org/ell/inventory/omg/περιγραφικ-> rdf:type owl:NamedIndividual ;
+                                                 <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/descriptive> ;
+                                                 <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/ικ-> ;
+                                                 <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/περιγραφ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/περιγραφικός
+<http://mmoon.org/ell/inventory/omg/περιγραφικός> rdf:type owl:NamedIndividual ;
+                                                  <http://mmoon.org/ell/schema/omg/consistsOfInfSuf> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                                  <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/περιγραφικ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/πονηρία
+<http://mmoon.org/ell/inventory/omg/πονηρία> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/πονηριά
+<http://mmoon.org/ell/inventory/omg/πονηριά> rdf:type owl:NamedIndividual ;
+                                             <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ία_n-X-ιά_n> ;
+                                             <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/πονηρία> .
+
+
+###  http://mmoon.org/ell/inventory/omg/προπάππος
+<http://mmoon.org/ell/inventory/omg/προπάππος> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/προπροπάππος
+<http://mmoon.org/ell/inventory/omg/προπροπάππος> rdf:type owl:NamedIndividual ;
+                                                  <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/προΧ_n-προπροΧ_n> ;
+                                                  <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/προπάππος> .
+
+
+###  http://mmoon.org/ell/inventory/omg/προσ-
+<http://mmoon.org/ell/inventory/omg/προσ-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/προσδιοριστικός
+<http://mmoon.org/ell/inventory/omg/προσδιοριστικός> rdf:type owl:NamedIndividual ;
+                                                     <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i21> ;
+                                                     <http://purl.org/co/size> 7 .
+
+
+###  http://mmoon.org/ell/inventory/omg/ρωτώ
+<http://mmoon.org/ell/inventory/omg/ρωτώ> rdf:type owl:NamedIndividual ;
+                                          <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/εX_v-del_εX_v> ;
+                                          <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/ερωτώ> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ς
+<http://mmoon.org/ell/inventory/omg/ς> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/ση-
+<http://mmoon.org/ell/inventory/omg/ση-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/τ-
+<http://mmoon.org/ell/inventory/omg/τ-> rdf:type owl:NamedIndividual ;
+                                        <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> .
+
+
+###  http://mmoon.org/ell/inventory/omg/τελείωμα
+<http://mmoon.org/ell/inventory/omg/τελείωμα> rdf:type owl:NamedIndividual ,
+                                                       <http://purl.org/co/List> ;
+                                              <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i1> ;
+                                              <http://purl.org/co/size> 3 .
+
+
+###  http://mmoon.org/ell/inventory/omg/τελείωση
+<http://mmoon.org/ell/inventory/omg/τελείωση> rdf:type owl:NamedIndividual ,
+                                                       <http://purl.org/co/List> ;
+                                              <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i12> ;
+                                              <http://purl.org/co/size> 3 .
+
+
+###  http://mmoon.org/ell/inventory/omg/τελειω-
+<http://mmoon.org/ell/inventory/omg/τελειω-> rdf:type owl:NamedIndividual .
+
+
+###  http://mmoon.org/ell/inventory/omg/τελειωτικός
+<http://mmoon.org/ell/inventory/omg/τελειωτικός> rdf:type owl:NamedIndividual ,
+                                                          <http://purl.org/co/List> ;
+                                                 <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i8> ;
+                                                 <http://purl.org/co/size> 4 .
+
+
+###  http://mmoon.org/ell/inventory/omg/τη-
+<http://mmoon.org/ell/inventory/omg/τη-> rdf:type owl:NamedIndividual ;
+                                         <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> ;
+                                         <http://mmoon.org/ell/schema/omg/ell_is_affix-allomorph_to> <http://mmoon.org/ell/inventory/omg/τ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορ-
+<http://mmoon.org/ell/inventory/omg/χορ-> rdf:type owl:NamedIndividual ;
+                                          <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Masculine> ,
+                                                                                     <http://mmoon.org/core/Noun> ;
+                                          <http://mmoon.org/core/hasSense> <http://mmoon.org/ell/inventory/omg/dance> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορευ-
+<http://mmoon.org/ell/inventory/omg/χορευ-> rdf:type owl:NamedIndividual ;
+                                            <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/ευ-> ;
+                                            <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορευτ-
+<http://mmoon.org/ell/inventory/omg/χορευτ-> rdf:type owl:NamedIndividual ;
+                                             <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/τ-> ;
+                                             <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορευ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορευτής
+<http://mmoon.org/ell/inventory/omg/χορευτής> rdf:type owl:NamedIndividual ;
+                                              <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ς> ;
+                                              <http://mmoon.org/core/consistsOfStem> <http://mmoon.org/ell/inventory/omg/χορευτη-> ;
+                                              <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n> ;
+                                              <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/χορεύω> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορευτη-
+<http://mmoon.org/ell/inventory/omg/χορευτη-> rdf:type owl:NamedIndividual ;
+                                              <http://mmoon.org/ell/schema/omg/consistOfDerSuf> <http://mmoon.org/ell/inventory/omg/τη-> ;
+                                              <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορευ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορευτικ-
+<http://mmoon.org/ell/inventory/omg/χορευτικ-> rdf:type owl:NamedIndividual ,
+                                                        <http://mmoon.org/ell/schema/omg/StemOfASufStem> ;
+                                               <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ικ-> ;
+                                               <http://mmoon.org/ell/schema/omg/consistsOfStemOfASufStem> <http://mmoon.org/ell/inventory/omg/χορευτ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορευτικός
+<http://mmoon.org/ell/inventory/omg/χορευτικός> rdf:type owl:NamedIndividual ;
+                                                <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                                <http://mmoon.org/core/consistsOfStem> <http://mmoon.org/ell/inventory/omg/χορευτικ-> ;
+                                                <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj> ;
+                                                <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/χορευτής> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορεύω
+<http://mmoon.org/ell/inventory/omg/χορεύω> rdf:type owl:NamedIndividual ;
+                                            <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ω> ;
+                                            <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_n-X-ευ-_v> ;
+                                            <http://mmoon.org/core/isDerivedFrom> <http://mmoon.org/ell/inventory/omg/χορός> ;
+                                            <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/χορευ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/χορός
+<http://mmoon.org/ell/inventory/omg/χορός> rdf:type owl:NamedIndividual ;
+                                           <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/ος> ;
+                                           <http://mmoon.org/ell/schema/omg/consistsOfStemOfAWord> <http://mmoon.org/ell/inventory/omg/χορ-> .
+
+
+###  http://mmoon.org/ell/inventory/omg/ω
+<http://mmoon.org/ell/inventory/omg/ω> rdf:type owl:NamedIndividual ,
+                                                <http://mmoon.org/ell/schema/omg/ell_InfSuf> ;
+                                       <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/ImperfectiveAspect> ,
+                                                                                  <http://mmoon.org/core/Indicative> .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ία_n-X-ιά_n
@@ -9416,609 +10016,19 @@ owl:Thing rdf:type owl:Class .
 <http://mmoon.org/ell/schema/omg/Xέας_n-Xιάς_n> rdf:type owl:NamedIndividual .
 
 
+###  http://mmoon.org/ell/schema/omg/αναπροσδιορίζω
+<http://mmoon.org/ell/schema/omg/αναπροσδιορίζω> rdf:type owl:NamedIndividual ,
+                                                          <http://purl.org/co/List> ;
+                                                 <http://purl.org/co/item> <http://mmoon.org/ell/inventory/omg/i15> ;
+                                                 <http://purl.org/co/size> 6 .
+
+
 ###  http://mmoon.org/ell/schema/omg/εX_v-del_εX_v
 <http://mmoon.org/ell/schema/omg/εX_v-del_εX_v> rdf:type owl:NamedIndividual .
 
 
 ###  http://mmoon.org/ell/schema/omg/προΧ_n-προπροΧ_n
 <http://mmoon.org/ell/schema/omg/προΧ_n-προπροΧ_n> rdf:type owl:NamedIndividual .
-
-
-###  http://myontology/αναπροσδιορίζω
-<http://myontology/αναπροσδιορίζω> rdf:type owl:NamedIndividual ,
-                                            <http://purl.org/co/List> ;
-                                   <http://purl.org/co/item> <http://purl.org/co/i15> ;
-                                   <http://purl.org/co/size> 6 .
-
-
-###  http://purl.org/co#-ιζ-
-<http://purl.org/co#-ιζ-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co#-ισ-
-<http://purl.org/co#-ισ-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co#-μα-
-<http://purl.org/co#-μα-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co#-ση-
-<http://purl.org/co#-ση-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co#-τ-
-<http://purl.org/co#-τ-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/i1
-<http://purl.org/co/i1> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co/τελειω-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i2> ;
-                        <http://purl.org/co/index> 0 .
-
-
-###  http://purl.org/co/i10
-<http://purl.org/co/i10> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i11> .
-
-
-###  http://purl.org/co/i11
-<http://purl.org/co/i11> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> .
-
-
-###  http://purl.org/co/i12
-<http://purl.org/co/i12> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/τελειω-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i13> ;
-                         <http://purl.org/co/index> 0 .
-
-
-###  http://purl.org/co/i13
-<http://purl.org/co/i13> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co#-ση-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i14> .
-
-
-###  http://purl.org/co/i14
-<http://purl.org/co/i14> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/zeroMorph> .
-
-
-###  http://purl.org/co/i15
-<http://purl.org/co/i15> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/ανα-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i16> ;
-                         <http://purl.org/co/index> -3 .
-
-
-###  http://purl.org/co/i16
-<http://purl.org/co/i16> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/προσ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i17> .
-
-
-###  http://purl.org/co/i17
-<http://purl.org/co/i17> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/δι-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i18> .
-
-
-###  http://purl.org/co/i18
-<http://purl.org/co/i18> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/ορ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i19> .
-
-
-###  http://purl.org/co/i19
-<http://purl.org/co/i19> rdf:type owl:NamedIndividual ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co#-ιζ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i20> .
-
-
-###  http://purl.org/co/i2
-<http://purl.org/co/i2> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co#-μα-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i3> .
-
-
-###  http://purl.org/co/i20
-<http://purl.org/co/i20> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/itemContent> <http://mmoon.org/ell/inventory/omg/-ω> .
-
-
-###  http://purl.org/co/i21
-<http://purl.org/co/i21> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/προσ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i22> ;
-                         <http://purl.org/co/index> 1 .
-
-
-###  http://purl.org/co/i22
-<http://purl.org/co/i22> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/δι-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i23> .
-
-
-###  http://purl.org/co/i23
-<http://purl.org/co/i23> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co/ορ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i24> .
-
-
-###  http://purl.org/co/i24
-<http://purl.org/co/i24> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co#-ισ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i25> .
-
-
-###  http://purl.org/co/i25
-<http://purl.org/co/i25> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/itemContent> <http://purl.org/co#-τ-> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i26> .
-
-
-###  http://purl.org/co/i26
-<http://purl.org/co/i26> rdf:type owl:NamedIndividual ,
-                                  <http://purl.org/co/ListItem> ;
-                         <http://purl.org/co/nextItem> <http://purl.org/co/i27> .
-
-
-###  http://purl.org/co/i27
-<http://purl.org/co/i27> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/i3
-<http://purl.org/co/i3> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co/zeroMorph> .
-
-
-###  http://purl.org/co/i4
-<http://purl.org/co/i4> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co/απο-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i5> ;
-                        <http://purl.org/co/index> -1 .
-
-
-###  http://purl.org/co/i5
-<http://purl.org/co/i5> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co/τελειω-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i6> .
-
-
-###  http://purl.org/co/i6
-<http://purl.org/co/i6> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co#-μα-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i7> .
-
-
-###  http://purl.org/co/i7
-<http://purl.org/co/i7> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co/zeroMorph> .
-
-
-###  http://purl.org/co/i8
-<http://purl.org/co/i8> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co/τελειω-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i9> ;
-                        <http://purl.org/co/index> 0 .
-
-
-###  http://purl.org/co/i9
-<http://purl.org/co/i9> rdf:type owl:NamedIndividual ,
-                                 <http://purl.org/co/ListItem> ;
-                        <http://purl.org/co/itemContent> <http://purl.org/co#-τ-> ;
-                        <http://purl.org/co/nextItem> <http://purl.org/co/i10> .
-
-
-###  http://purl.org/co/zeroMorph
-<http://purl.org/co/zeroMorph> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/ανα-
-<http://purl.org/co/ανα-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/απο-
-<http://purl.org/co/απο-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/αποτελείωμα
-<http://purl.org/co/αποτελείωμα> rdf:type owl:NamedIndividual ,
-                                          <http://purl.org/co/List> ;
-                                 <http://purl.org/co/item> <http://purl.org/co/i4> ;
-                                 <http://purl.org/co/size> 4 .
-
-
-###  http://purl.org/co/δι-
-<http://purl.org/co/δι-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/ορ-
-<http://purl.org/co/ορ-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/προσ-
-<http://purl.org/co/προσ-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/προσδιοριστικός
-<http://purl.org/co/προσδιοριστικός> rdf:type owl:NamedIndividual ;
-                                     <http://purl.org/co/item> <http://purl.org/co/i21> ;
-                                     <http://purl.org/co/size> 7 .
-
-
-###  http://purl.org/co/τελείωμα
-<http://purl.org/co/τελείωμα> rdf:type owl:NamedIndividual ,
-                                       <http://purl.org/co/List> ;
-                              <http://purl.org/co/item> <http://purl.org/co/i1> ;
-                              <http://purl.org/co/size> 3 .
-
-
-###  http://purl.org/co/τελείωση
-<http://purl.org/co/τελείωση> rdf:type owl:NamedIndividual ,
-                                       <http://purl.org/co/List> ;
-                              <http://purl.org/co/item> <http://purl.org/co/i12> ;
-                              <http://purl.org/co/size> 3 .
-
-
-###  http://purl.org/co/τελειω-
-<http://purl.org/co/τελειω-> rdf:type owl:NamedIndividual .
-
-
-###  http://purl.org/co/τελειωτικός
-<http://purl.org/co/τελειωτικός> rdf:type owl:NamedIndividual ,
-                                          <http://purl.org/co/List> ;
-                                 <http://purl.org/co/item> <http://purl.org/co/i8> ;
-                                 <http://purl.org/co/size> 4 .
-
-
-###  http://www.myontology/προπροπάππος
-<http://www.myontology/προπροπάππος> rdf:type owl:NamedIndividual ;
-                                     <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/προΧ_n-προπροΧ_n> ;
-                                     <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#προπάππος> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#around
-:around rdf:type owl:NamedIndividual ,
-                 <http://mmoon.org/core/Sense> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#dance
-:dance rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#descriptive
-:descriptive rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#graph
-:graph rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#graphic
-:graphic rdf:type owl:NamedIndividual ,
-                  <http://mmoon.org/core/Sense> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#i28
-:i28 rdf:type owl:NamedIndividual ,
-              <http://purl.org/co/ListItem> ;
-     <http://purl.org/co/itemContent> <http://www.semanticweb.org/owl/owlapi/turtle#λίγο> ;
-     <http://purl.org/co/nextItem> :i29 .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#i29
-:i29 rdf:type owl:NamedIndividual ,
-              <http://purl.org/co/ListItem> ;
-     <http://purl.org/co/itemContent> <http://www.semanticweb.org/owl/owlapi/turtle#λίγο> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#relational
-:relational rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#road
-:road rdf:type owl:NamedIndividual ,
-               <http://mmoon.org/core/Sense> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#to_describe
-:to_describe rdf:type owl:NamedIndividual ,
-                      <http://mmoon.org/core/Sense> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#to_write
-:to_write rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#γράφος
-:γράφος rdf:type owl:NamedIndividual ;
-        :consistsOfInfSuf <http://mmoon.org/ell/inventory/omg/-ος> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#γράφω
-:γράφω rdf:type owl:NamedIndividual ;
-       :consistsOfInfSuf <http://mmoon.org/ell/inventory/omg/-ω> ;
-       :consistsOfStemOfAWord :γραφ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#γραφ-
-:γραφ- rdf:type owl:NamedIndividual ,
-                :ell_StemOfAPrefStem ,
-                :ell_StemOfASufStem ,
-                :ell_StemOfAWord ;
-       <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Verb> ;
-       <http://mmoon.org/core/hasSense> :to_write .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#γραφικ-
-:γραφικ- rdf:type owl:NamedIndividual ;
-         <http://mmoon.org/core/hasSense> :graphic ;
-         :consistsOfDerSuf <http://mmoon.org/ell/inventory/omg/-ικ-> ;
-         :consistsOfStemOfASufStem :γραφ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#γραφικός
-:γραφικός rdf:type owl:NamedIndividual ,
-                   <http://mmoon.org/core/DerivedWord> ;
-          :consistsOfInfSuf <http://mmoon.org/ell/inventory/omg/-ος> ;
-          :consistsOfStemOfAWord :γραφικ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#δρομ-
-:δρομ- rdf:type owl:NamedIndividual ,
-                :ell_StemOfAWord ;
-       <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Noun> ;
-       <http://mmoon.org/core/hasSense> :road .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#δρόμος
-:δρόμος rdf:type owl:NamedIndividual ;
-        :consistsOfInfSuf <http://mmoon.org/ell/inventory/omg/-ος> .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περι-
-:περι- rdf:type owl:NamedIndividual ,
-                <http://mmoon.org/core/Prefix> ;
-       <http://mmoon.org/core/hasSense> :around .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περιγράφω
-:περιγράφω rdf:type owl:NamedIndividual ;
-           :consistsOfInfSuf <http://mmoon.org/ell/inventory/omg/-ω> ;
-           :consistsOfStemOfAWord :περιγραφ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περιγραφ-
-:περιγραφ- rdf:type owl:NamedIndividual ;
-           <http://mmoon.org/core/hasSense> :to_describe ;
-           :consistsOfDerPref :περι- ;
-           :consistsOfStemOfAPrefStem :γραφ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περιγραφικ-
-:περιγραφικ- rdf:type owl:NamedIndividual ;
-             <http://mmoon.org/core/hasSense> :descriptive ;
-             :consistsOfDerSuf <http://mmoon.org/ell/inventory/omg/-ικ-> ;
-             :consistsOfStemOfASufStem :περιγραφ- .
-
-
-###  http://www.semanticweb.org/nikvasil/ontologies/2022/10/untitled-ontology-67#περιγραφικός
-:περιγραφικός rdf:type owl:NamedIndividual ;
-              :consistsOfInfSuf <http://mmoon.org/ell/inventory/omg/-ος> ;
-              :consistsOfStemOfAWord :περιγραφικ- .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπάω
-<http://www.semanticweb.org/owl/owlapi/turtle#αγαπάω> rdf:type owl:NamedIndividual ;
-                                                      <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ώ_v-X-άω_v> ;
-                                                      <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#αγαπώ> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#αγαπώ
-<http://www.semanticweb.org/owl/owlapi/turtle#αγαπώ> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ανάσα
-<http://www.semanticweb.org/owl/owlapi/turtle#ανάσα> rdf:type owl:NamedIndividual ;
-                                                     <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-αινω_v-X-α_n> ;
-                                                     <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#ανασαίνω> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ανασαίνω
-<http://www.semanticweb.org/owl/owlapi/turtle#ανασαίνω> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#βασιλέας
-<http://www.semanticweb.org/owl/owlapi/turtle#βασιλέας> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#βασιλιάς
-<http://www.semanticweb.org/owl/owlapi/turtle#βασιλιάς> rdf:type owl:NamedIndividual ;
-                                                        <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/Xέας_n-Xιάς_n> ;
-                                                        <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#βασιλέας> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ερωτώ
-<http://www.semanticweb.org/owl/owlapi/turtle#ερωτώ> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#θέμα
-<http://www.semanticweb.org/owl/owlapi/turtle#θέμα> rdf:type owl:NamedIndividual ;
-                                                    <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ση_n-X-μα_n> ;
-                                                    <http://mmoon.org/ell/schema/omg/bidirectionalDerivation> <http://www.semanticweb.org/owl/owlapi/turtle#θέση> ;
-                                                    <http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> <http://www.semanticweb.org/owl/owlapi/turtle#θέση> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#θέση
-<http://www.semanticweb.org/owl/owlapi/turtle#θέση> rdf:type owl:NamedIndividual ;
-                                                    <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-μα_n-X-ση_n> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#λέω
-<http://www.semanticweb.org/owl/owlapi/turtle#λέω> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#λίγο
-<http://www.semanticweb.org/owl/owlapi/turtle#λίγο> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#λίγο-λίγο
-<http://www.semanticweb.org/owl/owlapi/turtle#λίγο-λίγο> rdf:type owl:NamedIndividual ;
-                                                         <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_adv-XX_adv> ;
-                                                         <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#λίγο> ;
-                                                         <http://purl.org/co/item> :i28 ,
-                                                                                   :i29 .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#νομικός1
-<http://www.semanticweb.org/owl/owlapi/turtle#νομικός1> rdf:type owl:NamedIndividual ;
-                                                        <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#νόμος> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#νομικός2
-<http://www.semanticweb.org/owl/owlapi/turtle#νομικός2> rdf:type owl:NamedIndividual ;
-                                                        <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ος_adj-X-ος_n> ;
-                                                        <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#νομικός1> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#νόμος
-<http://www.semanticweb.org/owl/owlapi/turtle#νόμος> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ξε-
-<http://www.semanticweb.org/owl/owlapi/turtle#ξε-> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ξελέω
-<http://www.semanticweb.org/owl/owlapi/turtle#ξελέω> rdf:type owl:NamedIndividual ;
-                                                     <http://mmoon.org/core/consistsOfAffix> <http://www.semanticweb.org/owl/owlapi/turtle#ξε-> ;
-                                                     <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_v-ξε-X_v> ;
-                                                     <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#λέω> ;
-                                                     <http://www.semanticweb.org/owl/owlapi/turtle#ell_consistsOfWord> <http://www.semanticweb.org/owl/owlapi/turtle#λέω> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#οδηγός
-<http://www.semanticweb.org/owl/owlapi/turtle#οδηγός> rdf:type owl:NamedIndividual ;
-                                                      <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n> ;
-                                                      <http://mmoon.org/ell/schema/omg/bidirectionalDerivation> <http://www.semanticweb.org/owl/owlapi/turtle#οδηγώ> ;
-                                                      <http://mmoon.org/ell/schema/omg/ell_bidirectionalDerivation> <http://www.semanticweb.org/owl/owlapi/turtle#οδηγώ> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#οδηγώ
-<http://www.semanticweb.org/owl/owlapi/turtle#οδηγώ> rdf:type owl:NamedIndividual ;
-                                                     <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ος_n-Χ-ω_v> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#παρα-
-<http://www.semanticweb.org/owl/owlapi/turtle#παρα-> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#παραλέω
-<http://www.semanticweb.org/owl/owlapi/turtle#παραλέω> rdf:type owl:NamedIndividual ;
-                                                       <http://mmoon.org/core/consistsOfAffix> <http://www.semanticweb.org/owl/owlapi/turtle#παρα-> ;
-                                                       <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_v-παρα-X_v> ;
-                                                       <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#λέω> ;
-                                                       <http://www.semanticweb.org/owl/owlapi/turtle#ell_consistsOfWord> <http://www.semanticweb.org/owl/owlapi/turtle#λέω> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#πονηρία
-<http://www.semanticweb.org/owl/owlapi/turtle#πονηρία> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#πονηριά
-<http://www.semanticweb.org/owl/owlapi/turtle#πονηριά> rdf:type owl:NamedIndividual ;
-                                                       <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ία_n-X-ιά_n> ;
-                                                       <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#πονηρία> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#προπάππος
-<http://www.semanticweb.org/owl/owlapi/turtle#προπάππος> rdf:type owl:NamedIndividual .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#ρωτώ
-<http://www.semanticweb.org/owl/owlapi/turtle#ρωτώ> rdf:type owl:NamedIndividual ;
-                                                    <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/εX_v-del_εX_v> ;
-                                                    <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#ερωτώ> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορ-
-<http://www.semanticweb.org/owl/owlapi/turtle#χορ-> rdf:type owl:NamedIndividual ;
-                                                    <http://mmoon.org/core/grammaticalMeaning> <http://mmoon.org/core/Masculine> ,
-                                                                                               <http://mmoon.org/core/Noun> ;
-                                                    <http://mmoon.org/core/hasSense> :dance .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορευ-
-<http://www.semanticweb.org/owl/owlapi/turtle#χορευ-> rdf:type owl:NamedIndividual ;
-                                                      :consistsOfDerSuf <http://mmoon.org/ell/inventory/omg/-ευ-> ;
-                                                      :consistsOfStemOfASufStem <http://www.semanticweb.org/owl/owlapi/turtle#χορ-> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτ-
-<http://www.semanticweb.org/owl/owlapi/turtle#χορευτ-> rdf:type owl:NamedIndividual ;
-                                                       :consistsOfDerSuf <http://mmoon.org/ell/inventory/omg/-τ-> ;
-                                                       :consistsOfStemOfASufStem <http://www.semanticweb.org/owl/owlapi/turtle#χορευ-> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτής
-<http://www.semanticweb.org/owl/owlapi/turtle#χορευτής> rdf:type owl:NamedIndividual ;
-                                                        <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ς> ;
-                                                        <http://mmoon.org/core/consistsOfStem> <http://www.semanticweb.org/owl/owlapi/turtle#χορευτη-> ;
-                                                        <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n> ;
-                                                        <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#χορεύω> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτη-
-<http://www.semanticweb.org/owl/owlapi/turtle#χορευτη-> rdf:type owl:NamedIndividual ;
-                                                        :consistsOfDerSuf <http://mmoon.org/ell/inventory/omg/-τη-> ;
-                                                        :consistsOfStemOfASufStem <http://www.semanticweb.org/owl/owlapi/turtle#χορευ-> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτικ-
-<http://www.semanticweb.org/owl/owlapi/turtle#χορευτικ-> rdf:type owl:NamedIndividual ,
-                                                                  :ell_StemOfASufStem ;
-                                                         <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ικ-> ;
-                                                         :consistsOfStemOfASufStem <http://www.semanticweb.org/owl/owlapi/turtle#χορευτ-> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορευτικός
-<http://www.semanticweb.org/owl/owlapi/turtle#χορευτικός> rdf:type owl:NamedIndividual ;
-                                                          <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
-                                                          <http://mmoon.org/core/consistsOfStem> <http://www.semanticweb.org/owl/owlapi/turtle#χορευτικ-> ;
-                                                          <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj> ;
-                                                          <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#χορευτής> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορεύω
-<http://www.semanticweb.org/owl/owlapi/turtle#χορεύω> rdf:type owl:NamedIndividual ;
-                                                      <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ω> ;
-                                                      <http://mmoon.org/core/derivationalRelation> <http://mmoon.org/ell/schema/omg/X_n-X-ευ-_v> ;
-                                                      <http://mmoon.org/core/isDerivedFrom> <http://www.semanticweb.org/owl/owlapi/turtle#χορός> ;
-                                                      :consistsOfStemOfAWord <http://www.semanticweb.org/owl/owlapi/turtle#χορευ-> .
-
-
-###  http://www.semanticweb.org/owl/owlapi/turtle#χορός
-<http://www.semanticweb.org/owl/owlapi/turtle#χορός> rdf:type owl:NamedIndividual ;
-                                                     <http://mmoon.org/core/consistsOfAffix> <http://mmoon.org/ell/inventory/omg/-ος> ;
-                                                     :consistsOfStemOfAWord <http://www.semanticweb.org/owl/owlapi/turtle#χορ-> .
 
 
 #################################################################
@@ -10057,9 +10067,9 @@ The term stems from Latin grammar. In Latin and some other languages. the ablati
 
 
 <http://mmoon.org/core/Accusative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Accusative> ;
+                                   rdfs:label "Accusative"@en ;
                                    <http://mmoon.org/core/definition> """The accusative is the case that, in the accusative system of fundamental relations, marks the direct object and sometimes other syntactic functions, too.
-[Christian Lehmann, under \"accusative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                   rdfs:label "Accusative"@en .
+[Christian Lehmann, under \"accusative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
 <http://mmoon.org/core/ActionNominalizer> rdfs:label "Action Nominalizer"@en ;
@@ -10100,8 +10110,8 @@ It occurs in Finno-Ugric languages.
                                    <http://mmoon.org/core/definition> "The admonitive mood expresses warnings, encouragement or recommendations."@de .
 
 
-<http://mmoon.org/core/Adposition> rdfs:label "Adposition"@en ;
-                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Adposition> ;
+<http://mmoon.org/core/Adposition> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Adposition> ;
+                                   rdfs:label "Adposition"@en ;
                                    <http://mmoon.org/core/definition> "An adposition is a more or less grammaticalized relator word that takes a noun phrase as a complement and forms with it an adposition phrase. Its meaning is the grammatical or semantic relation between the dependent noun phrase and whatever the adposition phrase depends on.  [Christian Lehmann, under \"adposition\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
@@ -10127,9 +10137,9 @@ The unit modified by an adverb is typically a clause, but may be any other categ
                                          rdfs:label "Agent Nominalizer"@en .
 
 
-<http://mmoon.org/core/Agentive> <http://mmoon.org/core/definition> """The agentive is the case of the agent in a passive construction.
-[Christian Lehmann, under \"agentive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                 rdfs:label "Agentive"@en .
+<http://mmoon.org/core/Agentive> rdfs:label "Agentive"@en ;
+                                 <http://mmoon.org/core/definition> """The agentive is the case of the agent in a passive construction.
+[Christian Lehmann, under \"agentive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
 <http://mmoon.org/core/Alienable> <http://mmoon.org/core/definition> """An alienable noun is a noun that a) refers to something viewed as not permanently or necessarily possessed, and b) is thus not obligatorily expressed as possessed in a language that also has inalienable nouns. (Crystal 1980:20; McKaughan and Loving 1973:31)
@@ -10142,10 +10152,10 @@ The unit modified by an adverb is typically a clause, but may be any other categ
                                  <http://mmoon.org/core/definition> """The allative is a case which expresses spatial orientation, esp. motion, to or toward the referent of its carrier.
 [Christian Lehmann, under \"aditive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
                                  rdfs:label "Allative"@en ;
+                                 <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#AllativeCase> ;
                                  <http://mmoon.org/core/usageNote> """“Allative“ has been used in studies of Finnish and Eskimo.
 The synonym „aditive“ is used especially of Basque.
-[Christian Lehmann, under \"aditive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                 <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#AllativeCase> .
+[Christian Lehmann, under \"aditive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
 <http://mmoon.org/core/Animal> rdfs:label "Animal"@en ;
@@ -10165,8 +10175,8 @@ The synonym „aditive“ is used especially of Basque.
 
 
 <http://mmoon.org/core/Anticausative> <http://mmoon.org/core/definition> "A verb is deagentive iff it is derived by a valency decrease which deletes the agent from the participant frame of the underlying base. The situation designated by the verb happens by itself, without the intervention of an agent. [Christian Lehmann, under \"anticausativity\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                      rdfs:label "Anticausative"@en ;
                                       <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Anticausative> ;
+                                      rdfs:label "Anticausative"@en ;
                                       <http://mmoon.org/core/example> """Svan:
 \"adgäri\" 'kills' -> \"idgäri\" 'dies'
 \"ibne\" 'begins(tr.)' -> \"ibni\" 'begins (itr.)'
@@ -10203,9 +10213,9 @@ The applicative 2 is a (normally derivational) verbal category which marks the v
 [Christian Lehmann, under \"applicative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@de .
 
 
-<http://mmoon.org/core/Article> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Article> ;
-                                <http://mmoon.org/core/example> """The definite article \"the\" and the indefinite article \"a/an\" in English.
+<http://mmoon.org/core/Article> <http://mmoon.org/core/example> """The definite article \"the\" and the indefinite article \"a/an\" in English.
 [Christian Lehmann, under \"article\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Article> ;
                                 rdfs:label "Article"@en ;
                                 <http://mmoon.org/core/definition> "An article is a highly grammaticalized determiner that expresses one or a few of the basic determinations (definite/indefinite, generic/specific, given/new). [Christian Lehmann, under \"article\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
@@ -10216,8 +10226,8 @@ The applicative 2 is a (normally derivational) verbal category which marks the v
 
 
 <http://mmoon.org/core/Attenuation> rdfs:label "Attenuation"@en ;
-                                    <http://mmoon.org/core/usageNote> "Attenuation is the verbal or adjectival counterpart to diminution."@en ;
                                     <http://mmoon.org/core/definition> "The attenuation of a verb or adjective is its derivational modification by concepts such as 'a little, lightly'. [Christian Lehmann, under \"attenuation\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                    <http://mmoon.org/core/usageNote> "Attenuation is the verbal or adjectival counterpart to diminution."@en ;
                                     <http://mmoon.org/core/example> """lachen -> lächeln,
 [Christian Lehmann, under \"attenuation\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@de ,
                                                                     """yellow -> yellow-ish
@@ -10331,9 +10341,9 @@ Since the causer occupies the subject slot of the causative verb and the base ve
 
 
 <http://mmoon.org/core/Complementizer> <http://mmoon.org/core/definition> "A complementizer is a subordinator that marks a complement clause.  [Christian Lehmann, under \"complementizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                       rdfs:label "Complementizer"@en ;
                                        <http://mmoon.org/core/example> """“that“ in \"I know that he is here\", \"I refuted the supposition that he is here\", or \"I am doubtful that he is here\".
-[Christian Lehmann, under \"complementizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
+[Christian Lehmann, under \"complementizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                       rdfs:label "Complementizer"@en .
 
 
 <http://mmoon.org/core/CompletiveAspect> <http://mmoon.org/core/definition> "an aspect encoding a situation as completed. The term is applicable, if a language has grammaticalized two oppositions, „+/-completive“ and „+/-perfective“. Otherwise, the term „perfective“ is to be used. [Christian Lehmann, under \"completive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
@@ -10341,9 +10351,9 @@ Since the causer occupies the subject slot of the causative verb and the base ve
                                          <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#CompletiveAspect> .
 
 
-<http://mmoon.org/core/ConativeAktionsart> <http://mmoon.org/core/definition> "The conative is a verbal aspect or aktionsart which means that the agent of the situation tries to achieve the action desginated by the verb stem. [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                           <http://mmoon.org/core/example> """\"John kicked at the wall.\" [implying that he did not hit it]
+<http://mmoon.org/core/ConativeAktionsart> <http://mmoon.org/core/example> """\"John kicked at the wall.\" [implying that he did not hit it]
 [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                           <http://mmoon.org/core/definition> "The conative is a verbal aspect or aktionsart which means that the agent of the situation tries to achieve the action desginated by the verb stem. [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                            rdfs:label "Conative Aktionsart"@en .
 
 
@@ -10353,9 +10363,9 @@ Since the causer occupies the subject slot of the causative verb and the base ve
 [Christian Lehmann, under \"conative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
-<http://mmoon.org/core/Conditional> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#ConditionalMood> ;
-                                    <http://mmoon.org/core/example> """\"I wouldn’t do it\" (if some relevant condition were fulfilled, e.g. if I were you).
+<http://mmoon.org/core/Conditional> <http://mmoon.org/core/example> """\"I wouldn’t do it\" (if some relevant condition were fulfilled, e.g. if I were you).
  [Christian Lehmann, under \"conditional\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#ConditionalMood> ;
                                     rdfs:label "Conditional"@en ;
                                     <http://mmoon.org/core/definition> "The conditional is a mood marking a sentence that is, or is construed as, the apodosis of an unreal condition. [Christian Lehmann, under \"conditional\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
@@ -10418,9 +10428,9 @@ Continuitas situationis is the property of being continuous 1.
                                 rdfs:label "Converb"@en .
 
 
-<http://mmoon.org/core/Copula> rdfs:label "Copula"@en ;
-                               <http://mmoon.org/core/definition> """A copula is a bivalent intransitive verb which converts a nominal into a verbal predicate.
+<http://mmoon.org/core/Copula> <http://mmoon.org/core/definition> """A copula is a bivalent intransitive verb which converts a nominal into a verbal predicate.
 It thus „links“ a predicate nominal to the subject. [Christian Lehmann, under \"copula\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                               rdfs:label "Copula"@en ;
                                <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Copula> .
 
 
@@ -10459,8 +10469,8 @@ More generally, the dativus ethicus is such an adjunct.
 
 
 <http://mmoon.org/core/DeclarativeMood> rdfs:label "Declarative Mood"@en ;
-                                        <http://mmoon.org/core/definition> "Declarative mood is an epistemic mood that signals that the proposition expressed by a speaker’s utterance is offered as an unqualified statement of fact. (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsDeclarativeMood.htm)"@en ;
-                                        <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#DeclarativeMood> .
+                                        <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#DeclarativeMood> ;
+                                        <http://mmoon.org/core/definition> "Declarative mood is an epistemic mood that signals that the proposition expressed by a speaker’s utterance is offered as an unqualified statement of fact. (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsDeclarativeMood.htm)"@en .
 
 
 <http://mmoon.org/core/Deductive> <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/DeductiveEvidentiality#examples> ;
@@ -10526,9 +10536,9 @@ The carrier of a destinative typically includes nominalized verb forms or even s
 <http://mmoon.org/core/Diminution> <http://mmoon.org/core/definition> "The diminution of a noun is its derivational modification by the concept 'little'. Possible connotations include 'cute, dear, weak, unimportant, contemptuous'. [Christian Lehmann, under \"diminution\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                    <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Diminuitive> ;
                                    <http://mmoon.org/core/example> "Kind --> Kind-lein"@de ;
-                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/linguistics/gold/DiminuativeSize> ;
                                    <http://mmoon.org/core/usageNote> "Dminution is the nominal counterpart to attenuation."@en ;
-                                   rdfs:label "Diminution"@en .
+                                   rdfs:label "Diminution"@en ;
+                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/linguistics/gold/DiminuativeSize> .
 
 
 <http://mmoon.org/core/DirectCase> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#DirectCase> ;
@@ -10652,9 +10662,9 @@ generic stative local or temporal function of its carrier.
 
 
 <http://mmoon.org/core/Factive> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#FactiveCase> ;
+                                rdfs:label "Factive"@en ;
                                 <http://mmoon.org/core/usageNote> """the term is used in studies of Japanese and Finno-Ugric languages.
 [Christian Lehmann, under \"factive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                rdfs:label "Factive"@en ;
                                 <http://mmoon.org/core/definition> """The factive is the case of the entity resulting from the verb’s (transformative) action.
 [Christian Lehmann, under \"factive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
@@ -10725,9 +10735,9 @@ particle 2: A particle (particula s.s.), or particle proper, is a particle (part
 
 
 <http://mmoon.org/core/FuturePerfect> rdfs:label "Future Perfect"@en ;
+                                      <http://mmoon.org/core/definition> "an absolute-relative tense that refers to a time located before a contextually determined temporal reference point which in turn must be located in the future relative to the moment of utterance.  [Christian Lehmann, under \"future perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                       <http://mmoon.org/core/example> """future perfect \"will have\" in \"By that time, he will have returned\".
 [Christian Lehmann, under \"future perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                      <http://mmoon.org/core/definition> "an absolute-relative tense that refers to a time located before a contextually determined temporal reference point which in turn must be located in the future relative to the moment of utterance.  [Christian Lehmann, under \"future perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                       <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#FuturePerfect> .
 
 
@@ -10758,8 +10768,8 @@ Examples:
 <http://mmoon.org/core/HabitualAspect> <http://mmoon.org/core/definition> "Habitual is an imperfective that expresses the occurrence of an event or state as a characteristic of a period of time. [Christian Lehmann, under \"habitual\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                        <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/HabitualAspect#examples> ;
                                        rdfs:label "Habitual Aspect"@en ;
-                                       <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#HabitualAspect> ;
-                                       <http://mmoon.org/core/example> "The English expression „used to“ in „He used to live here“.  [Christian Lehmann, under \"habitual\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
+                                       <http://mmoon.org/core/example> "The English expression „used to“ in „He used to live here“.  [Christian Lehmann, under \"habitual\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                       <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#HabitualAspect> .
 
 
 <http://mmoon.org/core/HesternalPast> <http://mmoon.org/core/definition> "a past tense that refers to a time located somewhere in the span beginning with the period defined culturally as ‚yesterday’ and extending back through some period that is considered nonremote.  [Christian Lehmann, under \"hesternal past\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
@@ -10835,8 +10845,8 @@ The imperative in the strict sense is of second person. The imperative in the wi
                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Imperfect> .
 
 
-<http://mmoon.org/core/ImperfectiveAspect> <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#ImperfectiveAspect> ;
-                                           rdfs:label "Imperfective Aspect"@en ;
+<http://mmoon.org/core/ImperfectiveAspect> rdfs:label "Imperfective Aspect"@en ;
+                                           <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#ImperfectiveAspect> ;
                                            <http://mmoon.org/core/definition> """An imperfective 1 verb is one which views a situation from inside, not seeing its temporal borders, thus providing a partial view of it.
 The imperfective 2 is the imperfective 1 aspect. [Christian Lehmann, under \"imperfective\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
                                            <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/ImperfectiveAspect#examples> .
@@ -10876,8 +10886,8 @@ Typical properties of the relevant kind are the obligatory government of a posse
 
 <http://mmoon.org/core/InceptiveAspect> <http://mmoon.org/core/externalDefinitionDesc> <http://purl.org/olia/olia.owl#InceptiveAspect> ;
                                         <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/InceptiveAspect#examples> ;
-                                        rdfs:label "Inceptive Aspect"@en ;
-                                        <http://mmoon.org/core/definition> "InceptiveAspect, also called the ingressive, encodes the beginning portion of some event [Bybee 1985: 147, 149; Payne 1997: 240; Bhat 1999: 176]."@en .
+                                        <http://mmoon.org/core/definition> "InceptiveAspect, also called the ingressive, encodes the beginning portion of some event [Bybee 1985: 147, 149; Payne 1997: 240; Bhat 1999: 176]."@en ;
+                                        rdfs:label "Inceptive Aspect"@en .
 
 
 <http://mmoon.org/core/Inchoative> <http://mmoon.org/core/definition> """The inchoative is the aktionsart of a durative(-terminative) verb derived from a stative base. It designates transition into the state designated by the base.
@@ -10886,8 +10896,8 @@ Its application in a language is sometimes so general that it is a general devic
                                    rdfs:label "Inchoative"@en .
 
 
-<http://mmoon.org/core/Inclusive> <http://mmoon.org/core/definition> "A [...] form is inclusive iff it refers to a group including the addressee. [Christian Lehmann, under \"inclusive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                  rdfs:label "Inclusive"@en ;
+<http://mmoon.org/core/Inclusive> rdfs:label "Inclusive"@en ;
+                                  <http://mmoon.org/core/definition> "A [...] form is inclusive iff it refers to a group including the addressee. [Christian Lehmann, under \"inclusive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Inclusive> ;
                                   <http://mmoon.org/core/usageNote> """The inclusive value of the clusivity category  tends to occur in combination with values of the number or/and person categories.
 For the sake of consistency accross MMoOn morpheme inventories person and number values must be assigned seperately to morphs exhibiting this combination of category values. Hence, values such as \"first person inclusive\" are not provided under the clusivity category."""@en .
@@ -11023,11 +11033,11 @@ An intransitive verb is not necessarily monovalent, as it can take other kinds o
 
 
 <http://mmoon.org/core/Introversion> rdfs:label "Introversion"@en ;
-                                     <http://mmoon.org/core/definition> """A verb is introversive iff it is derived from a transitive verb by blocking of the undergoer position.
-Introversion is an intransitivation which suppresses the direct object slot of the base. [Christian Lehmann, under \"introversion\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
                                      <http://mmoon.org/core/example> """\"sobaka kusaet proxozhego\" 'the dog bites a by-passer' ->
 \"sobaka ksaetsja\" 'the dog bites'.
-[Christian Lehmann, under \"introversion\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@ru .
+[Christian Lehmann, under \"introversion\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@ru ;
+                                     <http://mmoon.org/core/definition> """A verb is introversive iff it is derived from a transitive verb by blocking of the undergoer position.
+Introversion is an intransitivation which suppresses the direct object slot of the base. [Christian Lehmann, under \"introversion\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
 <http://mmoon.org/core/Irrealis> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#IrrealisMood> ;
@@ -11060,9 +11070,9 @@ The notion will normally be relevant only if there is an iterative derivation. [
 
 
 <http://mmoon.org/core/Lative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#LativeCase> ;
-                               rdfs:label "Lative"@en ;
                                <http://mmoon.org/core/definition> """A lative is a case that expresses motion with respect to the referent of its carrier.
 [Christian Lehmann, under \"lative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                               rdfs:label "Lative"@en ;
                                <http://mmoon.org/core/usageNote> """This term is used especially in Finno-Ugric grammar.
 [Christian Lehmann, under \"lative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
@@ -11109,8 +11119,8 @@ The notion will normally be relevant only if there is an iterative derivation. [
 <http://mmoon.org/core/Masculine> <http://mmoon.org/core/definition> """Masculine gender is a grammatical gender that marks nouns having human or animal male referents, and often marks nouns having referents that do not have distinctions of sex.
 (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsMasculineGender.htm)"""@en ;
                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Masculine> ;
-                                  <http://mmoon.org/core/externalDefinitionDesc> "The masculine is a gender such that if born by an animate noun, this typically designates a male being.  [Christian Lehmann, under \"masculine\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en ;
-                                  rdfs:label "Masculine"@en .
+                                  rdfs:label "Masculine"@en ;
+                                  <http://mmoon.org/core/externalDefinitionDesc> "The masculine is a gender such that if born by an animate noun, this typically designates a male being.  [Christian Lehmann, under \"masculine\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en .
 
 
 <http://mmoon.org/core/MaterialAdjectivizer> <http://mmoon.org/core/definition> "An adjective which is derived from a noun denoting some kind of material and means 'being made of this material'."@en ;
@@ -11166,9 +11176,9 @@ The operator of negation is the negator.
                                  rdfs:label "Negation"@en .
 
 
-<http://mmoon.org/core/Neuter> <http://mmoon.org/core/definition> """Neuter gender is a grammatical gender that includes those nouns having referents which do not have distinctions of sex, and often includes some which do have a natural sex distinction.
+<http://mmoon.org/core/Neuter> <http://mmoon.org/core/externalDefinitionDesc> "The neuter is that gender of a three-gender system which is born by propositions and typically not born by animate nouns. [Christian Lehmann, under \"neuter\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en ;
+                               <http://mmoon.org/core/definition> """Neuter gender is a grammatical gender that includes those nouns having referents which do not have distinctions of sex, and often includes some which do have a natural sex distinction.
 (http://www-01.sil.org/linguistics/GlossaryOflinguisticTerms/WhatIsNeuterGender.htm)"""@en ;
-                               <http://mmoon.org/core/externalDefinitionDesc> "The neuter is that gender of a three-gender system which is born by propositions and typically not born by animate nouns. [Christian Lehmann, under \"neuter\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en ;
                                rdfs:label "Neuter"@en ;
                                <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Neuter> .
 
@@ -11326,8 +11336,8 @@ The passive can generally only be formed from agentive verbs. [Christian Lehmann
 
 
 <http://mmoon.org/core/Paucal> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#Paucal> ;
-                               <http://mmoon.org/core/definition> "The paucal is a number that forms a subset of 'few' members of the designated class. The exact cardinality may vary contextually, but must be more than one and must not be unlimited. [Christian Lehmann, under \"paucal\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en ;
-                               rdfs:label "Paucal"@en .
+                               rdfs:label "Paucal"@en ;
+                               <http://mmoon.org/core/definition> "The paucal is a number that forms a subset of 'few' members of the designated class. The exact cardinality may vary contextually, but must be more than one and must not be unlimited. [Christian Lehmann, under \"paucal\" at http://linguistik.uni-regensburg.de:8080/lido/Lido ]"@en .
 
 
 <http://mmoon.org/core/Perfect> <http://mmoon.org/core/definition> "The perfect is a tense encoding present relevance of the result of a situation that terminated in the past. With telic verbs, it indicates that the result state still holds.  [Christian Lehmann, under \"perfect\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
@@ -11345,8 +11355,8 @@ The perfective 2 is the perfective 1 aspect. [Christian Lehmann, under \"perfect
 
 <http://mmoon.org/core/Perlative> <http://mmoon.org/core/definition> """The perlative is a case expression spatial orientation, esp. motion, through or by the referent of its carrier.
 [Christian Lehmann, under \"perlative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                  <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#PerlativeCase> ;
-                                  rdfs:label "Perlative"@en .
+                                  rdfs:label "Perlative"@en ;
+                                  <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#PerlativeCase> .
 
 
 <http://mmoon.org/core/PersonNominalizer> rdfs:label "Person Nominalizer"@en ;
@@ -11422,8 +11432,8 @@ The possessive pronoun is normally a modifier to a head noun that represents the
                                   <http://mmoon.org/core/definition> "The potential is a mood or modality that expresses that the situation designated may be realized. [Christian Lehmann, under \"potential\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
-<http://mmoon.org/core/Precative> rdfs:label "Precative"@en ;
-                                  <http://mmoon.org/core/definition> "The precative is a mood encoding requests. [Christian Lehmann, under \"precative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+<http://mmoon.org/core/Precative> <http://mmoon.org/core/definition> "The precative is a mood encoding requests. [Christian Lehmann, under \"precative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                  rdfs:label "Precative"@en ;
                                   <http://mmoon.org/core/example> """Sanskrit:
 \"bhav-ati\" 'becomes' - \"bhu-ya-t\" 'may become'.
 [Christian Lehmann, under \"precative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@sa .
@@ -11465,9 +11475,9 @@ The possessive pronoun is normally a modifier to a head noun that represents the
 
 
 <http://mmoon.org/core/Processive> rdfs:label "Processive"@en ;
-                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/linguistics/gold/Versive> ;
                                    <http://mmoon.org/core/definition> """The processive is a derivation which converts a stative base (an adjective or a noun) meaning X into a verb meaning 'be/become/act as X'.
-[Christian Lehmann, under \"processive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
+[Christian Lehmann, under \"processive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                   <http://mmoon.org/core/externalDefinition> <http://purl.org/linguistics/gold/Versive> .
 
 
 <http://mmoon.org/core/ProgressiveAspect> rdfs:label "Progressive Aspect"@en ;
@@ -11523,8 +11533,8 @@ The possessive pronoun is normally a modifier to a head noun that represents the
                                           <http://mmoon.org/core/definition> "an aspect encoding a state of being about to do something in future situation (as English „going to“ in „Bill is going to throw himself off the cliff“, a statement of Bill’s present state, true irrespective of whether he is stopped or not). [Christian Lehmann, under \"prospective\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
-<http://mmoon.org/core/Punctual> rdfs:label "Punctual"@en ;
-                                 <http://mmoon.org/core/definition> "With respect to telicity, there are two alternative conceptions of a punctual situation. On the momentary view, it is bilateral telic. This implies that start and end of the situation are distinct and that there is a moment between them. On the transgressive view, start and end of the punctual situation coincide. It consists in the transition from a situation preceding it to a situation following it and thus has no extension in time. [Christian Lehmann, under \"punctual\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
+<http://mmoon.org/core/Punctual> <http://mmoon.org/core/definition> "With respect to telicity, there are two alternative conceptions of a punctual situation. On the momentary view, it is bilateral telic. This implies that start and end of the situation are distinct and that there is a moment between them. On the transgressive view, start and end of the punctual situation coincide. It consists in the transition from a situation preceding it to a situation following it and thus has no extension in time. [Christian Lehmann, under \"punctual\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                 rdfs:label "Punctual"@en .
 
 
 <http://mmoon.org/core/Quality> <http://mmoon.org/core/definition> "A derivational meaning resulting in the meaning 'to have the quality of X'."@en ;
@@ -11549,9 +11559,9 @@ going-(quotative) he-turned-over
 (example from Faust W 1973)
 
 [Christian Lehmann, under \"quotative evidential\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""^^xsd:string ;
-                                  <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#OtherSourceEvidentiality> ;
                                   <http://mmoon.org/core/usageNote> """Given the definittions of the  two classes gold:SecondHandEvidentiality and gold:OtherSourceEvidentiality, both are considered to be equivalent to the mmoon:Quotative class, being expressed by these three terms for the same concept.
-This class should be used whenever one of the terms \"second hand evidential\" or \"other source evidential\" is encountered."""@en .
+This class should be used whenever one of the terms \"second hand evidential\" or \"other source evidential\" is encountered."""@en ;
+                                  <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#OtherSourceEvidentiality> .
 
 
 <http://mmoon.org/core/Realis> rdfs:label "Realis"@en ;
@@ -11583,8 +11593,8 @@ Often, the reflexive pronoun functions as a reciprocal pronoun. [Christian Lehma
 
 
 <http://mmoon.org/core/ReflexivePronoun> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#ReflexivePronoun> ;
-                                         rdfs:label "Reflexive Pronoun"@en ;
                                          <http://mmoon.org/core/definition> "A reflexive pronoun is a pronoun which is coreferent with a nominal expression of the same sentence which has some higher-ranging syntactic function, usually the subject. [Christian Lehmann, under \"reflexive pronoun\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                         rdfs:label "Reflexive Pronoun"@en ;
                                          <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/ReflexivePronoun#examples> .
 
 
@@ -11626,15 +11636,15 @@ Often, the reflexive pronoun functions as a reciprocal pronoun. [Christian Lehma
                                    <http://mmoon.org/core/definition> "a past that refers to a time in a span considered as more than a few days ago. [Christian Lehmann, under \"remote past\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
 
 
-<http://mmoon.org/core/Repetitive> rdfs:label "Repetitive"@en ;
-                                   <http://mmoon.org/core/definition> "The repetitive derivation indicates that the process designated by the base occurs once again.  [Christian Lehmann, under \"repetitive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+<http://mmoon.org/core/Repetitive> <http://mmoon.org/core/definition> "The repetitive derivation indicates that the process designated by the base occurs once again.  [Christian Lehmann, under \"repetitive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                   rdfs:label "Repetitive"@en ;
                                    <http://mmoon.org/core/example> """English, Spanish and Portuguese use the prefix re-, cf. Engl.: replay, rewrite; Spanish/Portuguese: readaptar 'readapt', reutilizar 'use again'.
 [Christian Lehmann, under \"repetitive\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
-<http://mmoon.org/core/Reportative> rdfs:label "Reportative"@en ;
-                                    <http://mmoon.org/core/definition> """The reportative evidential is an evidential that signals that the speaker reports what he has been told. It is the evidential of hearsay.
+<http://mmoon.org/core/Reportative> <http://mmoon.org/core/definition> """The reportative evidential is an evidential that signals that the speaker reports what he has been told. It is the evidential of hearsay.
 [Christian Lehmann, under \"reportative evidential\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                    rdfs:label "Reportative"@en ;
                                     <http://mmoon.org/core/example> <http://linguistics-ontology.org/gold/2010/IndirectEvidentiality#examples> ;
                                     <http://mmoon.org/core/usageNote> """Given the definittions of the  two classes gold:IndirectEvidentiality and gold:HearsayEvidentiality, both are considered to be equivalent to the mmoon:Reportative class, being expressed by these three terms for the same concept.
 This class should be used whenever one of the terms \"indirect evidential\" or \"hearsay evidential\" is encountered."""@en .
@@ -11698,9 +11708,9 @@ This class should be used whenever one of the terms \"indirect evidential\" or \
 
 <http://mmoon.org/core/Sociative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#SociativeCase> ;
                                   rdfs:label "Sociative"@en ;
-                                  <http://mmoon.org/core/usageNote> "Also called associative."@en ;
                                   <http://mmoon.org/core/definition> """a case having the meaning of 'with'.
-[Christian Lehmann, under \"sociative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
+[Christian Lehmann, under \"sociative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                  <http://mmoon.org/core/usageNote> "Also called associative."@en .
 
 
 <http://mmoon.org/core/Speculative> rdfs:label "Speculative"@en ;
@@ -11765,9 +11775,9 @@ Christian Lehmann, under \"stativity\" at http://linguistik.uni-regensburg.de:80
                                       rdfs:label "Superallative"@en .
 
 
-<http://mmoon.org/core/Superelative> <http://mmoon.org/core/definition> """The superelative is a case expressing motion away from the space above or from the upper surface of the referent of its carrier.
-[Christian Lehmann, under \"superelative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
-                                     rdfs:label "Superelative"@en .
+<http://mmoon.org/core/Superelative> rdfs:label "Superelative"@en ;
+                                     <http://mmoon.org/core/definition> """The superelative is a case expressing motion away from the space above or from the upper surface of the referent of its carrier.
+[Christian Lehmann, under \"superelative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
 
 <http://mmoon.org/core/Superessive> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#SuperessiveCase> ;
@@ -11801,8 +11811,8 @@ Christian Lehmann, under \"stativity\" at http://linguistik.uni-regensburg.de:80
 
 <http://mmoon.org/core/TemporalAdverb> <http://mmoon.org/core/example> """Yagua has an adverb \"tââriy\" which means something like 'long time'. With a clause in the past tense it means 'a long time ago', in other clauses it means 'for a long time'  or 'late in the afternoon'.
 [Christian Lehmann, under \"temporal adverb\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""^^xsd:string ;
-                                       rdfs:label "Temporal Adverb"@en ;
                                        <http://mmoon.org/core/definition> "A temporal adverb is an adverb which refers to the time of an action. [Christian Lehmann, under \"temporal adverb\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                       rdfs:label "Temporal Adverb"@en ;
                                        <http://mmoon.org/core/example> """yesterday, today, tomorrow, next/last year/week/ month, early, late etc.
 [Christian Lehmann, under \"temporal adverb\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
@@ -11811,9 +11821,9 @@ Christian Lehmann, under \"stativity\" at http://linguistik.uni-regensburg.de:80
                                        <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#TemporalisCase> .
 
 
-<http://mmoon.org/core/Terminative> <http://mmoon.org/core/usageNote> "also called \"destinative\" case."@en ;
-                                    <http://mmoon.org/core/definition> """The terminative is a case that expresses motion as far as or up to the location of the referent of its carrier.
+<http://mmoon.org/core/Terminative> <http://mmoon.org/core/definition> """The terminative is a case that expresses motion as far as or up to the location of the referent of its carrier.
 [Christian Lehmann, under \"destinative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en ;
+                                    <http://mmoon.org/core/usageNote> "also called \"destinative\" case."@en ;
                                     <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#TerminativeCase> ;
                                     rdfs:label "Terminative"@en .
 
@@ -11845,16 +11855,16 @@ marsh(NOM) change:PAST-3.SG field-TRNSF
                                        rdfs:label "Transformative"@en .
 
 
-<http://mmoon.org/core/Transitivizer> rdfs:label "Transitivizer"@en ;
-                                      <http://mmoon.org/core/definition> "A transitiviser is an affix which changes the transitivity of an intransitive verb into a transitive one. [Christian Lehmann, under \"transitivizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en .
+<http://mmoon.org/core/Transitivizer> <http://mmoon.org/core/definition> "A transitiviser is an affix which changes the transitivity of an intransitive verb into a transitive one. [Christian Lehmann, under \"transitivizer\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
+                                      rdfs:label "Transitivizer"@en .
 
 
 <http://mmoon.org/core/Translative> <http://mmoon.org/core/externalDefinition> <http://purl.org/olia/olia.owl#TranslativeCase> ;
+                                    rdfs:label "Translative"@en ;
                                     <http://mmoon.org/core/example> """Finnish:
 \"-ksi\" with local and transformative meaning. ISE 129a
 ISE 129b
 [Christian Lehmann, under \"translative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@fi ;
-                                    rdfs:label "Translative"@en ;
                                     <http://mmoon.org/core/definition> """The translative is a case marking an NP through whose referent something moves.
 [Christian Lehmann, under \"translative\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"""@en .
 
@@ -11905,14 +11915,14 @@ If the vocative needs to be classified as either casus rectus or obliquus, since
 
 <http://mmoon.org/core/ZeroMorph> <http://mmoon.org/core/definition> "A morpheme that has a morphological meaning that corresponds to no overt form.  [Haspelmath and Sims: Understanding morphology. 2002:64]"@en ;
                                   <http://mmoon.org/core/externalDefinitionDesc> "A zero morpheme is a morpheme which has no significans. [Christian Lehmann, under \"zero    morpheme\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
-                                  <http://mmoon.org/core/usageNote> "A zero morpheme is posited only if it is in equipollent opposition to overt morphemes. If the term in question is, instead, the unmarked member of a privative opposition, no morpheme is posited. Conversion  can be conceived as derivation using a zero morpheme.  [Christian Lehmann, under \"zero morpheme\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ,
-                                                                    """Since zero morphs have no corresponding orthographic or phonetic representation the representation of of a zero morph instance to be chosen for consistency across all MMoOn morpheme inventories is \"mmoon:Representation_ZM\", which is already specified for its morphemic representation “-Z” in the MMoOn Core ontology .
+                                  <http://mmoon.org/core/usageNote> """Since zero morphs have no corresponding orthographic or phonetic representation the representation of of a zero morph instance to be chosen for consistency across all MMoOn morpheme inventories is \"mmoon:Representation_ZM\", which is already specified for its morphemic representation “-Z” in the MMoOn Core ontology .
 
 lang_inv:Zeromorph_x rdf:type lang_schema:ZeroMorph ;
                      mmoon:hasRepresentation mmoon:Representation_ZM .
 
 mmoon:Representation_ZM rdf:type mmoon:Representation ;
-                        mmoon:morphemicRepresentation \"-Z\" ."""@en ;
+                        mmoon:morphemicRepresentation \"-Z\" ."""@en ,
+                                                                    "A zero morpheme is posited only if it is in equipollent opposition to overt morphemes. If the term in question is, instead, the unmarked member of a privative opposition, no morpheme is posited. Conversion  can be conceived as derivation using a zero morpheme.  [Christian Lehmann, under \"zero morpheme\" at http://linguistik.uni-regensburg.de:8080/lido/Lido]"@en ;
                                   rdfs:label "Zero Morph"@en .
 
 
