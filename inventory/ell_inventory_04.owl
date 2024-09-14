@@ -4847,6 +4847,22 @@ b) with additional semantic content by adding a derivational morpheme."""@en ;
                                   rdfs:subClassOf <http://mmoon.org/core/Affix> .
 
 
+###  http://mmoon.org/ell/inventory/omg#Affixation
+:Affixation rdf:type owl:Class ;
+            rdfs:subClassOf <http://mmoon.org/core/Derivation> .
+
+
+###  http://mmoon.org/ell/inventory/omg#Prefixation
+:Prefixation rdf:type owl:Class ;
+             rdfs:subClassOf :Affixation ;
+             owl:disjointWith :Suffixation .
+
+
+###  http://mmoon.org/ell/inventory/omg#Suffixation
+:Suffixation rdf:type owl:Class ;
+             rdfs:subClassOf :Affixation .
+
+
 ###  http://mmoon.org/ell/schema/omg/StemOfAPrefStem
 <http://mmoon.org/ell/schema/omg/StemOfAPrefStem> rdf:type owl:Class ;
                                                   rdfs:subClassOf <http://mmoon.org/core/Stem> .
@@ -9964,7 +9980,8 @@ owl:Thing rdf:type owl:Class .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n
-<http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n> rdf:type owl:NamedIndividual .
+<http://mmoon.org/ell/schema/omg/X-ευ-_v-X-τη-_n> rdf:type owl:NamedIndividual ,
+                                                           :Suffixation .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-μα_n-X-ση_n
@@ -9972,7 +9989,8 @@ owl:Thing rdf:type owl:Class .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ος_adj-X-ος_n
-<http://mmoon.org/ell/schema/omg/X-ος_adj-X-ος_n> rdf:type owl:NamedIndividual .
+<http://mmoon.org/ell/schema/omg/X-ος_adj-X-ος_n> rdf:type owl:NamedIndividual ,
+                                                           <http://mmoon.org/core/Conversion> .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ος_n-Χ-ω_v
@@ -9984,11 +10002,13 @@ owl:Thing rdf:type owl:Class .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj
-<http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj> rdf:type owl:NamedIndividual .
+<http://mmoon.org/ell/schema/omg/X-τη-_n-X-ικ-_adj> rdf:type owl:NamedIndividual ,
+                                                             :Suffixation .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n
-<http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n> rdf:type owl:NamedIndividual .
+<http://mmoon.org/ell/schema/omg/X-ω_v-X-ος_n> rdf:type owl:NamedIndividual ,
+                                                        <http://mmoon.org/core/Conversion> .
 
 
 ###  http://mmoon.org/ell/schema/omg/X-ώ_v-X-άω_v
@@ -11948,6 +11968,17 @@ mmoon:Representation_ZM rdf:type mmoon:Representation ;
                                        ) ;
                     rdf:type owl:Class
                   ]
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://mmoon.org/core/Conversion>
+                <http://mmoon.org/core/DerivedAdjective>
+                <http://mmoon.org/core/DerivedAdverb>
+                <http://mmoon.org/core/DerivedNoun>
+                <http://mmoon.org/core/DerivedVerb>
+                :Affixation
+              )
 ] .
 
 
