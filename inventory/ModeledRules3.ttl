@@ -9,17 +9,7 @@
 @base <http://mmoon.org/ell/inventory/omg/> .
 
 <http://mmoon.org/ell/inventory/omg/> rdf:type owl:Ontology ;
-                                       <http://purl.org/dc/elements/1.1/contributor> "Marco Ocana" ,
-                                                                                     "Paolo Ciccarese" ,
-                                                                                     "Silvio Peroni" ;
-                                       <http://purl.org/dc/elements/1.1/creator> <http://www.paolociccarese.info> ,
-                                                                                 <http://aksw.org/BettinaKlimek.rdf> ,
-                                                                                 "Silvio Peroni" ;
-                                       <http://purl.org/dc/elements/1.1/date> "2010-11-29"^^xsd:date ,
-                                                                              "March 19, 2012" ;
-                                       <http://purl.org/dc/elements/1.1/description> """The Error Ontology is an unit test that allow to produce an inconsistent model if a particular (and incorrect) situation happens.
-
-It works by means of a data property, \"hasError\" that denies its usage for ant resource. In fact, by defining its domain as \"all those resource that don't have any hasErrorDescription assertion\", a resource that asserts having an error makes the ontology inconsistent."""@en ,
+                                      
                                                                                      """The Multilingual Morpheme Ontology (MMoOn) is  an ontological model that contains the vocabulary needed to describe the morphological elements, meanings and representations of natural languages.
 
 This is the reference ontology from which various language specific MMoOn Inventories can be derived."""@en ,
